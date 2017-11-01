@@ -72,3 +72,6 @@ vendor/bundle/
 
 # MacOS
 .DS_Store
+
+# GoogleService
+*/GoogleService-Info.plist
