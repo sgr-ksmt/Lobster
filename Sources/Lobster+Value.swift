@@ -72,15 +72,13 @@ extension Lobster {
 
 extension Lobster {
     public func value<ValueType>(forKey key: DecodableConfigKey<ValueType>) throws -> ValueType? {
-        switch key.dataType {
-        case .rawData:
-            return try key.decoder.decode(ValueType.self, from: RemoteConfig.remoteConfig()[key._key].dataValue)
-        case .json(let encoding):
-            guard let data = RemoteConfig.remoteConfig()[key._key].stringValue?.data(using: encoding) else {
-                return nil
+        let data: Data? = {
+            switch key.dataType {
+            case .rawData: return RemoteConfig.remoteConfig()[key._key].dataValue
+            case .json(let encoding): return RemoteConfig.remoteConfig()[key._key].stringValue?.data(using: encoding)
             }
-            return try key.decoder.decode(ValueType.self, from: data)
-        }
+        }()
+        return try data.map { try key.decoder.decode(ValueType.self, from: $0) }
     }
 
     public func value(forKey key: ConfigKey<String>) -> String? {
@@ -208,6 +206,16 @@ extension Lobster {
 
     public subscript(default key: ConfigKey<UIColor>) -> UIColor? {
         return defaultStringValue(forKey: key)?.hexColor
+    }
+
+    public subscript<ValueType>(default key: DecodableConfigKey<ValueType>) -> ValueType? {
+        let data: Data? = {
+            switch key.dataType {
+            case .rawData: return (defaults[key._key] as? NSData) as Data?
+            case .json(let encoding): return defaultStringValue(forKey: key)?.data(using: encoding)
+            }
+        }()
+        return data.flatMap { (try? key.decoder.decode(ValueType.self, from: $0)) }
     }
 
     public subscript(default key: AnyConfigKey) -> Any? {
