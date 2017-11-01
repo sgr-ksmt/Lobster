@@ -74,4 +74,4 @@ vendor/bundle/
 .DS_Store
 
 # GoogleService
-*/GoogleService-Info.plist
+GoogleService-Info.plist
