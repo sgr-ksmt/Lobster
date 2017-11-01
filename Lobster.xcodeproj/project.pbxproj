@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		162860C81FAA0BC6003D85A6 /* Lobster+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162860C71FAA0BC6003D85A6 /* Lobster+Value.swift */; };
+		162860CA1FAA353A003D85A6 /* UIColor+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162860C91FAA353A003D85A6 /* UIColor+Ex.swift */; };
 		163144041FA8BE8600D25996 /* Lobster.h in Headers */ = {isa = PBXBuildFile; fileRef = 163144021FA8BE8600D25996 /* Lobster.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1631440C1FA8C00900D25996 /* Lobster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631440B1FA8C00900D25996 /* Lobster.swift */; };
+		1631440E1FA8CBE400D25996 /* ConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631440D1FA8CBE400D25996 /* ConfigKeys.swift */; };
 		C446D99F0AB2B1B651481608 /* Pods_Lobster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7094F96770D14C9622820F42 /* Pods_Lobster.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		162860C71FAA0BC6003D85A6 /* Lobster+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lobster+Value.swift"; sourceTree = "<group>"; };
+		162860C91FAA353A003D85A6 /* UIColor+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ex.swift"; sourceTree = "<group>"; };
 		163143FF1FA8BE8600D25996 /* Lobster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lobster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		163144021FA8BE8600D25996 /* Lobster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lobster.h; sourceTree = "<group>"; };
 		163144031FA8BE8600D25996 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1631440B1FA8C00900D25996 /* Lobster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lobster.swift; sourceTree = "<group>"; };
+		1631440D1FA8CBE400D25996 /* ConfigKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigKeys.swift; sourceTree = "<group>"; };
 		2FFEEC768519AD92F404C651 /* Pods-Lobster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lobster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lobster/Pods-Lobster.debug.xcconfig"; sourceTree = "<group>"; };
 		7094F96770D14C9622820F42 /* Pods_Lobster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lobster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B16D1323062E1020502A3F /* Pods-Lobster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lobster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lobster/Pods-Lobster.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +71,10 @@
 		1631440A1FA8BE9700D25996 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1631440B1FA8C00900D25996 /* Lobster.swift */,
+				162860C71FAA0BC6003D85A6 /* Lobster+Value.swift */,
+				1631440D1FA8CBE400D25996 /* ConfigKeys.swift */,
+				162860C91FAA353A003D85A6 /* UIColor+Ex.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -129,6 +141,7 @@
 				TargetAttributes = {
 					163143FE1FA8BE8600D25996 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -201,6 +214,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1631440C1FA8C00900D25996 /* Lobster.swift in Sources */,
+				162860C81FAA0BC6003D85A6 /* Lobster+Value.swift in Sources */,
+				162860CA1FAA353A003D85A6 /* UIColor+Ex.swift in Sources */,
+				1631440E1FA8CBE400D25996 /* ConfigKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +341,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2FFEEC768519AD92F404C651 /* Pods-Lobster.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -336,6 +354,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-.Lobster";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -345,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B5B16D1323062E1020502A3F /* Pods-Lobster.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
