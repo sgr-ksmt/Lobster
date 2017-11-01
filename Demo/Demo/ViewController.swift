@@ -9,10 +9,17 @@
 import UIKit
 import Lobster
 
+extension ConfigKeys {
+    static let titleText = ConfigKey<String>("title_text")
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Lobster.shared.debugMode = true
+
+        Lobster.shared[.titleText] = "Demo Project"
         // Do any additional setup after loading the view, typically from a nib.
     }
 
