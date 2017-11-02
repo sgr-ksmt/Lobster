@@ -5,4 +5,5 @@ use_frameworks!
 
 target 'Demo' do
   pod 'Lobster', :path => '../'
+  pod 'FirebaseUI/Storage'
 end

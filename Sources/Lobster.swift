@@ -30,15 +30,14 @@ public class Lobster {
     private init() {
     }
 
-    public func fetch(completion: @escaping () -> Void = {}) {
+    public func fetch(completion: @escaping (Error?) -> Void = { _ in}) {
         RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchExpirationDuration) { [unowned self] (status, error) in
-            guard error == nil else {
-                return
+            if error == nil {
+                RemoteConfig.remoteConfig().activateFetched()
             }
-            RemoteConfig.remoteConfig().activateFetched()
             self.fetchStatus = status
-            completion()
-            NotificationCenter.default.post(name: .lobsterDidFetchConfig, object: nil)
+            completion(error)
+            NotificationCenter.default.post(name: .lobsterDidFetchConfig, object: error)
         }
     }
 
