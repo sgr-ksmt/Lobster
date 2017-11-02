@@ -46,15 +46,21 @@ class ViewController: UIViewController {
         }
     }
 
+    let loadFromPlist = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         Lobster.shared.debugMode = true
         Lobster.shared.fetchExpirationDuration = 0.0
 
-        Lobster.shared[.titleText] = "Demo Project"
-        Lobster.shared[.titleColor] = .gray
-        Lobster.shared[.boxSize] = .zero
-        Lobster.shared[.person] = Person(name: "Taro", age: 18, country: "Japan")
+        if loadFromPlist {
+            Lobster.shared.setDefaults(fromPlist: "defaults")
+        } else {
+            Lobster.shared[.titleText] = "Demo Project"
+            Lobster.shared[.titleColor] = .gray
+            Lobster.shared[.boxSize] = .zero
+            Lobster.shared[.person] = Person(name: "Taro", age: 18, country: "Japan")
+        }
 
         updateUI()
 
