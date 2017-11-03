@@ -16,6 +16,8 @@ public protocol ConfigKeyType {
     var _key: String { get }
 }
 
+/// Config key
+/// can access / set default config value as ValueType object.
 public class ConfigKey<ValueType>: ConfigKeys, ConfigKeyType {
     public let _key: String
 
@@ -35,6 +37,8 @@ extension ConfigKey: Hashable {
     }
 }
 
+/// Decodable Config key
+/// can access config value as codable object.
 public class DecodableConfigKey<ValueType: Decodable>: ConfigKey<ValueType> {
     public enum DataType {
         case rawData
@@ -51,6 +55,8 @@ public class DecodableConfigKey<ValueType: Decodable>: ConfigKey<ValueType> {
     }
 }
 
+/// Codable Config key
+/// can access / set default config value as codable object.
 public class CodableConfigKey<ValueType: Codable>: DecodableConfigKey<ValueType> {
     let encoder: JSONEncoder
     public init(_ key: String, dataType: DataType = .json(.utf8), decoder: JSONDecoder = .init(), encoder: JSONEncoder = .init()) {
@@ -59,6 +65,8 @@ public class CodableConfigKey<ValueType: Codable>: DecodableConfigKey<ValueType>
     }
 }
 
+
+/// Type-Erased config key
 public class AnyConfigKey: ConfigKeys, ConfigKeyType {
     let base: ConfigKeyType
 
