@@ -17,7 +17,61 @@ extension ConfigKeys {
     static let boxSize = CodableConfigKey<CGSize>("box_size")
     static let person = CodableConfigKey<Person>("person")
     static let backgroundImageURL = ConfigKey<URL>("background_image_url")
+    static let myEnum1 = ConfigKey<MyEnum1>("my_enum")
+    static let status = ConfigKey<Status>("status")
 }
+
+enum MyEnum1: Int {
+    case invalid
+    case A
+    case B
+    case C
+}
+
+enum Status {
+    case invalid
+    case foo(String)
+    case bar(String)
+
+    init(value: String?) {
+        guard let value = value else {
+            self = .invalid
+            return
+        }
+        let separated = value.components(separatedBy: ":")
+        guard let query: (String, String) = separated.first.flatMap({ f in separated.last.flatMap({ l in (f, l) })}) else {
+            self = .invalid
+            return
+        }
+        switch query {
+        case ("foo", let x):
+            self = .foo(x)
+        case ("bar", let x):
+            self = .bar(x)
+        default:
+            self = .invalid
+        }
+    }
+
+    var value: String {
+        switch self {
+        case .foo(let x):
+            return "foo:\(x)"
+        case .bar(let x):
+            return "bar:\(x)"
+        default:
+            return ""
+        }
+    }
+}
+
+extension Lobster {
+    subscript(_ key: ConfigKey<Status>) -> Status? {
+        get { return Status(value: configValue(forKey: key._key)) }
+        set { setDefaultValue(newValue?.value, forKey: key._key) }
+    }
+}
+
 
 struct Person: Codable {
     let name: String
@@ -60,6 +114,8 @@ class ViewController: UIViewController {
             Lobster.shared[.titleColor] = .gray
             Lobster.shared[.boxSize] = .zero
             Lobster.shared[.person] = Person(name: "Taro", age: 18, country: "Japan")
+            Lobster.shared[.myEnum1] = .A
+            Lobster.shared[.status] = .foo("baz")
         }
 
         updateUI()

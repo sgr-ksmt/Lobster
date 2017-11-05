@@ -30,27 +30,47 @@ extension Lobster {
     }
 
     public func setDefaultValue(_ value: String?, forKey key: ConfigKey<String>) {
-        defaults[key._key] = value.map { $0 as NSString }
+        setDefaultValue(value, forKey: key._key)
+    }
+
+    public func setDefaultValue(_ value: String?, forKey key: String) {
+        defaults[key] = value.map { $0 as NSString }
         updateDefaults()
     }
 
     public func setDefaultValue(_ value: Int?, forKey key: ConfigKey<Int>) {
-        defaults[key._key] = value.map { $0 as NSNumber }
+        setDefaultValue(value, forKey: key._key)
+    }
+
+    public func setDefaultValue(_ value: Int?, forKey key: String) {
+        defaults[key] = value.map { $0 as NSNumber }
         updateDefaults()
     }
 
     public func setDefaultValue(_ value: Double?, forKey key: ConfigKey<Double>) {
-        defaults[key._key] = value.map { $0 as NSNumber }
+        setDefaultValue(value, forKey: key._key)
+    }
+
+    public func setDefaultValue(_ value: Double?, forKey key: String) {
+        defaults[key] = value.map { $0 as NSNumber }
         updateDefaults()
     }
 
     public func setDefaultValue(_ value: Float?, forKey key: ConfigKey<Float>) {
-        defaults[key._key] = value.map { $0 as NSNumber }
+        setDefaultValue(value, forKey: key._key)
+    }
+
+    public func setDefaultValue(_ value: Float?, forKey key: String) {
+        defaults[key] = value.map { $0 as NSNumber }
         updateDefaults()
     }
 
     public func setDefaultValue(_ value: Bool?, forKey key: ConfigKey<Bool>) {
-        defaults[key._key] = value.map { $0 as NSNumber }
+        setDefaultValue(value, forKey: key._key)
+    }
+
+    public func setDefaultValue(_ value: Bool?, forKey key: String) {
+        defaults[key] = value.map { $0 as NSNumber }
         updateDefaults()
     }
 
@@ -82,23 +102,43 @@ extension Lobster {
     }
 
     public func configValue(forKey key: ConfigKey<String>) -> String? {
-        return RemoteConfig.remoteConfig()[key._key].stringValue
+        return configValue(forKey: key._key)
+    }
+
+    public func configValue(forKey key: String) -> String? {
+        return RemoteConfig.remoteConfig()[key].stringValue
     }
 
     public func configValue(forKey key: ConfigKey<Int>) -> Int? {
-        return RemoteConfig.remoteConfig()[key._key].numberValue?.intValue
+        return configValue(forKey: key._key)
+    }
+
+    public func configValue(forKey key: String) -> Int? {
+        return RemoteConfig.remoteConfig()[key].numberValue?.intValue
     }
 
     public func configValue(forKey key: ConfigKey<Double>) -> Double? {
-        return RemoteConfig.remoteConfig()[key._key].numberValue?.doubleValue
+        return configValue(forKey: key._key)
+    }
+
+    public func configValue(forKey key: String) -> Double? {
+        return RemoteConfig.remoteConfig()[key].numberValue?.doubleValue
     }
 
     public func configValue(forKey key: ConfigKey<Float>) -> Float? {
-        return RemoteConfig.remoteConfig()[key._key].numberValue?.floatValue
+        return configValue(forKey: key._key)
+    }
+
+    public func configValue(forKey key: String) -> Float? {
+        return RemoteConfig.remoteConfig()[key].numberValue?.floatValue
     }
 
     public func configValue(forKey key: ConfigKey<Bool>) -> Bool {
-        return RemoteConfig.remoteConfig()[key._key].boolValue
+        return configValue(forKey: key._key)
+    }
+
+    public func configValue(forKey key: String) -> Bool {
+        return RemoteConfig.remoteConfig()[key].boolValue
     }
 
     public func configValue(forKey key: ConfigKey<Data>) -> Data {
@@ -110,11 +150,70 @@ extension Lobster {
     }
 
     public func configValue(forKey key: ConfigKey<UIColor>) -> UIColor? {
-        return RemoteConfig.remoteConfig()[key._key].stringValue?.hexColor
+        return configValue(forKey: key._key)?.hexColor
     }
 
     public func configValue(forKey key: AnyConfigKey) -> RemoteConfigValue {
         return RemoteConfig.remoteConfig()[key._key]
+    }
+}
+
+// convenience functions
+extension Lobster {
+    public func getDefaultValue(forKey key: ConfigKey<String>) -> String? {
+        return getDefaultValue(forKey: key._key)
+    }
+
+    public func getDefaultValue(forKey key: String) -> String? {
+        return (defaults[key] as? NSString) as String?
+    }
+
+    public func getDefaultValue(forKey key: ConfigKey<NSNumber>) -> NSNumber? {
+        return getDefaultValue(forKey: key._key)
+    }
+
+    public func getDefaultValue(forKey key: String) -> NSNumber? {
+        return defaults[key] as? NSNumber
+    }
+
+    public func getDefaultValue(forKey key: ConfigKey<Int>) -> Int? {
+        return getDefaultValue(forKey: key._key)
+    }
+
+    public func getDefaultValue(forKey key: String) -> Int? {
+        return getDefaultValue(forKey: key)?.intValue
+    }
+
+    public func getDefaultValue(forKey key: ConfigKey<Float>) -> Float? {
+        return getDefaultValue(forKey: key._key)
+    }
+
+    public func getDefaultValue(forKey key: String) -> Float? {
+        return getDefaultValue(forKey: key)?.floatValue
+    }
+
+    public func getDefaultValue(forKey key: ConfigKey<Double>) -> Double? {
+        return getDefaultValue(forKey: key._key)
+    }
+
+    public func getDefaultValue(forKey key: String) -> Double? {
+        return getDefaultValue(forKey: key)?.doubleValue
+    }
+
+    public func getDefaultValue(forKey key: ConfigKey<Bool>) -> Bool? {
+        return getDefaultValue(forKey: key._key)
+    }
+
+    public func getDefaultValue(forKey key: String) -> Bool? {
+        return getDefaultValue(forKey: key)?.boolValue
+    }
+
+    public func getDefaultValue(forKey key: ConfigKey<Data>) -> Data? {
+        return getDefaultValue(forKey: key._key)
+    }
+
+    public func getDefaultValue(forKey key: String) -> Data? {
+        return (defaults[key] as? NSData) as Data?
     }
 }
 
@@ -172,61 +271,57 @@ extension Lobster {
         }
     }
 
-    private func defaultStringValue<T>(forKey key: ConfigKey<T>) -> String? {
-        return (defaults[key._key] as? NSString) as String?
-    }
-
     /// Get string value by using object subscripting syntax.
     ///
     /// - Parameter key: config key.
     public subscript(default key: ConfigKey<String>) -> String? {
-        return (defaults[key._key] as? NSString) as String?
+        return getDefaultValue(forKey: key)
     }
 
     public subscript(default key: ConfigKey<Int>) -> Int? {
-        return (defaults[key._key] as? NSNumber)?.intValue
+        return getDefaultValue(forKey: key)
     }
 
     /// Get float value by using object subscripting syntax.
     ///
     /// - Parameter key: config key.
     public subscript(default key: ConfigKey<Float>) -> Float? {
-        return (defaults[key._key] as? NSNumber)?.floatValue
+        return getDefaultValue(forKey: key)
     }
 
     /// Get double value by using object subscripting syntax.
     ///
     /// - Parameter key: config key.
     public subscript(default key: ConfigKey<Double>) -> Double? {
-        return (defaults[key._key] as? NSNumber)?.doubleValue
+        return getDefaultValue(forKey: key)
     }
 
     /// Get bool value by using object subscripting syntax.
     ///
     /// - Parameter key: config key.
     public subscript(default key: ConfigKey<Bool>) -> Bool? {
-        return (defaults[key._key] as? NSNumber)?.boolValue
+        return getDefaultValue(forKey: key)
     }
 
     /// Get data by using object subscripting syntax.
     ///
     /// - Parameter key: config key.
     public subscript(default key: ConfigKey<Data>) -> Data? {
-        return (defaults[key._key] as? NSData) as Data?
+        return getDefaultValue(forKey: key)
     }
 
     /// Get url by using object subscripting syntax.
     ///
     /// - Parameter key: config key.
     public subscript(default key: ConfigKey<URL>) -> URL? {
-        return defaultStringValue(forKey: key).flatMap(URL.init(string:))
+        return getDefaultValue(forKey: key._key).flatMap(URL.init(string:))
     }
 
     /// Get color by using object subscripting syntax.
     ///
     /// - Parameter key: config key.
     public subscript(default key: ConfigKey<UIColor>) -> UIColor? {
-        return defaultStringValue(forKey: key)?.hexColor
+        return getDefaultValue(forKey: key._key)?.hexColor
     }
 
     /// Get decodable value by using object subscripting syntax.
@@ -236,7 +331,7 @@ extension Lobster {
         let data: Data? = {
             switch key.dataType {
             case .rawData: return (defaults[key._key] as? NSData) as Data?
-            case .json(let encoding): return defaultStringValue(forKey: key)?.data(using: encoding)
+            case .json(let encoding): return getDefaultValue(forKey: key._key)?.data(using: encoding)
             }
         }()
         return data.flatMap { (try? key.decoder.decode(ValueType.self, from: $0)) }
@@ -247,5 +342,44 @@ extension Lobster {
     /// - Parameter key: type-erased config key.
     public subscript(default key: AnyConfigKey) -> Any? {
         return defaults[key._key]
+    }
+}
+
+/// Support for Enum
+extension Lobster {
+    public func setDefaultValue<T: RawRepresentable>(_ value: T?, forKey key: ConfigKey<T>) where T.RawValue == Int {
+        defaults[key._key] = value.map { $0.rawValue as NSNumber }
+        updateDefaults()
+    }
+
+    public func setDefaultValue<T: RawRepresentable>(_ value: T?, forKey key: ConfigKey<T>) where T.RawValue == String {
+        defaults[key._key] = value.map { $0.rawValue as NSString }
+        updateDefaults()
+    }
+
+    public func configValue<T: RawRepresentable>(forKey key: ConfigKey<T>) -> T? where T.RawValue == Int {
+        return configValue(forKey: key._key).flatMap { T(rawValue: $0) }
+    }
+
+    public func configValue<T: RawRepresentable>(forKey key: ConfigKey<T>) -> T? where T.RawValue == String {
+        return configValue(forKey: key._key).flatMap { T(rawValue: $0) }
+    }
+
+    public func getDefaultValue<T: RawRepresentable>(forKey key: ConfigKey<T>) -> T? where T.RawValue == Int {
+        return getDefaultValue(forKey: key._key).flatMap { T(rawValue: $0) }
+    }
+
+    public func getDefaultValue<T: RawRepresentable>(forKey key: ConfigKey<T>) -> T? where T.RawValue == String {
+        return getDefaultValue(forKey: key._key).flatMap { T(rawValue: $0) }
+    }
+
+    public subscript<T: RawRepresentable>(_ key: ConfigKey<T>) -> T? where T.RawValue == Int {
+        get { return configValue(forKey: key) }
+        set { setDefaultValue(newValue, forKey: key) }
+    }
+
+    public subscript<T: RawRepresentable>(_ key: ConfigKey<T>) -> T? where T.RawValue == String {
+        get { return configValue(forKey: key) }
+        set { setDefaultValue(newValue, forKey: key) }
     }
 }
