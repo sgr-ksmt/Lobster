@@ -265,7 +265,7 @@ Define config value like below:
 
 ## Installation
 ### CocoaPods
-Only **CocoaPods 1.4 Beta or higher**
+*Required: Cocoapods v1.4.0 or higher*
 
 **Lobster** is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
