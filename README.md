@@ -3,7 +3,7 @@ Type-safe Firebase-RemoteConfig helper library
 
 
 [![GitHub release](https://img.shields.io/github/release/sgr-ksmt/Lobster.svg)](https://github.com/sgr-ksmt/Lobster/releases)
-![Language](https://img.shields.io/badge/language-Swift%204-orange.svg)
+![Language](https://img.shields.io/badge/language-Swift%204.1-orange.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/badge/Cocoa%20Pods-✓-4BC51D.svg?style=flat)](https://cocoapods.org/pods/Lobster)
 [![CocoaPodsDL](https://img.shields.io/cocoapods/dt/Lobster.svg)](https://cocoapods.org/pods/Lobster)
@@ -127,7 +127,7 @@ support only hex: e.g. `"#FF00FF"`
 ![](docs/img3.png)
 
 #### CGPoint
-support text: e.g. `"[100, 100]"`  
+support text: e.g. `"[100, 100]"`
 → Use `DecodableConfigKey`(or `CodableConfigKey`)
 
 ```swift
@@ -137,7 +137,7 @@ extension ConfigKeys {
 ```
 
 #### CGSize
-support text: e.g. `"[100, 100]"`  
+support text: e.g. `"[100, 100]"`
 → Use `DecodableConfigKey`(or `CodableConfigKey`)
 
 ```swift
@@ -147,7 +147,7 @@ extension ConfigKeys {
 ```
 
 #### CGRect
-support text: e.g. `"[10, 10, 100, 100]"`  
+support text: e.g. `"[10, 10, 100, 100]"`
 → Use `DecodableConfigKey`(or `CodableConfigKey`)
 
 ```swift
@@ -161,13 +161,13 @@ extension ConfigKeys {
 ![](docs/img4.png)
 
 #### Enum
-supports `Int` or `String` rawValue.  
+supports `Int` or `String` rawValue.
 If you want to use other enum, see "Use custom value".
 
-#### Decodable compliant type 
+#### Decodable compliant type
 read only
 
-#### Codable compliant type 
+#### Codable compliant type
 can set default value / read config value
 
 
@@ -271,7 +271,7 @@ Only **CocoaPods 1.4 Beta or higher**
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Lobster', '~> 0.1.0'
+pod 'Lobster', '~> 1.0'
 ```
 
 and run `pod install`
