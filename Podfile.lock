@@ -37,7 +37,7 @@ PODS:
   - Protobuf (3.5.0)
 
 DEPENDENCIES:
-  - Firebase/RemoteConfig
+  - Firebase/RemoteConfig (~> 5.0.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -62,6 +62,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
 
-PODFILE CHECKSUM: a0ac64af65ccc2a1ef76137a9390274ee3d1190c
+PODFILE CHECKSUM: 3e07d748825a2698d174c6e93e5aabe6b9da49db
 
 COCOAPODS: 1.5.0
