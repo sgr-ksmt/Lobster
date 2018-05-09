@@ -23,8 +23,7 @@ public class Lobster {
     /// NOTE: It must be false on production.
     public var debugMode: Bool = false {
         didSet {
-            guard let settings = RemoteConfigSettings(developerModeEnabled: debugMode) else { return }
-            RemoteConfig.remoteConfig().configSettings = settings
+            RemoteConfig.remoteConfig().configSettings = RemoteConfigSettings(developerModeEnabled: debugMode)
         }
     }
     public private(set) var fetchStatus: RemoteConfigFetchStatus = .noFetchYet
