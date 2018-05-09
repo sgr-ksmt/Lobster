@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Lobster"
-  s.version          = "1.0"
+  s.version          = "1.1"
   s.summary          = "Type-safe Firebase-RemoteConfig helper library"
   s.homepage         = "https://github.com/sgr-ksmt/Lobster"
   s.license          = 'MIT'

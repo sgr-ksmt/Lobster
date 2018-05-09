@@ -271,7 +271,11 @@ Define config value like below:
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Lobster', '~> 1.0'
+// Firebase SDK greater than or equal to v5.0.0
+pod 'Lobster', '~> 1.1'
+
+// Firebase SDK  less than v5.0.0
+pod 'Lobster', '1.0'
 ```
 
 and run `pod install`
