@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
   s.requires_arc     = true
   s.source_files     = "Sources/**/*"
   s.static_framework = true
-  s.dependency "Firebase/RemoteConfig"
+  s.dependency "Firebase/RemoteConfig", "~> 5.0"
 end
