@@ -37,7 +37,15 @@ extension URL: ConfigSerializable {
 }
 
 extension ConfigSerializable where Self: RawRepresentable {
-    public static var _defaults: ConfigBridge<Self> { return ConfigRawRepresentableBridge() }
+    public static var _config: ConfigBridge<Self> { return ConfigRawRepresentableBridge() }
+}
+
+extension ConfigSerializable where Self: Codable {
+    public static var _config: ConfigBridge<Self> { return ConfigCodableBridge() }
+}
+
+extension ConfigSerializable where Self: Collection, Self.Element: Codable {
+    public static var _config: ConfigBridge<[Self.Element]> { return ConfigCodableArrayBridge<Self.Element>() }
 }
 
 extension Optional: ConfigSerializable where Wrapped: ConfigSerializable {

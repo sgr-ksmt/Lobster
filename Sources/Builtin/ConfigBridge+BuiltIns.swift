@@ -165,3 +165,25 @@ public final class ConfigCodableBridge<T: Codable>: ConfigBridge<T> {
         return (object as? Data).flatMap { try? decoder.decode(T.self, from: $0) }
     }
 }
+
+public final class ConfigCodableArrayBridge<T: Codable>: ConfigBridge<[T]> {
+    public var decoder = JSONDecoder()
+    public var encoder = JSONEncoder()
+
+    public override func save(key: String, value: [T]?, defaultsStore: DefaultsStore) {
+        defaultsStore.set(forKey: key, value: try? encoder.encode(value))
+    }
+
+    public override func get(key: String, remoteConfig: RemoteConfig) -> [T]? {
+        return deserialize(remoteConfig[key].dataValue) ??
+            remoteConfig[key].stringValue?.data(using: .utf8).flatMap(deserialize)
+    }
+
+    public override func get(key: String, defaultsStore: DefaultsStore) -> [T]? {
+        return defaultsStore.get(forKey: key).flatMap(deserialize)
+    }
+
+    func deserialize(_ object: Any) -> [T]? {
+        return (object as? Data).flatMap { try? decoder.decode([T].self, from: $0) }
+    }
+}
