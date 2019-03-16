@@ -59,7 +59,7 @@ extension Lobster {
     public subscript<T: ConfigSerializable>(config key: ConfigKey<T>) -> T.T where T.T == T {
         get {
             guard let value = T._config.get(key: key._key, remoteConfig: remoteConfig) else {
-                fatalError("Failed to get value from default. Please set default value before or use `sa` subscript.")
+                fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
             }
             return value
         }

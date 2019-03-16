@@ -164,7 +164,7 @@ public final class ConfigCodableBridge<T: Codable>: ConfigBridge<T> {
 
 public final class ConfigArrayBridge<T: Collection>: ConfigBridge<T> {
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore[key] = value
+        defaultsStore[key] = value.flatMap { try? JSONSerialization.data(withJSONObject: $0, options: []) }
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -173,7 +173,7 @@ public final class ConfigArrayBridge<T: Collection>: ConfigBridge<T> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore[key] as? T
+        return (defaultsStore[key] as? Data).flatMap(deserialize)
     }
 
     func deserialize(_ data: Data) -> T? {
