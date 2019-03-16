@@ -19,6 +19,17 @@ public class Lobster {
     /// Expiration duration for cache. Default is 12 hours
     public var fetchExpirationDuration: TimeInterval = 43_200.0
 
+    public var useStaleChecker: Bool = true
+    public var staleValueStore: StaleValueStore = UserDefaults.standard
+    public var isStaled: Bool {
+        set {
+            staleValueStore.isStaled = newValue
+        }
+        get {
+            return staleValueStore.isStaled
+        }
+    }
+
     /// Debug mode
     /// NOTE: It must be false on production.
     public var debugMode: Bool = false {
@@ -37,7 +48,8 @@ public class Lobster {
     ///
     /// - Parameter completion: Fetch operation callback.
     public func fetch(completion: @escaping (Error?) -> Void = { _ in}) {
-        RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchExpirationDuration) { [unowned self] (status, error) in
+        let duration = getExpirationDuration()
+        RemoteConfig.remoteConfig().fetch(withExpirationDuration: duration) { [unowned self] (status, error) in
             if error == nil {
                 RemoteConfig.remoteConfig().activateFetched()
             }
@@ -45,6 +57,13 @@ public class Lobster {
             completion(error)
             NotificationCenter.default.post(name: .lobsterDidFetchConfig, object: error)
         }
+    }
+
+    private func getExpirationDuration() -> TimeInterval {
+        if useStaleChecker, isStaled {
+            return 0.0
+        }
+        return fetchExpirationDuration
     }
 
 
