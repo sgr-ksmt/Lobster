@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "16FCE993223CE14A00F6D643"
+               BuildableName = "LobsterTests.xctest"
+               BlueprintName = "LobsterTests"
+               ReferencedContainer = "container:Lobster.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "163143FE1FA8BE8600D25996"
+            BuildableName = "Lobster.framework"
+            BlueprintName = "Lobster"
+            ReferencedContainer = "container:Lobster.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

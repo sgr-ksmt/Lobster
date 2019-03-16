@@ -68,7 +68,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig (~> 5.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -92,6 +92,6 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
 
-PODFILE CHECKSUM: 7a384326167b8dda0272f512df5daeb054170af7
+PODFILE CHECKSUM: 056f3a41c9f6c25d66a8d82cacb51ec556efae03
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
