@@ -61,6 +61,7 @@ public class Lobster {
                 RemoteConfig.remoteConfig().activateFetched()
             }
             self.fetchStatus = status
+            self.isStaled = false
             completion(error)
             NotificationCenter.default.post(name: Lobster.didFetchConfig, object: error)
         }

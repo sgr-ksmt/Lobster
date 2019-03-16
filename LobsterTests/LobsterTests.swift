@@ -28,9 +28,18 @@ enum NetWork: String, ConfigSerializable {
     }
 }
 
+struct Settings: Decodable, ConfigSerializable, Equatable {
+    let flag: Bool
+    let minimumVersion: String
+}
+
 struct Person: Codable, ConfigSerializable, Equatable {
     let name: String
     let age: Int
+}
+
+class MockStaleValueStore: StaleValueStore {
+    var isStaled: Bool = false
 }
 
 extension ConfigKeys {
@@ -58,6 +67,9 @@ extension ConfigKeys {
     static let network = ConfigKey<NetWork>("network")
     static let networkOptional = ConfigKey<NetWork?>("network_optional")
 
+    static let settings = ConfigKey<Settings>("settings")
+    static let settingsOptional = ConfigKey<Settings?>("settings_optional")
+
     static let person = ConfigKey<Person>("person")
     static let personOptional = ConfigKey<Person?>("person_optional")
 
@@ -72,6 +84,13 @@ extension ConfigKeys {
 
     static let persons = ConfigKey<[Person]>("persons")
     static let personsOptional = ConfigKey<[Person]?>("persons_optional")
+}
+
+extension ConfigKeys {
+    static let title = ConfigKey<String>("title")
+    static let count = ConfigKey<Int>("count")
+    static let friendNames = ConfigKey<[String]>("friend_names")
+    static let mike = ConfigKey<Person>("mike")
 }
 
 class LobsterTests: XCTestCase {
@@ -268,6 +287,39 @@ class LobsterTests: XCTestCase {
         XCTAssertEqual(Lobster.shared[default: .networkOptional], .LTE)
     }
 
+    func testDecodableValueKey() {
+        let settingsJson = """
+{"flag": true, "minimumVersion": "1.0.1"}
+"""
+        XCTAssertEqual(Lobster.shared[safe: .settings], nil)
+        XCTAssertEqual(Lobster.shared[safeConfig: .settings], nil)
+        XCTAssertEqual(Lobster.shared[safeDefault: .settings], nil)
+        Lobster.shared.remoteConfig.setDefaults([ConfigKeys.settings._key: NSString(string: settingsJson)])
+        XCTAssertEqual(Lobster.shared[safe: .settings]?.flag, true)
+        XCTAssertEqual(Lobster.shared[safe: .settings]?.minimumVersion, "1.0.1")
+        XCTAssertEqual(Lobster.shared[safeConfig: .settings]?.flag, true)
+        XCTAssertEqual(Lobster.shared[safeConfig: .settings]?.minimumVersion, "1.0.1")
+        XCTAssertEqual(Lobster.shared[safeDefault: .settings], nil)
+
+        XCTAssertEqual(Lobster.shared[.settingsOptional], nil)
+        XCTAssertEqual(Lobster.shared[safe: .settingsOptional], nil)
+        XCTAssertEqual(Lobster.shared[config: .settingsOptional], nil)
+        XCTAssertEqual(Lobster.shared[default: .settingsOptional], nil)
+        XCTAssertEqual(Lobster.shared[safeConfig: .settingsOptional], nil)
+        XCTAssertEqual(Lobster.shared[safeDefault: .settingsOptional], nil)
+        Lobster.shared.remoteConfig.setDefaults([ConfigKeys.settingsOptional._key: NSString(string: settingsJson)])
+        XCTAssertEqual(Lobster.shared[.settingsOptional]?.flag, true)
+        XCTAssertEqual(Lobster.shared[.settingsOptional]?.minimumVersion, "1.0.1")
+        XCTAssertEqual(Lobster.shared[safe: .settingsOptional]?.flag, true)
+        XCTAssertEqual(Lobster.shared[safe: .settingsOptional]?.minimumVersion, "1.0.1")
+        XCTAssertEqual(Lobster.shared[config: .settingsOptional]?.flag, true)
+        XCTAssertEqual(Lobster.shared[config: .settingsOptional]?.minimumVersion, "1.0.1")
+        XCTAssertEqual(Lobster.shared[default: .settingsOptional], nil)
+        XCTAssertEqual(Lobster.shared[safeConfig: .settingsOptional]?.flag, true)
+        XCTAssertEqual(Lobster.shared[safeConfig: .settingsOptional]?.minimumVersion, "1.0.1")
+        XCTAssertEqual(Lobster.shared[safeDefault: .settingsOptional], nil)
+    }
+
     func testCodableValueKey() {
         XCTAssertEqual(Lobster.shared[safe: .person], nil)
         XCTAssertEqual(Lobster.shared[safeConfig: .person], nil)
@@ -371,5 +423,42 @@ class LobsterTests: XCTestCase {
         XCTAssertEqual(Lobster.shared[.personsOptional], [Person(name: "John", age: 10), Person(name: "Mike", age: 12)])
         XCTAssertEqual(Lobster.shared[config: .personsOptional], [Person(name: "John", age: 10), Person(name: "Mike", age: 12)])
         XCTAssertEqual(Lobster.shared[default: .personsOptional], [Person(name: "John", age: 10), Person(name: "Mike", age: 12)])
+    }
+
+
+    func testFetch() {
+        let expect = expectation(description: "testFetch")
+
+        Lobster.shared[default: .title] = "xxx"
+        Lobster.shared[default: .count] = 1
+        Lobster.shared[default: .friendNames] = []
+        Lobster.shared.debugMode = true
+        Lobster.shared.fetchExpirationDuration = 0
+        Lobster.shared.fetch { error in
+            XCTAssertEqual(Lobster.shared[.title], "abc")
+            XCTAssertEqual(Lobster.shared[default: .title], "xxx")
+            XCTAssertEqual(Lobster.shared[.count], 1234)
+            XCTAssertEqual(Lobster.shared[default: .count], 1)
+            XCTAssertEqual(Lobster.shared[safe: .friendNames], ["John"])
+            XCTAssertEqual(Lobster.shared[safeDefault: .friendNames], [])
+            XCTAssertEqual(Lobster.shared[safe: .mike], Person(name: "Mike", age: 30))
+            XCTAssertEqual(Lobster.shared[safeDefault: .mike], nil)
+            expect.fulfill()
+        }
+        wait(for: [expect], timeout: 10.0)
+    }
+
+    func testIsStale() {
+        let expect = expectation(description: "testIsStale")
+
+        Lobster.shared.staleValueStore = MockStaleValueStore()
+        Lobster.shared.isStaled = true
+        XCTAssertTrue(Lobster.shared.isStaled)
+        Lobster.shared.fetch { error in
+            XCTAssertFalse(Lobster.shared.isStaled)
+            expect.fulfill()
+        }
+
+        wait(for: [expect], timeout: 10.0)
     }
 }

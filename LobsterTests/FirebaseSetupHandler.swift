@@ -13,7 +13,7 @@ class FirebaseSetupHandler {
     static let handler: FirebaseSetupHandler = FirebaseSetupHandler()
     private init() {
         let options = FirebaseOptions(contentsOfFile: Bundle(for: type(of: self)).path(forResource: "GoogleService-Info", ofType: "plist")!)!
-        options.bundleID = "unittest"
+        options.bundleID = "-.test.LobsterTests"
         FirebaseApp.configure(options: options)
     }
 }

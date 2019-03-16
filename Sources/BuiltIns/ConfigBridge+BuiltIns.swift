@@ -140,6 +140,27 @@ public final class ConfigRawRepresentableBridge<T: RawRepresentable>: ConfigBrid
     }
 }
 
+public final class ConfigDecodableBridge<T: Decodable>: ConfigBridge<T> {
+    public var decoder = JSONDecoder()
+
+    public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
+    }
+
+    public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
+        return deserialize(remoteConfig[key].dataValue) ??
+            remoteConfig[key].stringValue?.data(using: .utf8).flatMap(deserialize)
+    }
+
+    public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
+        return nil
+    }
+
+    func deserialize(_ object: Any) -> T? {
+        return (object as? Data).flatMap { try? decoder.decode(T.self, from: $0) }
+    }
+}
+
+
 public final class ConfigCodableBridge<T: Codable>: ConfigBridge<T> {
     public var decoder = JSONDecoder()
     public var encoder = JSONEncoder()

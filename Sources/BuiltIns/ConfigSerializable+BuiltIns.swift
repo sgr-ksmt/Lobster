@@ -48,6 +48,11 @@ extension ConfigSerializable where Self: RawRepresentable {
     public static var _configArray: ConfigBridge<[Self]> { return ConfigRawRepresentableArrayBridge() }
 }
 
+extension ConfigSerializable where Self: Decodable {
+    public static var _config: ConfigBridge<Self> { return ConfigDecodableBridge() }
+    public static var _configArray: ConfigBridge<[Self]> { return ConfigDecodableBridge() }
+}
+
 extension ConfigSerializable where Self: Codable {
     public static var _config: ConfigBridge<Self> { return ConfigCodableBridge() }
     public static var _configArray: ConfigBridge<[Self]> { return ConfigCodableBridge() }
