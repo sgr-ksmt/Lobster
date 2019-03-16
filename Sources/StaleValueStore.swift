@@ -20,7 +20,7 @@ extension StaleValueStore {
 
 extension UserDefaults: StaleValueStore {
     public var isStaled: Bool {
-        set { set(newValue, forKey: key) }
         get { return bool(forKey: key) }
+        set { set(newValue, forKey: key) }
     }
 }

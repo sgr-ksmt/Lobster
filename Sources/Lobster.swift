@@ -11,22 +11,29 @@ import FirebaseRemoteConfig
 import UIKit
 
 public class Lobster {
-    public static let lobsterDidFetchConfig = Notification.Name("LobsterDidFetchConfig")
-
-    public typealias Defaults = [String: Any]
+    /// Returns shared instance.
     public static let shared = Lobster()
+
+    /// Returns FIRRemoteConfig instance.
     public let remoteConfig = RemoteConfig.remoteConfig()
-    /// Expiration duration for cache. Default is 12 hours
+
+    /// Expiration duration for cache. Default duration is 12 hours
     public var fetchExpirationDuration: TimeInterval = 43_200.0
 
+    /// The flag whether to do stale check. Default is `true`.
     public var useStaleChecker: Bool = true
+
+    /// `isStaled` flag's value store, Default is UserDefaults.
     public var staleValueStore: StaleValueStore = UserDefaults.standard
+
+    /// set/get `isStaled` flag.
+    /// If `useStaleChecker` is true and `isStaled` is true, fetch remote config values immediately.
     public var isStaled: Bool {
-        set {
-            staleValueStore.isStaled = newValue
-        }
         get {
             return staleValueStore.isStaled
+        }
+        set {
+            staleValueStore.isStaled = newValue
         }
     }
 
@@ -39,6 +46,7 @@ public class Lobster {
     }
     public private(set) var fetchStatus: RemoteConfigFetchStatus = .noFetchYet
 
+    /// Default value store.
     public let defaultsStore = DefaultsStore()
 
     private init() {}
@@ -54,17 +62,9 @@ public class Lobster {
             }
             self.fetchStatus = status
             completion(error)
-            NotificationCenter.default.post(name: Lobster.lobsterDidFetchConfig, object: error)
+            NotificationCenter.default.post(name: Lobster.didFetchConfig, object: error)
         }
     }
-
-    private func getExpirationDuration() -> TimeInterval {
-        if useStaleChecker, isStaled {
-            return 0.0
-        }
-        return fetchExpirationDuration
-    }
-
 
     /// Set default values using dictionary
     ///
@@ -85,21 +85,25 @@ public class Lobster {
         setDefaults(defaults)
     }
 
-    /// Remove default value using key.
-    ///
-    /// - Parameter key: config key.
-    public func removeDefaultValue<ValueType>(forKey key: ConfigKey<ValueType>) {
-        defaultsStore.set(forKey: key._key, value: nil)
-        updateDefaults()
-    }
-
     /// Clear default values.
     public func clearDefaults() {
         defaultsStore.clear()
         updateDefaults()
     }
 
+    private func getExpirationDuration() -> TimeInterval {
+        if useStaleChecker, isStaled {
+            return 0.0
+        }
+        return fetchExpirationDuration
+    }
+
     func updateDefaults() {
         RemoteConfig.remoteConfig().setDefaults(defaultsStore.asRemoteConfigDefaults())
     }
+}
+
+extension Lobster {
+    /// Notification's key of Lobster when config fetched.
+    public static var didFetchConfig: Notification.Name { return Notification.Name("LobsterDidFetchConfig") }
 }

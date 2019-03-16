@@ -8,9 +8,8 @@
 
 import Foundation
 
-public extension Lobster {
-
-    subscript<T: ConfigSerializable>(key: ConfigKey<T?>) -> T.T? {
+extension Lobster {
+    public subscript<T: ConfigSerializable>(key: ConfigKey<T?>) -> T.T? {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig) {
                 return value
@@ -22,10 +21,11 @@ public extension Lobster {
         }
         set {
             T._config.save(key: key._key, value: newValue, defaultsStore: defaultsStore)
+            updateDefaults()
         }
     }
 
-    subscript<T: ConfigSerializable>(key: ConfigKey<T>) -> T.T where T.T == T {
+    public subscript<T: ConfigSerializable>(key: ConfigKey<T>) -> T.T where T.T == T {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig) {
                 return value
@@ -37,6 +37,7 @@ public extension Lobster {
         }
         set {
             T._config.save(key: key._key, value: newValue, defaultsStore: defaultsStore)
+            updateDefaults()
         }
     }
 }

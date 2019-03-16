@@ -9,22 +9,25 @@
 import Foundation
 
 public final class DefaultsStore {
+    public typealias Defaults = [String: Any]
+
     init() {}
-    var defaults: Lobster.Defaults = [:]
+    var defaults: Defaults = [:]
 
-    public func set(forKey key: String, value: Any?) {
-        defaults[key] = value
-    }
-
-    public func get(forKey key: String) -> Any? {
-        return defaults[key]
+    subscript (key: String) -> Any? {
+        get {
+            return defaults[key]
+        }
+        set {
+            defaults[key] = newValue
+        }
     }
 
     func asRemoteConfigDefaults() -> [String: NSObject] {
         return defaults.reduce(into: [:]) { $0[$1.key] = $1.value as? NSObject }
     }
 
-    func set(defaults: Lobster.Defaults) {
+    func set(defaults: Defaults) {
         self.defaults = self.defaults.merging(defaults) { f, l in l }
     }
 

@@ -13,7 +13,7 @@ public final class ConfigStringBridge: ConfigBridge<String> {
     public typealias T = String
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore.set(forKey: key, value: value)
+        defaultsStore[key] = value
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -21,7 +21,7 @@ public final class ConfigStringBridge: ConfigBridge<String> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore.get(forKey: key) as? T
+        return defaultsStore[key] as? T
     }
 }
 
@@ -29,7 +29,7 @@ public final class ConfigIntBridge: ConfigBridge<Int> {
     public typealias T = Int
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore.set(forKey: key, value: value)
+        defaultsStore[key] = value
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -37,7 +37,7 @@ public final class ConfigIntBridge: ConfigBridge<Int> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore.get(forKey: key) as? T
+        return defaultsStore[key] as? T
     }
 }
 
@@ -45,7 +45,7 @@ public final class ConfigDoubleBridge: ConfigBridge<Double> {
     public typealias T = Double
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore.set(forKey: key, value: value)
+        defaultsStore[key] = value
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -53,7 +53,7 @@ public final class ConfigDoubleBridge: ConfigBridge<Double> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore.get(forKey: key) as? T
+        return defaultsStore[key] as? T
     }
 }
 
@@ -61,7 +61,7 @@ public final class ConfigFloatBridge: ConfigBridge<Float> {
     public typealias T = Float
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore.set(forKey: key, value: value)
+        defaultsStore[key] = value
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -69,7 +69,7 @@ public final class ConfigFloatBridge: ConfigBridge<Float> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore.get(forKey: key) as? T
+        return defaultsStore[key] as? T
     }
 }
 
@@ -77,7 +77,7 @@ public final class ConfigBoolBridge: ConfigBridge<Bool> {
     public typealias T = Bool
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore.set(forKey: key, value: value)
+        defaultsStore[key] = value
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -85,7 +85,7 @@ public final class ConfigBoolBridge: ConfigBridge<Bool> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore.get(forKey: key) as? T
+        return defaultsStore[key] as? T
     }
 }
 
@@ -93,7 +93,7 @@ public final class ConfigDataBridge: ConfigBridge<Data> {
     public typealias T = Data
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore.set(forKey: key, value: value)
+        defaultsStore[key] = value
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -101,7 +101,7 @@ public final class ConfigDataBridge: ConfigBridge<Data> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore.get(forKey: key) as? T
+        return defaultsStore[key] as? T
     }
 }
 
@@ -109,7 +109,7 @@ public final class ConfigURLBridge: ConfigBridge<URL> {
     public typealias T = URL
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore.set(forKey: key, value: value)
+        defaultsStore[key] = value
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -117,13 +117,13 @@ public final class ConfigURLBridge: ConfigBridge<URL> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore.get(forKey: key) as? T
+        return defaultsStore[key] as? T
     }
 }
 
 public final class ConfigRawRepresentableBridge<T: RawRepresentable>: ConfigBridge<T> {
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore.set(forKey: key, value: value?.rawValue)
+        defaultsStore[key] = value?.rawValue
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -136,7 +136,7 @@ public final class ConfigRawRepresentableBridge<T: RawRepresentable>: ConfigBrid
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore.get(forKey: key).flatMap(deserialize)
+        return defaultsStore[key].flatMap(deserialize)
     }
 
     func deserialize(_ object: Any) -> T? {
@@ -149,7 +149,7 @@ public final class ConfigCodableBridge<T: Codable>: ConfigBridge<T> {
     public var encoder = JSONEncoder()
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore.set(forKey: key, value: try? encoder.encode(value))
+        defaultsStore[key] = try? encoder.encode(value)
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -158,7 +158,7 @@ public final class ConfigCodableBridge<T: Codable>: ConfigBridge<T> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore.get(forKey: key).flatMap(deserialize)
+        return defaultsStore[key].flatMap(deserialize)
     }
 
     func deserialize(_ object: Any) -> T? {
@@ -171,7 +171,7 @@ public final class ConfigCodableArrayBridge<T: Codable>: ConfigBridge<[T]> {
     public var encoder = JSONEncoder()
 
     public override func save(key: String, value: [T]?, defaultsStore: DefaultsStore) {
-        defaultsStore.set(forKey: key, value: try? encoder.encode(value))
+        defaultsStore[key] = try? encoder.encode(value)
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> [T]? {
@@ -180,7 +180,7 @@ public final class ConfigCodableArrayBridge<T: Codable>: ConfigBridge<[T]> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> [T]? {
-        return defaultsStore.get(forKey: key).flatMap(deserialize)
+        return defaultsStore[key].flatMap(deserialize)
     }
 
     func deserialize(_ object: Any) -> [T]? {
