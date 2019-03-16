@@ -8,12 +8,11 @@
 
 import Foundation
 import FirebaseRemoteConfig
-
-extension Notification.Name {
-    public static let lobsterDidFetchConfig = Notification.Name("LobsterDidFetchConfig") // object is Error if exists.
-}
+import UIKit
 
 public class Lobster {
+    public static let lobsterDidFetchConfig = Notification.Name("LobsterDidFetchConfig")
+
     public typealias Defaults = [String: Any]
     public static let shared = Lobster()
     public let remoteConfig = RemoteConfig.remoteConfig()
@@ -47,7 +46,7 @@ public class Lobster {
     /// Fetch config from remote.
     ///
     /// - Parameter completion: Fetch operation callback.
-    public func fetch(completion: @escaping (Error?) -> Void = { _ in}) {
+    public func fetch(completion: @escaping (Error?) -> Void = { _ in }) {
         let duration = getExpirationDuration()
         remoteConfig.fetch(withExpirationDuration: duration) { [unowned self] (status, error) in
             if error == nil {
@@ -55,7 +54,7 @@ public class Lobster {
             }
             self.fetchStatus = status
             completion(error)
-            NotificationCenter.default.post(name: .lobsterDidFetchConfig, object: error)
+            NotificationCenter.default.post(name: Lobster.lobsterDidFetchConfig, object: error)
         }
     }
 
