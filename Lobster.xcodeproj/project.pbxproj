@@ -13,6 +13,13 @@
 		1631440C1FA8C00900D25996 /* Lobster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631440B1FA8C00900D25996 /* Lobster.swift */; };
 		1631440E1FA8CBE400D25996 /* ConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631440D1FA8CBE400D25996 /* ConfigKeys.swift */; };
 		16FCE980223CB83500F6D643 /* StaleValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE97F223CB83500F6D643 /* StaleValueStore.swift */; };
+		16FCE982223CBC5200F6D643 /* ConfigSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE981223CBC5200F6D643 /* ConfigSerializable.swift */; };
+		16FCE984223CBC8A00F6D643 /* ConfigBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE983223CBC8A00F6D643 /* ConfigBridge.swift */; };
+		16FCE986223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE985223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift */; };
+		16FCE989223CC42800F6D643 /* DefaultStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE988223CC42800F6D643 /* DefaultStore.swift */; };
+		16FCE98B223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE98A223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift */; };
+		16FCE98D223CCA7C00F6D643 /* Lobster+Subscripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */; };
+		16FCE98F223CCBBE00F6D643 /* OptionalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE98E223CCBBE00F6D643 /* OptionalType.swift */; };
 		C446D99F0AB2B1B651481608 /* Pods_Lobster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7094F96770D14C9622820F42 /* Pods_Lobster.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +32,13 @@
 		1631440B1FA8C00900D25996 /* Lobster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lobster.swift; sourceTree = "<group>"; };
 		1631440D1FA8CBE400D25996 /* ConfigKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigKeys.swift; sourceTree = "<group>"; };
 		16FCE97F223CB83500F6D643 /* StaleValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaleValueStore.swift; sourceTree = "<group>"; };
+		16FCE981223CBC5200F6D643 /* ConfigSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSerializable.swift; sourceTree = "<group>"; };
+		16FCE983223CBC8A00F6D643 /* ConfigBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigBridge.swift; sourceTree = "<group>"; };
+		16FCE985223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfigBridge+BuiltIns.swift"; sourceTree = "<group>"; };
+		16FCE988223CC42800F6D643 /* DefaultStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStore.swift; sourceTree = "<group>"; };
+		16FCE98A223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfigSerializable+BuiltIns.swift"; sourceTree = "<group>"; };
+		16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lobster+Subscripts.swift"; sourceTree = "<group>"; };
+		16FCE98E223CCBBE00F6D643 /* OptionalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalType.swift; sourceTree = "<group>"; };
 		2FFEEC768519AD92F404C651 /* Pods-Lobster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lobster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lobster/Pods-Lobster.debug.xcconfig"; sourceTree = "<group>"; };
 		7094F96770D14C9622820F42 /* Pods_Lobster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lobster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B16D1323062E1020502A3F /* Pods-Lobster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lobster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lobster/Pods-Lobster.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,13 +87,28 @@
 		1631440A1FA8BE9700D25996 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				16FCE987223CBDC500F6D643 /* Builtin */,
 				1631440B1FA8C00900D25996 /* Lobster.swift */,
+				16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */,
+				16FCE988223CC42800F6D643 /* DefaultStore.swift */,
 				162860C71FAA0BC6003D85A6 /* Lobster+Value.swift */,
 				1631440D1FA8CBE400D25996 /* ConfigKeys.swift */,
+				16FCE981223CBC5200F6D643 /* ConfigSerializable.swift */,
+				16FCE983223CBC8A00F6D643 /* ConfigBridge.swift */,
 				162860C91FAA353A003D85A6 /* UIColor+Ex.swift */,
 				16FCE97F223CB83500F6D643 /* StaleValueStore.swift */,
+				16FCE98E223CCBBE00F6D643 /* OptionalType.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		16FCE987223CBDC500F6D643 /* Builtin */ = {
+			isa = PBXGroup;
+			children = (
+				16FCE985223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift */,
+				16FCE98A223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift */,
+			);
+			path = Builtin;
 			sourceTree = "<group>";
 		};
 		E36FB080169B8A8E6BE89A66 /* Pods */ = {
@@ -201,10 +230,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FCE982223CBC5200F6D643 /* ConfigSerializable.swift in Sources */,
+				16FCE98F223CCBBE00F6D643 /* OptionalType.swift in Sources */,
 				1631440C1FA8C00900D25996 /* Lobster.swift in Sources */,
+				16FCE98D223CCA7C00F6D643 /* Lobster+Subscripts.swift in Sources */,
+				16FCE986223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift in Sources */,
 				16FCE980223CB83500F6D643 /* StaleValueStore.swift in Sources */,
+				16FCE98B223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift in Sources */,
 				162860C81FAA0BC6003D85A6 /* Lobster+Value.swift in Sources */,
 				162860CA1FAA353A003D85A6 /* UIColor+Ex.swift in Sources */,
+				16FCE989223CC42800F6D643 /* DefaultStore.swift in Sources */,
+				16FCE984223CBC8A00F6D643 /* ConfigBridge.swift in Sources */,
 				1631440E1FA8CBE400D25996 /* ConfigKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

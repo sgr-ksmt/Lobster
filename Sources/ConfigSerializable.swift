@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+public protocol ConfigSerializable {
+    associatedtype T
+
+    static var _config: ConfigBridge<T> { get }
+}

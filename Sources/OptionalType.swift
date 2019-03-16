@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+public protocol OptionalType {
+    associatedtype Wrapped
+    var wrapped: Wrapped? { get }
+}
+
+extension Optional: OptionalType {
+    public var wrapped: Wrapped? {
+        return self
+    }
+}
