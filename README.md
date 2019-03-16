@@ -9,19 +9,20 @@ Type-safe Firebase-RemoteConfig helper library
 [![CocoaPodsDL](https://img.shields.io/cocoapods/dt/Lobster.svg)](https://cocoapods.org/pods/Lobster)
 
 ## Feature
-- Make config value **Type safe.** ✨
-- Easy to set default value by subscripting.
+- Make config value **type safe.** ✨
+- Easy to set default value by key-value subscripting.
 - Custom type available ✨
-  - Can use `Decodable` struct. (load from raw-data or json string)
+  - `String`/`Int` enum
+  - `Decodable`(read-only) and `Codable`.
 
 **There's only three steps to using Lobster:**
 
 - Define `ConfigKey`
 
 ```swift
-extension ConfigKey {
-    static let titleText = ConfigKey<String>("title_text")
-    static let titleColor = ConfigKey<UIColor>("title_color")
+extension ConfigKeys {
+    static let welcomeTitle = ConfigKey<String>("welcome_title")
+    static let welcomeTitleColor = ConfigKey<UIColor>("welcome_title_color")
 }
 ```
 
@@ -32,14 +33,15 @@ extension ConfigKey {
 - Just use it!
 
 ```swift
-Lobster.shared.debugMode = true
-Lobster.shared.fetchExpirationDuration = 0.0
-Lobster.shared[.titleText] = "Default Title"
-Lobster.shared[.titleColor] = .gray
+// Set default value
+Lobster.shared[default: .welcomeTitle] = "Welcome"
+Lobster.shared[default: .welcomeTitleColor] = .black
+self.titleLabel.text = Lobster.shared[.welcomeTitle]
 
+// Fetch remote-config
 Lobster.shared.fetch { [weak self] _ in
-    self?.titleLabel.text = Lobster.shared[.titleText]
-    self?.titleLabel.textColor = Lobster.shared[.titleColor]
+    self?.titleLabel.text = Lobster.shared[.welcomeTitle]
+    self?.titleLabel.textColor = Lobster.shared[.welcomeTitleColor]
 }
 ```
 
@@ -59,26 +61,43 @@ Lobster.shared.fetch { [weak self] error in
 ### Get value
 Use subscripting syntax.
 
+- Non-Optional
+
 ```swift
+extension ConfigKeys {
+    static let text = ConfigKey<String>("text")
+}
+
 // Get value.
 // If value didn't fetch from remote yet. returns default value (if exists).
-let title = Lobster.shared[.titleText]
+let text: String = Lobster.shared[.text]
+let text: String = Lobster.shared[config: .text]
+let text: String = Lobster.shared[default: .text]
+
+let text: String? = Lobster.shared[safe: .text]
+let text: String? = Lobster.shared[safeConfig: .text]
+let text: String? = Lobster.shared[safeDefault: .text]
 ```
 
-#### Always get default value
-Use `[default:]` subscripting syntax.
+- Optional
 
 ```swift
-// Get default value if set.
-let title = Lobster.shared[default: .titleText]
+extension ConfigKeys {
+    static let textOptional = ConfigKey<String?>("text_optional")
+}
+
+let text: String? = Lobster.shared[.textOptional]
+let text: String? = Lobster.shared[config: .textOptional]
+let text: String? = Lobster.shared[default: .textOptional]
 ```
 
 ### Set Default value
 You can set default values using `subscripting syntax` or plist.
 
 ```swift
-Lobster.shared[.titleText] = "Cart Items"
-Lobster.shared[.titleColor] = .black
+// Set default value using `[default:]` syntax.
+Lobster.shared[default: .titleText] = "Cart Items"
+Lobster.shared[default: .titleColor] = .black
 
 // or load from `defaults.plist`
 Lobster.shared.setDefaults(fromPlist: "defaults")
@@ -91,11 +110,21 @@ Lobster.shared.debugMode = true
 Lobster.shared.fetchExpirationDuration = 0.0
 ```
 
-### more...
-Pleaes check Demo project :heart:
+### isStaled
+
+```swift
+Lobster.shared.fetchExpirationDuration = 60 * 12
+
+Lobster.shared.isStaled = true
+
+// Default expire duration is 12 hours.
+// But if `isStaled` set to true,
+// Lobster fetch values from remote ignoring expire duration.
+Lobster.shared.fetch()
+```
 
 ### Demo
-Required: CocoaPods 1.4 beta or higher.
+Required: CocoaPods 1.5 or higher.
 
 ```bash
 $ cd path/to/Lobster
@@ -107,22 +136,38 @@ $ open Demo.xcworkspace
 
 ## Supported types
 
-Lobster supports types below.
+Lobster supports more types as default followings:
 
 - String
-- NSNumber
 - Int
 - Float
 - Double
 - Bool
+- Data
+- URL
+- enum(String/Int)
+- Decodable Object
+- Codable Object
+- Collection(Array)
+  - String
+  - Int
+  - Float
+  - Double
+  - Bool
+  - Data
+  - URL
+  - enum(String/Int)
+  - Decodable Object
+  - Codable Object
+- Dictionary
 
 #### URL
-support text: e.g. `"https://www.google.co.jp"`
+support text: e.g. `"https://example.com"`.
 
 ![](docs/img2.png)
 
 #### UIColor
-support only hex: e.g. `"#FF00FF"`
+support only HEX sttring like `"#FF00FF"`.
 
 ![](docs/img3.png)
 
@@ -132,7 +177,7 @@ support text: e.g. `"[100, 100]"`
 
 ```swift
 extension ConfigKeys {
-    static let labelOrigin = CodableConfigKey<CGPoint>("label_origin")
+    static let labelOrigin = ConfigKey<CGPoint>("label_origin")
 }
 ```
 
@@ -142,7 +187,7 @@ support text: e.g. `"[100, 100]"`
 
 ```swift
 extension ConfigKeys {
-    static let boxSize = CodableConfigKey<CGSize>("box_size")
+    static let boxSize = ConfigKey<CGSize>("box_size")
 }
 ```
 
@@ -152,7 +197,7 @@ support text: e.g. `"[10, 10, 100, 100]"`
 
 ```swift
 extension ConfigKeys {
-    static let boxRect = CodableConfigKey<CGRect>("box_rect")
+    static let boxRect = ConfigKey<CGRect>("box_rect")
 }
 ```
 
@@ -174,7 +219,7 @@ can set default value / read config value
 ## Use custom value
 You can easily define custom key in order to get remote value.
 
-### Example1: enum
+### Ex 1: enum
 
 ```swift
 enum Status {
@@ -239,7 +284,7 @@ if let status = Lobster.shared[.status] {
 
 To define subscript makes it possible to access custom enum.
 
-### Example2: Decodable compliant type
+### Ex 2: Decodable compliant type
 Just adapt class or struct to Decodable or Codable
 
 ```swift
@@ -259,23 +304,17 @@ Define config value like below:
 ![](docs/img5.png)
 
 ## Requirements
-- iOS 9.0+
-- Xcode 9+
-- Swift 4+
+- iOS 11.0+
+- Xcode 10+
+- Swift 4.2
 
 ## Installation
 ### CocoaPods
-*Required: Cocoapods v1.4.0 or higher*
-
 **Lobster** is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-// Firebase SDK greater than or equal to v5.0.0
-pod 'Lobster', '~> 1.1'
-
-// Firebase SDK  less than v5.0.0
-pod 'Lobster', '1.0'
+pod 'Lobster', '~> 2.0'
 ```
 
 and run `pod install`
