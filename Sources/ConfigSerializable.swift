@@ -12,4 +12,5 @@ public protocol ConfigSerializable {
     associatedtype T
 
     static var _config: ConfigBridge<T> { get }
+    static var _configArray: ConfigBridge<[T]> { get }
 }

@@ -22,6 +22,7 @@
 		16FCE997223CE14A00F6D643 /* LobsterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE996223CE14A00F6D643 /* LobsterTests.swift */; };
 		16FCE999223CE14A00F6D643 /* Lobster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163143FF1FA8BE8600D25996 /* Lobster.framework */; };
 		16FCE9A0223CE28200F6D643 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16FCE99F223CE28200F6D643 /* GoogleService-Info.plist */; };
+		16FCE9A4223CE2F400F6D643 /* FirebaseSetupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE9A3223CE2F400F6D643 /* FirebaseSetupHandler.swift */; };
 		3531D90E61A46EE45DFAAFD6 /* Pods_LobsterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41C95928D6368D180C45B2E /* Pods_LobsterTests.framework */; };
 		C446D99F0AB2B1B651481608 /* Pods_Lobster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7094F96770D14C9622820F42 /* Pods_Lobster.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		16FCE996223CE14A00F6D643 /* LobsterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobsterTests.swift; sourceTree = "<group>"; };
 		16FCE998223CE14A00F6D643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16FCE99F223CE28200F6D643 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		16FCE9A3223CE2F400F6D643 /* FirebaseSetupHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSetupHandler.swift; sourceTree = "<group>"; };
 		2FFEEC768519AD92F404C651 /* Pods-Lobster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lobster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lobster/Pods-Lobster.debug.xcconfig"; sourceTree = "<group>"; };
 		6F586FBD5180A54BFE0C53FA /* Pods-LobsterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LobsterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LobsterTests/Pods-LobsterTests.release.xcconfig"; sourceTree = "<group>"; };
 		7094F96770D14C9622820F42 /* Pods_Lobster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lobster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +121,7 @@
 			children = (
 				1631440B1FA8C00900D25996 /* Lobster.swift */,
 				16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */,
-				16FCE987223CBDC500F6D643 /* Builtin */,
+				16FCE987223CBDC500F6D643 /* BuiltIns */,
 				16FCE988223CC42800F6D643 /* DefaultStore.swift */,
 				1631440D1FA8CBE400D25996 /* ConfigKeys.swift */,
 				16FCE981223CBC5200F6D643 /* ConfigSerializable.swift */,
@@ -131,13 +133,13 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		16FCE987223CBDC500F6D643 /* Builtin */ = {
+		16FCE987223CBDC500F6D643 /* BuiltIns */ = {
 			isa = PBXGroup;
 			children = (
 				16FCE985223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift */,
 				16FCE98A223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift */,
 			);
-			path = Builtin;
+			path = BuiltIns;
 			sourceTree = "<group>";
 		};
 		16FCE995223CE14A00F6D643 /* LobsterTests */ = {
@@ -146,6 +148,7 @@
 				16FCE996223CE14A00F6D643 /* LobsterTests.swift */,
 				16FCE99F223CE28200F6D643 /* GoogleService-Info.plist */,
 				16FCE998223CE14A00F6D643 /* Info.plist */,
+				16FCE9A3223CE2F400F6D643 /* FirebaseSetupHandler.swift */,
 			);
 			path = LobsterTests;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16FCE997223CE14A00F6D643 /* LobsterTests.swift in Sources */,
+				16FCE9A4223CE2F400F6D643 /* FirebaseSetupHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

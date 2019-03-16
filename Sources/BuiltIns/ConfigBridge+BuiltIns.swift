@@ -109,7 +109,7 @@ public final class ConfigURLBridge: ConfigBridge<URL> {
     public typealias T = URL
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
-        defaultsStore[key] = value
+        defaultsStore[key] = value?.absoluteString
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
@@ -117,7 +117,7 @@ public final class ConfigURLBridge: ConfigBridge<URL> {
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
-        return defaultsStore[key] as? T
+        return (defaultsStore[key] as? String).flatMap(URL.init(string:))
     }
 }
 
@@ -127,12 +127,8 @@ public final class ConfigRawRepresentableBridge<T: RawRepresentable>: ConfigBrid
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
-        if let stringValue = remoteConfig[key].stringValue {
-            return deserialize(stringValue)
-        } else if let numberValue = remoteConfig[key].numberValue {
-            return deserialize(numberValue)
-        }
-        return nil
+        return remoteConfig[key].stringValue.flatMap(deserialize) ??
+            remoteConfig[key].numberValue.flatMap(deserialize)
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
@@ -166,24 +162,40 @@ public final class ConfigCodableBridge<T: Codable>: ConfigBridge<T> {
     }
 }
 
-public final class ConfigCodableArrayBridge<T: Codable>: ConfigBridge<[T]> {
-    public var decoder = JSONDecoder()
-    public var encoder = JSONEncoder()
-
-    public override func save(key: String, value: [T]?, defaultsStore: DefaultsStore) {
-        defaultsStore[key] = try? encoder.encode(value)
+public final class ConfigArrayBridge<T: Collection>: ConfigBridge<T> {
+    public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
+        defaultsStore[key] = value
     }
 
-    public override func get(key: String, remoteConfig: RemoteConfig) -> [T]? {
+    public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
         return deserialize(remoteConfig[key].dataValue) ??
             remoteConfig[key].stringValue?.data(using: .utf8).flatMap(deserialize)
     }
 
-    public override func get(key: String, defaultsStore: DefaultsStore) -> [T]? {
-        return defaultsStore[key].flatMap(deserialize)
+    public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
+        return defaultsStore[key] as? T
     }
 
-    func deserialize(_ object: Any) -> [T]? {
-        return (object as? Data).flatMap { try? decoder.decode([T].self, from: $0) }
+    func deserialize(_ data: Data) -> T? {
+        return (try? JSONSerialization.jsonObject(with: data, options: [])).flatMap { $0 as? T }
+    }
+}
+
+public final class ConfigRawRepresentableArrayBridge<T: Collection>: ConfigBridge<T> where T.Element: RawRepresentable {
+    public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
+        defaultsStore[key] = value.flatMap { try? JSONSerialization.data(withJSONObject: $0.compactMap { $0.rawValue }, options: []) }
+    }
+
+    public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
+        let deserialized = deserialize(remoteConfig[key].dataValue) ?? remoteConfig[key].stringValue?.data(using: .utf8).flatMap(deserialize)
+        return deserialized?.compactMap(T.Element.init(rawValue:)) as? T
+    }
+
+    public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
+        return (defaultsStore[key] as? Data).flatMap(deserialize).flatMap { $0.compactMap(T.Element.init(rawValue:)) } as? T
+    }
+
+    func deserialize(_ data: Data) -> [T.Element.RawValue]? {
+        return (try? JSONSerialization.jsonObject(with: data, options: [])).flatMap { $0 as? [T.Element.RawValue] }
     }
 }
