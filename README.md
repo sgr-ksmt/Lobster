@@ -9,19 +9,20 @@ Type-safe Firebase-RemoteConfig helper library
 [![CocoaPodsDL](https://img.shields.io/cocoapods/dt/Lobster.svg)](https://cocoapods.org/pods/Lobster)
 
 ## Feature
-- Make config value **Type safe.** ✨
-- Easy to set default value by subscripting.
+- Make config value **type safe.** ✨
+- Easy to set default value by key-value subscripting.
 - Custom type available ✨
-  - Can use `Decodable` struct. (load from raw-data or json string)
+  - `String`/`Int` enum
+  - `Decodable`(read-only) and `Codable`.
 
 **There's only three steps to using Lobster:**
 
 - Define `ConfigKey`
 
 ```swift
-extension ConfigKey {
-    static let titleText = ConfigKey<String>("title_text")
-    static let titleColor = ConfigKey<UIColor>("title_color")
+extension ConfigKeys {
+    static let welcomeTitle = ConfigKey<String>("welcome_title")
+    static let welcomeTitleColor = ConfigKey<UIColor>("welcome_title_color")
 }
 ```
 
@@ -32,14 +33,15 @@ extension ConfigKey {
 - Just use it!
 
 ```swift
-Lobster.shared.debugMode = true
-Lobster.shared.fetchExpirationDuration = 0.0
-Lobster.shared[.titleText] = "Default Title"
-Lobster.shared[.titleColor] = .gray
+// Set default value
+Lobster.shared[default: .welcomeTitle] = "Welcome"
+Lobster.shared[default: .welcomeTitleColor] = .black
+self.titleLabel.text = Lobster.shared[.welcomeTitle]
 
+// Fetch remote-config
 Lobster.shared.fetch { [weak self] _ in
-    self?.titleLabel.text = Lobster.shared[.titleText]
-    self?.titleLabel.textColor = Lobster.shared[.titleColor]
+    self?.titleLabel.text = Lobster.shared[.welcomeTitle]
+    self?.titleLabel.textColor = Lobster.shared[.welcomeTitleColor]
 }
 ```
 
@@ -59,26 +61,51 @@ Lobster.shared.fetch { [weak self] error in
 ### Get value
 Use subscripting syntax.
 
+- Non-Optional
+
 ```swift
-// Get value.
+extension ConfigKeys {
+    static let text = ConfigKey<String>("text")
+}
+
+// Get value from config.
 // If value didn't fetch from remote yet. returns default value (if exists).
-let title = Lobster.shared[.titleText]
+let text: String = Lobster.shared[.text]
+
+// Get value from only config.
+// it is possible to crash if value didn't fetch from remote yet.
+let text: String = Lobster.shared[config: .text]
+
+// Get value from only default.
+// It is possible to crash if the default value is not set yet.
+let text: String = Lobster.shared[default: .text]
+
+// [safe:], [safeConfig:], [safeDefault:] subscripting syntax.
+// It is safe because they return nil if they have no value.(return type is `Optional<T>`.)
+let text: String? = Lobster.shared[safe: .text]
+let text: String? = Lobster.shared[safeConfig: .text]
+let text: String? = Lobster.shared[safeDefault: .text]
 ```
 
-#### Always get default value
-Use `[default:]` subscripting syntax.
+- Optional
 
 ```swift
-// Get default value if set.
-let title = Lobster.shared[default: .titleText]
+extension ConfigKeys {
+    static let textOptional = ConfigKey<String?>("text_optional")
+}
+
+let text: String? = Lobster.shared[.textOptional]
+let text: String? = Lobster.shared[config: .textOptional]
+let text: String? = Lobster.shared[default: .textOptional]
 ```
 
 ### Set Default value
 You can set default values using `subscripting syntax` or plist.
 
 ```swift
-Lobster.shared[.titleText] = "Cart Items"
-Lobster.shared[.titleColor] = .black
+// Set default value using `[default:]` syntax.
+Lobster.shared[default: .titleText] = "Cart Items"
+Lobster.shared[default: .titleColor] = .black
 
 // or load from `defaults.plist`
 Lobster.shared.setDefaults(fromPlist: "defaults")
@@ -91,78 +118,67 @@ Lobster.shared.debugMode = true
 Lobster.shared.fetchExpirationDuration = 0.0
 ```
 
-### more...
-Pleaes check Demo project :heart:
+### isStaled
+If you set `isStaled` to true, Lobster will fetch remote value ignoring `fetchExpirationDuration`.
+`isStaled` will be set to `false` after fetched remote value.
 
-### Demo
-Required: CocoaPods 1.4 beta or higher.
+```swift
+Lobster.shared.fetchExpirationDuration = 60 * 12
 
-```bash
-$ cd path/to/Lobster
-$ bundle install
-$ cd ./Demo
-$ bundle exec pod install
-$ open Demo.xcworkspace
+Lobster.shared.isStaled = true
+
+// Default expire duration is 12 hours.
+// But if `isStaled` set to true,
+// Lobster fetch values from remote ignoring expire duration.
+Lobster.shared.fetch()
 ```
 
 ## Supported types
 
-Lobster supports types below.
+Lobster supports more types as default followings:
 
 - String
-- NSNumber
 - Int
 - Float
 - Double
 - Bool
+- Data
+- URL
+- enum(String/Int)
+- Decodable Object
+- Codable Object
+- Collection(Array)
+  - String
+  - Int
+  - Float
+  - Double
+  - Bool
+  - Data
+  - URL
+  - enum(String/Int)
+  - Decodable Object
+  - Codable Object
+
+### TODO
+- [ ] CGPoint
+- [ ] CGSize
+- [ ] CGRect
+- [ ] Dictionary
 
 #### URL
-support text: e.g. `"https://www.google.co.jp"`
+Supports text: e.g. `"https://example.com"`.
 
 ![](docs/img2.png)
 
 #### UIColor
-support only hex: e.g. `"#FF00FF"`
+Supports only HEX string like `"#FF00FF"`.
 
 ![](docs/img3.png)
 
-#### CGPoint
-support text: e.g. `"[100, 100]"`
-→ Use `DecodableConfigKey`(or `CodableConfigKey`)
-
-```swift
-extension ConfigKeys {
-    static let labelOrigin = CodableConfigKey<CGPoint>("label_origin")
-}
-```
-
-#### CGSize
-support text: e.g. `"[100, 100]"`
-→ Use `DecodableConfigKey`(or `CodableConfigKey`)
-
-```swift
-extension ConfigKeys {
-    static let boxSize = CodableConfigKey<CGSize>("box_size")
-}
-```
-
-#### CGRect
-support text: e.g. `"[10, 10, 100, 100]"`
-→ Use `DecodableConfigKey`(or `CodableConfigKey`)
-
-```swift
-extension ConfigKeys {
-    static let boxRect = CodableConfigKey<CGRect>("box_rect")
-}
-```
-
-<br />
-
-![](docs/img4.png)
-
 #### Enum
 supports `Int` or `String` rawValue.
-If you want to use other enum, see "Use custom value".
+It can be used only by adapting `ConfigSerializable`.
+If you want to use other enum, see ***Use custom value***.
 
 #### Decodable compliant type
 read only
@@ -174,76 +190,82 @@ can set default value / read config value
 ## Use custom value
 You can easily define custom key in order to get remote value.
 
-### Example1: enum
+### Ex 1: enum
 
 ```swift
-enum Status {
-    case invalid
-    case foo(String)
-    case bar(String)
+// Adapt protocol `ConfigSerializable`
+enum Status: ConfigSerializable {
+    // Define `_config`, `_configArray`(If needed).
+    // Custom ConfigBridge's definition see below.
+    static var _config: ConfigBridge<Status> { return ConfigStatusBridge() }
+    static var _configArray: ConfigBridge<[Status]> { fatalError("Not implemented") }
+
+    case unknown
+    case active
+    case inactive
 
     init(value: String?) {
         guard let value = value else {
-            self = .invalid
+            self = .unknown
             return
         }
-        let separated = value.components(separatedBy: ":")
-        guard let query: (String, String) = separated.first.flatMap({ f in separated.last.flatMap({ l in (f, l) })}) else {
-            self = .invalid
-            return
-        }
-        switch query {
-        case ("foo", let x):
-            self = .foo(x)
-        case ("bar", let x):
-            self = .bar(x)
-        default:
-            self = .invalid
+        switch value {
+        case "active": self = .active
+        case "inactive": self = .inactive
+        default: self = .unknown
         }
     }
 
     var value: String {
         switch self {
-        case .foo(let x):
-            return "foo:\(x)"
-        case .bar(let x):
-            return "bar:\(x)"
-        default:
-            return ""
+        case .active: return "active"
+        case .inactive: return "inactive"
+        default: return ""
         }
     }
 }
 
-// define subscript
-extension Lobster {
-    subscript(_ key: ConfigKey<Status>) -> Status? {
-        get { return Status(value: configValue(forKey: key._key)) }
-        set { setDefaultValue(newValue?.value, forKey: key._key) }
+// Define Bridge class
+final class ConfigStatusBridge: ConfigBridge<Status> {
+    typealias T = Status
+
+    // Save value to default store
+    override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
+        defaultsStore[key] = value?.value
+    }
+
+    // Get value from RemoteConfig
+    override func get(key: String, remoteConfig: RemoteConfig) -> T? {
+        return remoteConfig[key].stringValue.flatMap(Status.init(value:))
+    }
+
+    // Get value from default store
+    override func get(key: String, defaultsStore: DefaultsStore) -> T? {
+        return (defaultsStore[key] as? String).flatMap(Status.init(value:))
     }
 }
 
-// define ConfigKey
+// Define ConfigKey
 extension ConfigKeys {
-    static let status = ConfigKey<Status>("status")
+    static let status = ConfigKey<Status>
 }
 
-// Use
-// set default value
-Lobster.shared[.status] = .foo("bar")
+// Set default
+Lobster.shared[default: .status] = .inactive
 
-// get config value
-if let status = Lobster.shared[.status] {
-    // ...
+// Use value
+Lobster.shared.fetch { _ in
+    let currentStatus = Lobster.shared[.status]
 }
 ```
 
 To define subscript makes it possible to access custom enum.
 
-### Example2: Decodable compliant type
-Just adapt class or struct to Decodable or Codable
+### Ex 2: Decodable compliant type
+Just adapt `Decodable` or `Codable` to class or struct and adapt `ConfigSerializable`
 
 ```swift
-struct Person: Codable {
+struct Person: Codable, ConfigSerializable {
     let name: String
     let age: Int
     let country: String
@@ -254,28 +276,33 @@ extension ConfigKeys {
 }
 ```
 
-Define config value like below:
+Define config value like below in console:
 
 ![](docs/img5.png)
 
+## Demo
+Required: CocoaPods 1.5 or higher.
+
+```bash
+$ cd path/to/Lobster
+$ bundle install
+$ cd ./Demo
+$ bundle exec pod install
+$ open Demo.xcworkspace
+```
+
 ## Requirements
-- iOS 9.0+
-- Xcode 9+
-- Swift 4+
+- iOS 11.0+
+- Xcode 10+
+- Swift 4.2
 
 ## Installation
 ### CocoaPods
-*Required: Cocoapods v1.4.0 or higher*
-
 **Lobster** is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-// Firebase SDK greater than or equal to v5.0.0
-pod 'Lobster', '~> 1.1'
-
-// Firebase SDK  less than v5.0.0
-pod 'Lobster', '1.0'
+pod 'Lobster', '~> 2.0'
 ```
 
 and run `pod install`

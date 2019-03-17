@@ -7,25 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		162860C81FAA0BC6003D85A6 /* Lobster+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162860C71FAA0BC6003D85A6 /* Lobster+Value.swift */; };
 		162860CA1FAA353A003D85A6 /* UIColor+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162860C91FAA353A003D85A6 /* UIColor+Ex.swift */; };
 		163144041FA8BE8600D25996 /* Lobster.h in Headers */ = {isa = PBXBuildFile; fileRef = 163144021FA8BE8600D25996 /* Lobster.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1631440C1FA8C00900D25996 /* Lobster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631440B1FA8C00900D25996 /* Lobster.swift */; };
 		1631440E1FA8CBE400D25996 /* ConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631440D1FA8CBE400D25996 /* ConfigKeys.swift */; };
+		16FCE980223CB83500F6D643 /* StaleValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE97F223CB83500F6D643 /* StaleValueStore.swift */; };
+		16FCE982223CBC5200F6D643 /* ConfigSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE981223CBC5200F6D643 /* ConfigSerializable.swift */; };
+		16FCE984223CBC8A00F6D643 /* ConfigBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE983223CBC8A00F6D643 /* ConfigBridge.swift */; };
+		16FCE986223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE985223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift */; };
+		16FCE989223CC42800F6D643 /* DefaultStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE988223CC42800F6D643 /* DefaultStore.swift */; };
+		16FCE98B223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE98A223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift */; };
+		16FCE98D223CCA7C00F6D643 /* Lobster+Subscripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */; };
+		16FCE98F223CCBBE00F6D643 /* OptionalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE98E223CCBBE00F6D643 /* OptionalType.swift */; };
+		16FCE997223CE14A00F6D643 /* LobsterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE996223CE14A00F6D643 /* LobsterTests.swift */; };
+		16FCE999223CE14A00F6D643 /* Lobster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163143FF1FA8BE8600D25996 /* Lobster.framework */; };
+		16FCE9A0223CE28200F6D643 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16FCE99F223CE28200F6D643 /* GoogleService-Info.plist */; };
+		16FCE9A4223CE2F400F6D643 /* FirebaseSetupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE9A3223CE2F400F6D643 /* FirebaseSetupHandler.swift */; };
+		3531D90E61A46EE45DFAAFD6 /* Pods_LobsterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41C95928D6368D180C45B2E /* Pods_LobsterTests.framework */; };
 		C446D99F0AB2B1B651481608 /* Pods_Lobster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7094F96770D14C9622820F42 /* Pods_Lobster.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		16FCE99A223CE14A00F6D643 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 163143F61FA8BE8600D25996 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 163143FE1FA8BE8600D25996;
+			remoteInfo = Lobster;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		162860C71FAA0BC6003D85A6 /* Lobster+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lobster+Value.swift"; sourceTree = "<group>"; };
+		0FF6D1B90A8BA67313EB8D6C /* Pods-LobsterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LobsterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LobsterTests/Pods-LobsterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		162860C91FAA353A003D85A6 /* UIColor+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ex.swift"; sourceTree = "<group>"; };
 		163143FF1FA8BE8600D25996 /* Lobster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lobster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		163144021FA8BE8600D25996 /* Lobster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lobster.h; sourceTree = "<group>"; };
 		163144031FA8BE8600D25996 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1631440B1FA8C00900D25996 /* Lobster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lobster.swift; sourceTree = "<group>"; };
 		1631440D1FA8CBE400D25996 /* ConfigKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigKeys.swift; sourceTree = "<group>"; };
+		16FCE97F223CB83500F6D643 /* StaleValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaleValueStore.swift; sourceTree = "<group>"; };
+		16FCE981223CBC5200F6D643 /* ConfigSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSerializable.swift; sourceTree = "<group>"; };
+		16FCE983223CBC8A00F6D643 /* ConfigBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigBridge.swift; sourceTree = "<group>"; };
+		16FCE985223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfigBridge+BuiltIns.swift"; sourceTree = "<group>"; };
+		16FCE988223CC42800F6D643 /* DefaultStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStore.swift; sourceTree = "<group>"; };
+		16FCE98A223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfigSerializable+BuiltIns.swift"; sourceTree = "<group>"; };
+		16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lobster+Subscripts.swift"; sourceTree = "<group>"; };
+		16FCE98E223CCBBE00F6D643 /* OptionalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalType.swift; sourceTree = "<group>"; };
+		16FCE994223CE14A00F6D643 /* LobsterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LobsterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		16FCE996223CE14A00F6D643 /* LobsterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobsterTests.swift; sourceTree = "<group>"; };
+		16FCE998223CE14A00F6D643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16FCE99F223CE28200F6D643 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		16FCE9A3223CE2F400F6D643 /* FirebaseSetupHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSetupHandler.swift; sourceTree = "<group>"; };
 		2FFEEC768519AD92F404C651 /* Pods-Lobster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lobster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lobster/Pods-Lobster.debug.xcconfig"; sourceTree = "<group>"; };
+		6F586FBD5180A54BFE0C53FA /* Pods-LobsterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LobsterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LobsterTests/Pods-LobsterTests.release.xcconfig"; sourceTree = "<group>"; };
 		7094F96770D14C9622820F42 /* Pods_Lobster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lobster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B16D1323062E1020502A3F /* Pods-Lobster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lobster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lobster/Pods-Lobster.release.xcconfig"; sourceTree = "<group>"; };
+		C41C95928D6368D180C45B2E /* Pods_LobsterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LobsterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +74,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		16FCE991223CE14A00F6D643 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16FCE999223CE14A00F6D643 /* Lobster.framework in Frameworks */,
+				3531D90E61A46EE45DFAAFD6 /* Pods_LobsterTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -45,6 +91,7 @@
 			children = (
 				1631440A1FA8BE9700D25996 /* Sources */,
 				163144011FA8BE8600D25996 /* Lobster */,
+				16FCE995223CE14A00F6D643 /* LobsterTests */,
 				163144001FA8BE8600D25996 /* Products */,
 				E36FB080169B8A8E6BE89A66 /* Pods */,
 				E400F681533247D8249EAF35 /* Frameworks */,
@@ -55,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				163143FF1FA8BE8600D25996 /* Lobster.framework */,
+				16FCE994223CE14A00F6D643 /* LobsterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,11 +120,37 @@
 			isa = PBXGroup;
 			children = (
 				1631440B1FA8C00900D25996 /* Lobster.swift */,
-				162860C71FAA0BC6003D85A6 /* Lobster+Value.swift */,
+				16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */,
+				16FCE987223CBDC500F6D643 /* BuiltIns */,
+				16FCE988223CC42800F6D643 /* DefaultStore.swift */,
 				1631440D1FA8CBE400D25996 /* ConfigKeys.swift */,
+				16FCE981223CBC5200F6D643 /* ConfigSerializable.swift */,
+				16FCE983223CBC8A00F6D643 /* ConfigBridge.swift */,
+				16FCE97F223CB83500F6D643 /* StaleValueStore.swift */,
+				16FCE98E223CCBBE00F6D643 /* OptionalType.swift */,
 				162860C91FAA353A003D85A6 /* UIColor+Ex.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		16FCE987223CBDC500F6D643 /* BuiltIns */ = {
+			isa = PBXGroup;
+			children = (
+				16FCE985223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift */,
+				16FCE98A223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift */,
+			);
+			path = BuiltIns;
+			sourceTree = "<group>";
+		};
+		16FCE995223CE14A00F6D643 /* LobsterTests */ = {
+			isa = PBXGroup;
+			children = (
+				16FCE996223CE14A00F6D643 /* LobsterTests.swift */,
+				16FCE99F223CE28200F6D643 /* GoogleService-Info.plist */,
+				16FCE998223CE14A00F6D643 /* Info.plist */,
+				16FCE9A3223CE2F400F6D643 /* FirebaseSetupHandler.swift */,
+			);
+			path = LobsterTests;
 			sourceTree = "<group>";
 		};
 		E36FB080169B8A8E6BE89A66 /* Pods */ = {
@@ -84,6 +158,8 @@
 			children = (
 				2FFEEC768519AD92F404C651 /* Pods-Lobster.debug.xcconfig */,
 				B5B16D1323062E1020502A3F /* Pods-Lobster.release.xcconfig */,
+				0FF6D1B90A8BA67313EB8D6C /* Pods-LobsterTests.debug.xcconfig */,
+				6F586FBD5180A54BFE0C53FA /* Pods-LobsterTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -92,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				7094F96770D14C9622820F42 /* Pods_Lobster.framework */,
+				C41C95928D6368D180C45B2E /* Pods_LobsterTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,18 +206,42 @@
 			productReference = 163143FF1FA8BE8600D25996 /* Lobster.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		16FCE993223CE14A00F6D643 /* LobsterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16FCE99C223CE14A00F6D643 /* Build configuration list for PBXNativeTarget "LobsterTests" */;
+			buildPhases = (
+				FEAB9B0ADE423C017DAB1B2C /* [CP] Check Pods Manifest.lock */,
+				16FCE990223CE14A00F6D643 /* Sources */,
+				16FCE991223CE14A00F6D643 /* Frameworks */,
+				16FCE992223CE14A00F6D643 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				16FCE99B223CE14A00F6D643 /* PBXTargetDependency */,
+			);
+			name = LobsterTests;
+			productName = LobsterTests;
+			productReference = 16FCE994223CE14A00F6D643 /* LobsterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		163143F61FA8BE8600D25996 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Suguru Kishimoto";
 				TargetAttributes = {
 					163143FE1FA8BE8600D25996 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = "";
+						ProvisioningStyle = Automatic;
+					};
+					16FCE993223CE14A00F6D643 = {
+						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -158,6 +259,7 @@
 			projectRoot = "";
 			targets = (
 				163143FE1FA8BE8600D25996 /* Lobster */,
+				16FCE993223CE14A00F6D643 /* LobsterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -167,6 +269,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16FCE992223CE14A00F6D643 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16FCE9A0223CE28200F6D643 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +301,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FEAB9B0ADE423C017DAB1B2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LobsterTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -198,14 +330,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FCE982223CBC5200F6D643 /* ConfigSerializable.swift in Sources */,
+				16FCE98F223CCBBE00F6D643 /* OptionalType.swift in Sources */,
 				1631440C1FA8C00900D25996 /* Lobster.swift in Sources */,
-				162860C81FAA0BC6003D85A6 /* Lobster+Value.swift in Sources */,
+				16FCE98D223CCA7C00F6D643 /* Lobster+Subscripts.swift in Sources */,
+				16FCE986223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift in Sources */,
+				16FCE980223CB83500F6D643 /* StaleValueStore.swift in Sources */,
+				16FCE98B223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift in Sources */,
 				162860CA1FAA353A003D85A6 /* UIColor+Ex.swift in Sources */,
+				16FCE989223CC42800F6D643 /* DefaultStore.swift in Sources */,
+				16FCE984223CBC8A00F6D643 /* ConfigBridge.swift in Sources */,
 				1631440E1FA8CBE400D25996 /* ConfigKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		16FCE990223CE14A00F6D643 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16FCE997223CE14A00F6D643 /* LobsterTests.swift in Sources */,
+				16FCE9A4223CE2F400F6D643 /* FirebaseSetupHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		16FCE99B223CE14A00F6D643 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 163143FE1FA8BE8600D25996 /* Lobster */;
+			targetProxy = 16FCE99A223CE14A00F6D643 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		163144051FA8BE8600D25996 /* Debug */ = {
@@ -343,7 +499,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -365,7 +521,42 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-.Lobster";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		16FCE99D223CE14A00F6D643 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FF6D1B90A8BA67313EB8D6C /* Pods-LobsterTests.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LobsterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.test.LobsterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		16FCE99E223CE14A00F6D643 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F586FBD5180A54BFE0C53FA /* Pods-LobsterTests.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LobsterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.test.LobsterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -387,6 +578,15 @@
 			buildConfigurations = (
 				163144081FA8BE8600D25996 /* Debug */,
 				163144091FA8BE8600D25996 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16FCE99C223CE14A00F6D643 /* Build configuration list for PBXNativeTarget "LobsterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16FCE99D223CE14A00F6D643 /* Debug */,
+				16FCE99E223CE14A00F6D643 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
