@@ -20,9 +20,3 @@ public class ConfigKey<ValueType: ConfigSerializable>: ConfigKeys {
         self._key = key
     }
 }
-
-public extension ConfigKey where ValueType: ConfigSerializable, ValueType: OptionalType, ValueType.Wrapped: ConfigSerializable {
-    convenience init(key: String) {
-        self.init(key)
-    }
-}
