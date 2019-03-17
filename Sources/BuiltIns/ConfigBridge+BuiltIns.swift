@@ -121,6 +121,22 @@ public final class ConfigURLBridge: ConfigBridge<URL> {
     }
 }
 
+public final class ConfigColorBridge: ConfigBridge<UIColor> {
+    public typealias T = UIColor
+
+    public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
+        defaultsStore[key] = value?.hexString
+    }
+
+    public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
+        return remoteConfig[key].stringValue.flatMap { $0.hexColor }
+    }
+
+    public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
+        return (defaultsStore[key] as? String).flatMap { $0.hexColor }
+    }
+}
+
 public final class ConfigRawRepresentableBridge<T: RawRepresentable>: ConfigBridge<T> {
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
         defaultsStore[key] = value?.rawValue

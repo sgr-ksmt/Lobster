@@ -61,6 +61,9 @@ extension ConfigKeys {
     static let url = ConfigKey<URL>("url")
     static let urlOptional = ConfigKey<URL?>("url_optional")
 
+    static let bgColor = ConfigKey<UIColor>("bg_color")
+    static let bgColorOptional = ConfigKey<UIColor?>("bg_color_optional")
+
     static let direction = ConfigKey<Direction>("direction")
     static let directionOptional = ConfigKey<Direction?>("direction_optional")
 
@@ -239,6 +242,28 @@ class LobsterTests: XCTestCase {
         XCTAssertEqual(Lobster.shared[.urlOptional]?.absoluteString, "https://example.com")
         XCTAssertEqual(Lobster.shared[config: .urlOptional]?.absoluteString, "https://example.com")
         XCTAssertEqual(Lobster.shared[default: .urlOptional]?.absoluteString, "https://example.com")
+    }
+
+    func testColorValueKey() {
+        XCTAssertEqual(Lobster.shared[safe: .bgColor], .clear)
+        XCTAssertEqual(Lobster.shared[safeConfig: .bgColor], .clear)
+        XCTAssertEqual(Lobster.shared[safeDefault: .bgColor], nil)
+        Lobster.shared[default: .bgColor] = .red
+        XCTAssertEqual(Lobster.shared[.bgColor], .red)
+        XCTAssertEqual(Lobster.shared[safe: .bgColor], .red)
+        XCTAssertEqual(Lobster.shared[config: .bgColor], .red)
+        XCTAssertEqual(Lobster.shared[default: .bgColor], .red)
+        XCTAssertEqual(Lobster.shared[safe: .bgColor], .red)
+        XCTAssertEqual(Lobster.shared[safeConfig: .bgColor], .red)
+        XCTAssertEqual(Lobster.shared[safeDefault: .bgColor], .red)
+
+        XCTAssertEqual(Lobster.shared[.bgColorOptional], .clear)
+        XCTAssertEqual(Lobster.shared[config: .bgColorOptional], .clear)
+        XCTAssertEqual(Lobster.shared[default: .bgColorOptional], nil)
+        Lobster.shared[default: .bgColorOptional] = .green
+        XCTAssertEqual(Lobster.shared[.bgColorOptional], .green)
+        XCTAssertEqual(Lobster.shared[config: .bgColorOptional], .green)
+        XCTAssertEqual(Lobster.shared[default: .bgColorOptional], .green)
     }
 
     func testIntEnumValueKey() {

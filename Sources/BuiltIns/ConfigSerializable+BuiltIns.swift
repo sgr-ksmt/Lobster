@@ -43,6 +43,12 @@ extension URL: ConfigSerializable {
     public static var _configArray: ConfigBridge<[URL]> { return ConfigArrayBridge() }
 }
 
+extension UIColor: ConfigSerializable {
+    public static var _config: ConfigBridge<UIColor> { return ConfigColorBridge() }
+    public static var _configArray: ConfigBridge<[UIColor]> { return ConfigArrayBridge() }
+}
+
+
 extension ConfigSerializable where Self: RawRepresentable {
     public static var _config: ConfigBridge<Self> { return ConfigRawRepresentableBridge() }
     public static var _configArray: ConfigBridge<[Self]> { return ConfigRawRepresentableArrayBridge() }
