@@ -1,9 +1,8 @@
-platform :ios, '9'
+platform :ios, '11.0'
 
 inhibit_all_warnings!
 use_frameworks!
 
 target 'Demo' do
   pod 'Lobster', :path => '../'
-  pod 'FirebaseUI/Storage'
 end

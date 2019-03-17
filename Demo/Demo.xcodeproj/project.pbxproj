@@ -14,6 +14,7 @@
 		162860E21FAA4852003D85A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 162860E01FAA4852003D85A6 /* LaunchScreen.storyboard */; };
 		162860EA1FAA53B0003D85A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 162860E91FAA5234003D85A6 /* GoogleService-Info.plist */; };
 		162860EC1FAB0190003D85A6 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 162860EB1FAB0190003D85A6 /* defaults.plist */; };
+		1648B91A223DF14A0077E142 /* CustomTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1648B919223DF14A0077E142 /* CustomTypes.swift */; };
 		5A85A3FF9D20221F43D6DAB3 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C3E701E97538970FC91034 /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		162860E31FAA4852003D85A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		162860E91FAA5234003D85A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		162860EB1FAB0190003D85A6 /* defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
+		1648B919223DF14A0077E142 /* CustomTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTypes.swift; sourceTree = "<group>"; };
 		87C3E701E97538970FC91034 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B13A6D3A7AE1C618012AF5D8 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		CD20EA16D1FE0DCBD063CD97 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				162860E91FAA5234003D85A6 /* GoogleService-Info.plist */,
 				162860D71FAA4852003D85A6 /* AppDelegate.swift */,
 				162860D91FAA4852003D85A6 /* ViewController.swift */,
+				1648B919223DF14A0077E142 /* CustomTypes.swift */,
 				162860DB1FAA4852003D85A6 /* Main.storyboard */,
 				162860DE1FAA4852003D85A6 /* Assets.xcassets */,
 				162860E01FAA4852003D85A6 /* LaunchScreen.storyboard */,
@@ -190,24 +193,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -217,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1648B91A223DF14A0077E142 /* CustomTypes.swift in Sources */,
 				162860DA1FAA4852003D85A6 /* ViewController.swift in Sources */,
 				162860D81FAA4852003D85A6 /* AppDelegate.swift in Sources */,
 			);

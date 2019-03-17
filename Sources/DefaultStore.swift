@@ -14,7 +14,7 @@ public final class DefaultsStore {
     init() {}
     var defaults: Defaults = [:]
 
-    subscript (key: String) -> Any? {
+    public subscript (key: String) -> Any? {
         get {
             return defaults[key]
         }
@@ -23,15 +23,15 @@ public final class DefaultsStore {
         }
     }
 
-    func asRemoteConfigDefaults() -> [String: NSObject] {
+    public func asRemoteConfigDefaults() -> [String: NSObject] {
         return defaults.reduce(into: [:]) { $0[$1.key] = $1.value as? NSObject }
     }
 
-    func set(defaults: Defaults) {
+    public func set(defaults: Defaults) {
         self.defaults = self.defaults.merging(defaults) { f, l in l }
     }
 
-    func clear() {
+    public func clear() {
         defaults = [:]
     }
 }
