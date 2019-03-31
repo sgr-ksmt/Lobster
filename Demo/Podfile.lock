@@ -92,7 +92,7 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfig: 7b6d675dfb11f0e0e638caee00908b06af150d56
   GoogleAppMeasurement: fc4a4c3fe0144db9313cbf443ffe62e6b1d6268c
   GoogleUtilities: 6f681e27050c5e130325e89fa0316dfca826f954
-  Lobster: ded664b60ea4a6c5736a76dfdb8190ded8fae2aa
+  Lobster: fd1c1322233a5de3a9c2aa33124e65d37e04d657
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
 
