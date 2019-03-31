@@ -3,7 +3,7 @@ Type-safe Firebase-RemoteConfig helper library
 
 
 [![GitHub release](https://img.shields.io/github/release/sgr-ksmt/Lobster.svg)](https://github.com/sgr-ksmt/Lobster/releases)
-![Language](https://img.shields.io/badge/language-Swift%204.1-orange.svg)
+![Language](https://img.shields.io/badge/language-Swift%205.0-orange.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/badge/Cocoa%20Pods-✓-4BC51D.svg?style=flat)](https://cocoapods.org/pods/Lobster)
 [![CocoaPodsDL](https://img.shields.io/cocoapods/dt/Lobster.svg)](https://cocoapods.org/pods/Lobster)
@@ -302,7 +302,7 @@ $ open Demo.xcworkspace
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Lobster', '~> 2.0'
+pod 'Lobster', '~> 2.1'
 ```
 
 and run `pod install`
