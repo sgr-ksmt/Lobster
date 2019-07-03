@@ -302,7 +302,10 @@ $ open Demo.xcworkspace
 it, simply add the following line to your Podfile:
 
 ```ruby
+# Firebase iOS SDK v6.3.0 or higher
 pod 'Lobster', '~> 2.2'
+# Firebase iOS SDK v5.x ~ v6.2.0
+pod 'Lobster', '~> 2.1'
 ```
 
 and run `pod install`
