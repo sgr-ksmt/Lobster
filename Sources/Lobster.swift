@@ -17,8 +17,11 @@ public class Lobster {
     /// Returns FIRRemoteConfig instance.
     public let remoteConfig = RemoteConfig.remoteConfig()
 
+    /// Default expiration duration. (12 hours)
+    public static let defaultExpirationDuration: TimeInterval = 43_200.0
+
     /// Expiration duration for cache. Default duration is 12 hours
-    public var fetchExpirationDuration: TimeInterval = 43_200.0
+    public var fetchExpirationDuration: TimeInterval = Lobster.defaultExpirationDuration
 
     /// The flag whether to do stale check. Default is `true`.
     public var useStaleChecker: Bool = true
@@ -41,7 +44,7 @@ public class Lobster {
     /// NOTE: It must be false on production.
     public var debugMode: Bool = false {
         didSet {
-            remoteConfig.configSettings = RemoteConfigSettings(developerModeEnabled: debugMode)
+            remoteConfig.configSettings.minimumFetchInterval = debugMode ? 0 : Lobster.defaultExpirationDuration
         }
     }
     public private(set) var fetchStatus: RemoteConfigFetchStatus = .noFetchYet
@@ -57,13 +60,14 @@ public class Lobster {
     public func fetch(completion: @escaping (Error?) -> Void = { _ in }) {
         let duration = getExpirationDuration()
         remoteConfig.fetch(withExpirationDuration: duration) { [unowned self] (status, error) in
-            if error == nil {
-                RemoteConfig.remoteConfig().activateFetched()
+            var fetchError: Error? = error
+            RemoteConfig.remoteConfig().activate { (error) in
+                fetchError = error ?? fetchError
+                self.fetchStatus = status
+                self.isStaled = false
+                completion(fetchError)
+                NotificationCenter.default.post(name: Lobster.didFetchConfig, object: error)
             }
-            self.fetchStatus = status
-            self.isStaled = false
-            completion(error)
-            NotificationCenter.default.post(name: Lobster.didFetchConfig, object: error)
         }
     }
 

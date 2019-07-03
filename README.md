@@ -294,7 +294,7 @@ $ open Demo.xcworkspace
 ## Requirements
 - iOS 11.0+
 - Xcode 10+
-- Swift 4.2
+- Swift 5.0
 
 ## Installation
 ### CocoaPods
@@ -302,7 +302,7 @@ $ open Demo.xcworkspace
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Lobster', '~> 2.1'
+pod 'Lobster', '~> 2.2'
 ```
 
 and run `pod install`
