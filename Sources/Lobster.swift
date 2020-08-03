@@ -2,8 +2,8 @@
 //  Lobster.swift
 //  Lobster
 //
-//  Created by suguru-kishimoto on 2017/10/31.
-//  Copyright © 2017年 Suguru Kishimoto. All rights reserved.
+//  Created by sgr-ksmt on 2017/10/31.
+//  Copyright © 2017 Suguru Kishimoto. All rights reserved.
 //
 
 import Foundation
@@ -59,13 +59,12 @@ public class Lobster {
     /// - Parameter completion: Fetch operation callback.
     public func fetch(completion: @escaping (Error?) -> Void = { _ in }) {
         let duration = getExpirationDuration()
-        remoteConfig.fetch(withExpirationDuration: duration) { [unowned self] (status, error) in
-            var fetchError: Error? = error
-            RemoteConfig.remoteConfig().activate { (error) in
-                fetchError = error ?? fetchError
+        remoteConfig.fetch(withExpirationDuration: duration) { [unowned self] (status, fetchError) in
+            self.remoteConfig.activate { (activated, activateError) in
+                let error = fetchError ?? activateError
                 self.fetchStatus = status
                 self.isStaled = false
-                completion(fetchError)
+                completion(error)
                 NotificationCenter.default.post(name: Lobster.didFetchConfig, object: error)
             }
         }

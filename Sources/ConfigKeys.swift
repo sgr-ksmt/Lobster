@@ -2,8 +2,8 @@
 //  ConfigKeys.swift
 //  Lobster
 //
-//  Created by suguru-kishimoto on 2017/11/01.
-//  Copyright © 2017年 Suguru Kishimoto. All rights reserved.
+//  Created by sgr-ksmt on 2017/11/01.
+//  Copyright © 2017 Suguru Kishimoto. All rights reserved.
 //
 
 import Foundation
