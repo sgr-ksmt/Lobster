@@ -190,6 +190,7 @@ class LobsterTests: XCTestCase {
         XCTAssertEqual(Lobster.shared[safeConfig: .alpha], 1.5)
         XCTAssertEqual(Lobster.shared[safeDefault: .alpha], 1.5)
 
+        // FIXME: subscript is broken when we're about to use a config key of Float? type.
 //        XCTAssertEqual(Lobster.shared[.alphaOptional], 0.0)
 //        XCTAssertEqual(Lobster.shared[config: .alphaOptional], 0.0)
 //        XCTAssertEqual(Lobster.shared[default: .alphaOptional], nil)
