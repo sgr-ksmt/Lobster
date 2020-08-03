@@ -2,7 +2,7 @@
 //  FirebaseSetupHandler.swift
 //  LobsterTests
 //
-//  Created by suguru-kishimoto on 2019/03/16.
+//  Created by sgr-ksmt on 2019/03/16.
 //  Copyright © 2019 Suguru Kishimoto. All rights reserved.
 //
 
