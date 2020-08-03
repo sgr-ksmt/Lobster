@@ -59,13 +59,12 @@ public class Lobster {
     /// - Parameter completion: Fetch operation callback.
     public func fetch(completion: @escaping (Error?) -> Void = { _ in }) {
         let duration = getExpirationDuration()
-        remoteConfig.fetch(withExpirationDuration: duration) { [unowned self] (status, error) in
-            var fetchError: Error? = error
-            RemoteConfig.remoteConfig().activate { (error) in
-                fetchError = error ?? fetchError
+        remoteConfig.fetch(withExpirationDuration: duration) { [unowned self] (status, fetchError) in
+            self.remoteConfig.activate { (activated, activateError) in
+                let error = fetchError ?? activateError
                 self.fetchStatus = status
                 self.isStaled = false
-                completion(fetchError)
+                completion(error)
                 NotificationCenter.default.post(name: Lobster.didFetchConfig, object: error)
             }
         }
