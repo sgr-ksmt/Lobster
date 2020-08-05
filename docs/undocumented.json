@@ -1,0 +1,348 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 12,
+      "symbol": "ConfigStringBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 28,
+      "symbol": "ConfigIntBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 44,
+      "symbol": "ConfigDoubleBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 60,
+      "symbol": "ConfigFloatBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 76,
+      "symbol": "ConfigBoolBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 92,
+      "symbol": "ConfigDataBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 108,
+      "symbol": "ConfigURLBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 124,
+      "symbol": "ConfigColorBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 140,
+      "symbol": "ConfigRawRepresentableBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 159,
+      "symbol": "ConfigDecodableBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 180,
+      "symbol": "ConfigCodableBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 202,
+      "symbol": "ConfigArrayBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
+      "line": 221,
+      "symbol": "ConfigRawRepresentableArrayBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 12,
+      "symbol": "String._config",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 13,
+      "symbol": "String._configArray",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 17,
+      "symbol": "Int._config",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 18,
+      "symbol": "Int._configArray",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 22,
+      "symbol": "Double._config",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 23,
+      "symbol": "Double._configArray",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 27,
+      "symbol": "Float._config",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 28,
+      "symbol": "Float._configArray",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 32,
+      "symbol": "Bool._config",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 33,
+      "symbol": "Bool._configArray",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 37,
+      "symbol": "Data._config",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 38,
+      "symbol": "Data._configArray",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 42,
+      "symbol": "URL._config",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 43,
+      "symbol": "URL._configArray",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 47,
+      "symbol": "UIColor._config",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 48,
+      "symbol": "UIColor._configArray",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 68,
+      "symbol": "Array.T",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 70,
+      "symbol": "Array._config",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 71,
+      "symbol": "Array._configArray",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 75,
+      "symbol": "Optional.T",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 77,
+      "symbol": "Optional._config",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigSerializable+BuiltIns.swift",
+      "line": 78,
+      "symbol": "Optional._configArray",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigBridge.swift",
+      "line": 12,
+      "symbol": "ConfigBridge",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigKeys.swift",
+      "line": 11,
+      "symbol": "ConfigKeys",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigKeys.swift",
+      "line": 18,
+      "symbol": "ConfigKey._key",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigKeys.swift",
+      "line": 19,
+      "symbol": "ConfigKey.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigSerializable.swift",
+      "line": 11,
+      "symbol": "ConfigSerializable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigSerializable.swift",
+      "line": 52,
+      "symbol": "ConfigSerializable",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigSerializable.swift",
+      "line": 57,
+      "symbol": "ConfigSerializable",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigSerializable.swift",
+      "line": 62,
+      "symbol": "ConfigSerializable",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/DefaultStore.swift",
+      "line": 11,
+      "symbol": "DefaultsStore",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/Lobster.swift",
+      "line": 52,
+      "symbol": "Lobster.fetchStatus",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/OptionalType.swift",
+      "line": 11,
+      "symbol": "OptionalType",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/OptionalType.swift",
+      "line": 17,
+      "symbol": "Optional.wrapped",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/StaleValueStore.swift",
+      "line": 11,
+      "symbol": "StaleValueStore",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/StaleValueStore.swift",
+      "line": 22,
+      "symbol": "UserDefaults.isStaled",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster"
+}

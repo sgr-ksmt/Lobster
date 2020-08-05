@@ -10,6 +10,8 @@ import Foundation
 import FirebaseRemoteConfig
 import UIKit
 
+/// Lobster
+/// Lobster wraps Remote Config's interface
 public class Lobster {
     /// Returns shared instance.
     public static let shared = Lobster()
