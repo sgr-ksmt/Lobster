@@ -310,7 +310,7 @@
     },
     {
       "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/Lobster.swift",
-      "line": 52,
+      "line": 60,
       "symbol": "Lobster.fetchStatus",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"

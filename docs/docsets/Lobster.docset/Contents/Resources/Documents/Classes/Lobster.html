@@ -136,7 +136,7 @@ Lobster wraps Remote Config&rsquo;s interface</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Returns shared instance.</p>
+                        <p>The instance of Lobster.</p>
 
                       </div>
                       <div class="declaration">
@@ -163,7 +163,12 @@ Lobster wraps Remote Config&rsquo;s interface</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Returns FIRRemoteConfig instance.</p>
+                        <p>The <code>FIRRemoteConfig</code> instance.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Basically, You don&rsquo;t  have to use this directly.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -190,7 +195,7 @@ Lobster wraps Remote Config&rsquo;s interface</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Default expiration duration. (12 hours)</p>
+                        <p>The default expiration duration. <code>12 hours</code></p>
 
                       </div>
                       <div class="declaration">
@@ -217,7 +222,9 @@ Lobster wraps Remote Config&rsquo;s interface</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Expiration duration for cache. Default duration is 12 hours</p>
+                        <p>A fetch expiration duration. You can change it you want.</p>
+
+<p>Default is <code><a href="../Classes/Lobster.html#/s:7LobsterAAC25defaultExpirationDurationSdvpZ">defaultExpirationDuration</a></code></p>
 
                       </div>
                       <div class="declaration">
@@ -244,7 +251,9 @@ Lobster wraps Remote Config&rsquo;s interface</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The flag whether to do stale check. Default is <code>true</code>.</p>
+                        <p>A flag indicating whether to check for stale status or not.</p>
+
+<p>Default is <code>true</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -271,7 +280,10 @@ Lobster wraps Remote Config&rsquo;s interface</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p><code><a href="../Classes/Lobster.html#/s:7LobsterAAC8isStaledSbvp">isStaled</a></code> flag&rsquo;s value store, Default is UserDefaults.</p>
+                        <p>A value store to store <code><a href="../Classes/Lobster.html#/s:7LobsterAAC8isStaledSbvp">isStaled</a></code>, which is the flag to judge remote config stale or not.</p>
+
+<p>You can inject another value store conforming to <code>StaleValueStore</code> protocol.
+Default is UserDefaults.</p>
 
                       </div>
                       <div class="declaration">
@@ -299,7 +311,7 @@ Lobster wraps Remote Config&rsquo;s interface</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>set/get <code>isStaled</code> flag.
-If <code><a href="../Classes/Lobster.html#/s:7LobsterAAC15useStaleCheckerSbvp">useStaleChecker</a></code> is true and <code>isStaled</code> is true, fetch remote config values immediately.</p>
+If <code><a href="../Classes/Lobster.html#/s:7LobsterAAC15useStaleCheckerSbvp">useStaleChecker</a></code> is true and <code>isStaled</code> is true, Lobster fetch remote config values from Firebase immediately ignoring cache expiration when you call <code>Lobster.shared.fetch(completion:)</code></p>
 
                       </div>
                       <div class="declaration">
@@ -381,7 +393,7 @@ NOTE: It must be false on production.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Fetch config from remote.</p>
+                        <p>Fetch config data from Firebase. If its cache hasn&rsquo;t expired, RemoteConfig won&rsquo;t fetch but will return cache data.</p>
 
                       </div>
                       <div class="declaration">
@@ -404,7 +416,7 @@ NOTE: It must be false on production.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>Fetch operation callback.</p>
+                                  <p>A closure that takes an error as its argument. If Lobster fetched config from Firebase successfully, the argument of error will be nil. Default is <code>an empty closure</code>.</p>
                                 </div>
                               </td>
                             </tr>
@@ -427,7 +439,7 @@ NOTE: It must be false on production.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Set default values using dictionary</p>
+                        <p>Set default config values. By setting default config values, You can use these value safely before fetching config data from Firebase.</p>
 
                       </div>
                       <div class="declaration">
@@ -450,7 +462,7 @@ NOTE: It must be false on production.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>default parametes.</p>
+                                  <p>A dictionary that will set as default config values</p>
                                 </div>
                               </td>
                             </tr>
@@ -531,7 +543,7 @@ NOTE: It must be false on production.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Clear default values.</p>
+                        <p>Clear default values and then RemoteConfig&rsquo;s default values will be updated to empty.</p>
 
                       </div>
                       <div class="declaration">
@@ -801,7 +813,12 @@ NOTE: It must be false on production.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Notification&rsquo;s key of Lobster when config fetched.</p>
+                        <p>The key of Notification. Lobster notifies you of finishing fetching config data from Firebase.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    If an error occurred while fetching data, it&rsquo;ll be included as the object of <code>Notification</code>.
+
+</div>
 
                       </div>
                       <div class="declaration">
