@@ -17,10 +17,3 @@ extension StaleValueStore {
         return "StaleValueStore.isStaled"
     }
 }
-
-extension UserDefaults: StaleValueStore {
-    public var isStaled: Bool {
-        get { return bool(forKey: key) }
-        set { set(newValue, forKey: key) }
-    }
-}

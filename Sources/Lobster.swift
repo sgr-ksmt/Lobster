@@ -11,6 +11,7 @@ import FirebaseRemoteConfig
 import UIKit
 
 /// Lobster
+/// 
 /// Lobster wraps Remote Config's interface
 public class Lobster {
     /// The instance of Lobster.
@@ -67,7 +68,7 @@ public class Lobster {
     /// This method is private to prevent a developer create a new instance of `Lobster`
     private init() {}
 
-    /// Fetch config data from Firebase. If its cache hasn't expired, RemoteConfig won't fetch but will return cache data.
+    /// Fetches config data from Firebase. If its cache hasn't expired, RemoteConfig won't fetch but will return cache data.
     ///
     /// - Parameters:
     ///   - completion: A closure that takes an error as its argument. If Lobster fetched config from Firebase successfully, the argument of error will be nil. Default is `an empty closure`.
@@ -109,14 +110,17 @@ public class Lobster {
         defaultsStore.clear()
         updateDefaults()
     }
-
+    
+    /// Returns expiration duration for RemoteConfig.
+    /// - Returns: If you use `useStaleChecker` and `isStaled` is true, this function will return `0.0`. If not so, it will return `fetchExpirationDuration`.
     private func getExpirationDuration() -> TimeInterval {
         if useStaleChecker, isStaled {
             return 0.0
         }
         return fetchExpirationDuration
     }
-
+    
+    /// Updates default values of RemoteConfig by using values stored in `defaultStore`
     func updateDefaults() {
         RemoteConfig.remoteConfig().setDefaults(defaultsStore.asRemoteConfigDefaults())
     }

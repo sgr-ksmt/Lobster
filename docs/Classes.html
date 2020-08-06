@@ -23,7 +23,7 @@
         <a class="header-link" href="index.html">
           Lobster 2.2 Docs
         </a>
-         (43% documented)
+         (58% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -57,45 +57,10 @@
                 <a class="nav-group-task-link" href="Classes.html#/s:7Lobster9ConfigKeyC">ConfigKey</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes.html#/s:7Lobster10ConfigKeysC">ConfigKeys</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/Lobster.html">Lobster</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/s:Sa">Array</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/s:Sb">Bool</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/s:10Foundation4DataV">Data</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/s:Sd">Double</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/s:Sf">Float</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/s:Si">Int</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/s:Sq">Optional</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/s:SS">String</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/c:objc(cs)UIColor">UIColor</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/s:10Foundation3URLV">URL</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions.html#/c:objc(cs)NSUserDefaults">UserDefaults</a>
               </li>
             </ul>
           </li>
@@ -118,6 +83,44 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:7Lobster10ConfigKeysC"></a>
+                    <a name="//apple_ref/swift/Class/ConfigKeys" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster10ConfigKeysC">ConfigKeys</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ConfigKeys</p>
+
+<p>ConfigKeys is just a class that gathers <code><a href="Classes.html#/s:7Lobster9ConfigKeyC">ConfigKey</a></code> instances you define.
+You can define <code><a href="Classes.html#/s:7Lobster9ConfigKeyC">ConfigKey</a></code> inside this class&rsquo;s extension.</p>
+
+<p>Example for definition of ConfigKey:</p>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ConfigKeys</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">title</span> <span class="o">=</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"title"</span><span class="p">)</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">buttonColor</span> <span class="o">=</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">UIColor</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"button_color"</span><span class="p">)</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">experimentEnabled</span> <span class="o">=</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"experiment_enabled"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">ConfigKeys</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:7Lobster9ConfigKeyC"></a>
                     <a name="//apple_ref/swift/Class/ConfigKey" class="dashAnchor"></a>
                     <a class="token" href="#/s:7Lobster9ConfigKeyC">ConfigKey</a>
@@ -128,15 +131,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Config key
-can access / set default config value as ValueType object.</p>
+                        <p>ConfigKey</p>
+
+<p>ConfigKey is a key class specialized with <code>ValueType</code> for Remote Config
+It allows you to get value as a type of <code>ValueType</code> from Remote Config with subscription.
+That is, you don&rsquo;t need to manually convert value to another type you want. You can handle the value  to type safe.</p>
+
+<p>Example for getting value with ConfigKey:</p>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ConfigKeys</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">title</span> <span class="o">=</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"title"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">title</span> <span class="o">=</span> <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="o">.</span><span class="n">title</span><span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="kt">String</span><span class="p">(</span><span class="nv">describing</span><span class="p">:</span> <span class="nf">type</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">title</span><span class="p">)))</span> <span class="c1">// String</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">ValueType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">ConfigKeys</span> <span class="k">where</span> <span class="kt">ValueType</span> <span class="p">:</span> <span class="kt">ConfigSerializable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">ValueType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Classes.html#/s:7Lobster10ConfigKeysC">ConfigKeys</a></span> <span class="k">where</span> <span class="kt">ValueType</span> <span class="p">:</span> <span class="kt">ConfigSerializable</span></code></pre>
 
                         </div>
                       </div>
@@ -156,8 +171,9 @@ can access / set default config value as ValueType object.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Lobster
-Lobster wraps Remote Config&rsquo;s interface</p>
+                        <p>Lobster</p>
+
+<p>Lobster wraps Remote Config&rsquo;s interface</p>
 
                         <a href="Classes/Lobster.html" class="slightly-smaller">See more</a>
                       </div>
@@ -180,7 +196,7 @@ Lobster wraps Remote Config&rsquo;s interface</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/sgr-ksmt" target="_blank" rel="external">Suguru Kishimoto</a>. All rights reserved. (Last updated: 2020-08-05)</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/sgr-ksmt" target="_blank" rel="external">Suguru Kishimoto</a>. All rights reserved. (Last updated: 2020-08-06)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
