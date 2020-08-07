@@ -121,9 +121,37 @@
     },
     {
       "file": "/Users/s-kishimoto/src/github.com/sgr-ksmt/Lobster/Sources/DefaultStore.swift",
-      "line": 11,
-      "symbol": "DefaultsStore",
-      "symbol_kind": "source.lang.swift.decl.class",
+      "line": 31,
+      "symbol": "DefaultsStore.Defaults",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/s-kishimoto/src/github.com/sgr-ksmt/Lobster/Sources/DefaultStore.swift",
+      "line": 36,
+      "symbol": "DefaultsStore.subscript(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/s-kishimoto/src/github.com/sgr-ksmt/Lobster/Sources/DefaultStore.swift",
+      "line": 45,
+      "symbol": "DefaultsStore.asRemoteConfigDefaults()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/s-kishimoto/src/github.com/sgr-ksmt/Lobster/Sources/DefaultStore.swift",
+      "line": 49,
+      "symbol": "DefaultsStore.set(defaults:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/s-kishimoto/src/github.com/sgr-ksmt/Lobster/Sources/DefaultStore.swift",
+      "line": 53,
+      "symbol": "DefaultsStore.clear()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {

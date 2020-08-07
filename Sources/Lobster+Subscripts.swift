@@ -9,7 +9,13 @@
 import Foundation
 
 extension Lobster {
-    /// Get value from remote-config -> default
+    /// Get value with given config key.
+    ///
+    /// You can use this subscripting if a type of config key is `ConfigKey<T?>`. This is, `ConfigKey.ValueType` must be Optional type such as `String?`.
+    ///
+    /// Lobster will return the value for key if RemoteConfig has the value at first.
+    /// If not so, Lobster will try to retrieve value from DefaultStore automatically.
+    /// If Neigher RemoteConfig nor DefaultStore have the value, Lobster will return `nil`.
     public subscript<T: ConfigSerializable>(key: ConfigKey<T?>) -> T.T? {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig) {
