@@ -128,5 +128,5 @@ extension Lobster {
     /// The key of Notification. Lobster notifies you of finishing fetching config data from Firebase.
     ///
     /// - Note: If an error occurred while fetching data, it'll be included as the object of `Notification`.
-    public static var didFetchConfig: Notification.Name { return Notification.Name("LobsterDidFetchConfig") }
+    public static var didFetchConfig: Notification.Name { Notification.Name("LobsterDidFetchConfig") }
 }

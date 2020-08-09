@@ -39,12 +39,8 @@ public final class DefaultsStore {
     /// - parameters:
     ///   - key: A key.
     public subscript (key: String) -> Any? {
-        get {
-            return _defaults[key]
-        }
-        set {
-            _defaults[key] = newValue
-        }
+        get { _defaults[key] }
+        set { _defaults[key] = newValue }
     }
 
     /// Returns default values
