@@ -4,9 +4,7 @@ github_url: https://github.com/sgr-ksmt/Lobster
 module: Lobster
 readme: README.md
 exclude:
-  - Sources/OptionalType.swift
-  - Sources/UserDefault+Ex.swift
-  - Sources/UIColor+Ex.swift
+  - Sources/Core/Extensions/*.swift
 output: docs
 theme: fullwidth
 clean: true
