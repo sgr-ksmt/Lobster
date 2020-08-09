@@ -60,9 +60,7 @@ class ViewController: UIViewController {
 
     @objc private func fetch(_ button: UIButton) {
         Lobster.shared.fetch { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.updateUI()
-            }
+            self?.updateUI()
         }
     }
 

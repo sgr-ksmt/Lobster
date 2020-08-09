@@ -75,7 +75,3 @@ vendor/bundle/
 
 # GoogleService
 GoogleService-Info.plist
-
-## Documentation
-docs/docsets/
-docs/undocumented.json

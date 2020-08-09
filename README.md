@@ -1,33 +1,23 @@
 # Lobster
-Type-safe Firebase-RemoteConfig helper library.
+Type-safe Firebase-RemoteConfig helper library
 
 
-[![GitHub release](https://img.shields.io/github/release/sgr-ksmt/Lobster.svg?style=for-the-badge)](https://github.com/sgr-ksmt/Lobster/releases)
-![Language](https://img.shields.io/badge/language-Swift%205.0-orange.svg?style=for-the-badge)  
-
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=for-the-badge)](https://github.com/Carthage/Carthage)
-[![CocoaPods](https://img.shields.io/badge/Cocoa%20Pods-compatible-4BC51D.svg?style=for-the-badge)](https://cocoapods.org/pods/Lobster)
+[![GitHub release](https://img.shields.io/github/release/sgr-ksmt/Lobster.svg)](https://github.com/sgr-ksmt/Lobster/releases)
+![Language](https://img.shields.io/badge/language-Swift%205.0-orange.svg)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods](https://img.shields.io/badge/Cocoa%20Pods-✓-4BC51D.svg?style=flat)](https://cocoapods.org/pods/Lobster)
+[![CocoaPodsDL](https://img.shields.io/cocoapods/dt/Lobster.svg)](https://cocoapods.org/pods/Lobster)
 
 ## Feature
-- Can get a value from RemoteConfig / set a value to RemoteConfig to type-safe.
-- Easy to set default value to RemoteConfig by using key-value subscripting.
+- Make config value **type safe.** ✨
+- Easy to set default value by key-value subscripting.
 - Custom type available ✨
   - `String`/`Int` enum
   - `Decodable`(read-only) and `Codable`.
-- Can manage expiration duration of config values.
 
----
+**There's only three steps to using Lobster:**
 
-## Getting Started
-
-- [API Documentation](https://sgr-ksmt.github.io/Lobster/index.html)
-- [Example Apps](https://github.com/sgr-ksmt/Lobster/tree/master/Demo)
-
-## Basic Usage
-
-**You can integrate Lobster in a few steps implementation:**
-
-### 1. Define `ConfigKey`
+- Define `ConfigKey`
 
 ```swift
 extension ConfigKeys {
@@ -36,38 +26,29 @@ extension ConfigKeys {
 }
 ```
 
-### 2. Register value to Firebase Project
+- Define value in Firebase project
 
-[Go to Firebase Project](https://console.firebase.google.com/) and set values you want to get.
+![](docs/img1.png)
 
-![](readme-docs/img1.png)
-
-
-### 3. Let's use Lobster
+- Just use it!
 
 ```swift
-import Lobster
-
 // Set default value
 Lobster.shared[default: .welcomeTitle] = "Welcome"
 Lobster.shared[default: .welcomeTitleColor] = .black
-
 self.titleLabel.text = Lobster.shared[.welcomeTitle]
 
 // Fetch remote-config
-Lobster.shared.fetch { _ in
-    dispatchQueue.main.async { [weak self] in
-        self?.titleLabel.text = Lobster.shared[.welcomeTitle]
-        self?.titleLabel.textColor = Lobster.shared[.welcomeTitleColor]
-    }
+Lobster.shared.fetch { [weak self] _ in
+    self?.titleLabel.text = Lobster.shared[.welcomeTitle]
+    self?.titleLabel.textColor = Lobster.shared[.welcomeTitleColor]
 }
 ```
 
+You can get Type-Safed value through subscripting syntax`([])` by defining `ConfigKey`.
 
-## Tips for you
-
+## How to use
 ### Fetch latest value from remote.
-
 ```swift
 Lobster.shared.fetch { [weak self] error in
     if let error = error {
@@ -77,8 +58,7 @@ Lobster.shared.fetch { [weak self] error in
 }
 ```
 
-### Get value with subscripting syntax.
-
+### Get value
 Use subscripting syntax.
 
 - Non-Optional
@@ -120,7 +100,6 @@ let text: String? = Lobster.shared[default: .textOptional]
 ```
 
 ### Set Default value
-
 You can set default values using `subscripting syntax` or plist.
 
 ```swift
@@ -133,7 +112,6 @@ Lobster.shared.setDefaults(fromPlist: "defaults")
 ```
 
 ### Set debug mode
-
 ```swift
 // Enable debug mode (development only)
 Lobster.shared.debugMode = true
@@ -141,10 +119,8 @@ Lobster.shared.fetchExpirationDuration = 0.0
 ```
 
 ### isStaled
-
-If you set `isStaled` to true, Lobster will fetch remote value ignoring `fetchExpirationDuration`.  
-That is, You can retrieve config values immediately when you call `fetch` after You set `isStales` to true.  
-And `isStaled` will be set to `false` after fetched remote value.
+If you set `isStaled` to true, Lobster will fetch remote value ignoring `fetchExpirationDuration`.
+`isStaled` will be set to `false` after fetched remote value.
 
 ```swift
 Lobster.shared.fetchExpirationDuration = 60 * 12
@@ -168,7 +144,6 @@ Lobster supports more types as default followings:
 - Bool
 - Data
 - URL
-- UIColor
 - enum(String/Int)
 - Decodable Object
 - Codable Object
@@ -185,49 +160,37 @@ Lobster supports more types as default followings:
   - Codable Object
 
 ### TODO
-
 - [ ] CGPoint
 - [ ] CGSize
 - [ ] CGRect
 - [ ] Dictionary
 
 #### URL
+Supports text: e.g. `"https://example.com"`.
 
-Supports text: 
-
-![](readme-docs/img2.png)
+![](docs/img2.png)
 
 #### UIColor
-
 Supports only HEX string like `"#FF00FF"`.
 
-![](readme-docs/img3.png)
+![](docs/img3.png)
 
 #### Enum
-
 supports `Int` or `String` rawValue.
 It can be used only by adapting `ConfigSerializable`.
 If you want to use other enum, see ***Use custom value***.
 
 #### Decodable compliant type
-
 read only
 
 #### Codable compliant type
-
 can set default value / read config value
 
 
-## Advanced Usage
+## Use custom value
+You can easily define custom key in order to get remote value.
 
-You can easily get/set a value of custom type.  
-If you want to get/set `ValueType` (It's a custom type that Lobster doesn't support), you need to implement these steps:
-
-- Conform `ConfigSerializable` to the `ValueType`
-- Create `ConfigBridge<ValueType>
-- Define `ConfigKey<ValueType>`
-
-### Example case 1: Enum
+### Ex 1: enum
 
 ```swift
 // Adapt protocol `ConfigSerializable`
@@ -298,8 +261,7 @@ Lobster.shared.fetch { _ in
 
 To define subscript makes it possible to access custom enum.
 
-### Example Case 2: Decodable compliant type
-
+### Ex 2: Decodable compliant type
 Just adapt `Decodable` or `Codable` to class or struct and adapt `ConfigSerializable`
 
 ```swift
@@ -316,8 +278,18 @@ extension ConfigKeys {
 
 Define config value like below in console:
 
-![](readme-docs/img5.png)
+![](docs/img5.png)
 
+## Demo
+Required: CocoaPods 1.5 or higher.
+
+```bash
+$ cd path/to/Lobster
+$ bundle install
+$ cd ./Demo
+$ bundle exec pod install
+$ open Demo.xcworkspace
+```
 
 ## Requirements
 - iOS 11.0+
@@ -325,36 +297,24 @@ Define config value like below in console:
 - Swift 5.0
 
 ## Installation
-
-### [CocoaPods](https://cocoapods.org/)
-
+### CocoaPods
 **Lobster** is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Lobster', '~> 3.0.0'
+# Firebase iOS SDK v6.3.0 or higher
+pod 'Lobster', '~> 2.2'
+# Firebase iOS SDK v5.x ~ v6.2.0
+pod 'Lobster', '~> 2.1'
 ```
 
 and run `pod install`
 
-## Development
+### Manually Install
+Download all `*.swift` files and put your project.
 
-- 1: setup project
-
-```bash
-$ cd path/to/Lobster
-$ make
-```
-
-- 2: prepare `GoogleService-Info.plist`
-
-Due to security issues, I'm not providing `GoogleService-Info.plist` file.
-So please prepare it yourself in your Firebase Project.  
-And Please make Firebase App's bundle identifier `-.test.LobsterTests`.  
-After that, put it into `LobsterTests/`.
-
-
-<img src="readme-docs/img6.png" width="500" />
+## Special Thanks
+Lobster is inspired by [SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults)
 
 ## Communication
 - If you found a bug, open an issue.
