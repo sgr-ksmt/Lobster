@@ -26,7 +26,6 @@ public extension CombineLobster {
                 .sink(
                     receiveCompletion: { _ in },
                     receiveValue: {
-                        print("received")
                         _ = subscriber.receive(lobster[key])
                 })
         }
@@ -74,7 +73,6 @@ public extension CombineLobster {
                 .sink(
                     receiveCompletion: { _ in },
                     receiveValue: {
-                        print("received")
                         _ = subscriber.receive(lobster[key])
                 })
         }
@@ -130,12 +128,12 @@ public extension CombineLobster {
             .eraseToAnyPublisher()
     }
 
-    func fetched<T: ConfigSerializable>(key: ConfigKey<T>) -> AnyPublisher<T.T, Error> where T.T == T {
+    func fetched<T: ConfigSerializable>(_ key: ConfigKey<T>) -> AnyPublisher<T.T, Error> where T.T == T {
         return ConfigValuePublisher(lobster: lobster, key: key)
             .eraseToAnyPublisher()
     }
 
-    func fetched<T: ConfigSerializable>(key: ConfigKey<T?>) -> AnyPublisher<T.T?, Error> where T.T == T {
+    func fetched<T: ConfigSerializable>(_ key: ConfigKey<T?>) -> AnyPublisher<T.T?, Error> where T.T == T {
         return ConfigValueOptionalPublisher(lobster: lobster, key: key)
             .eraseToAnyPublisher()
     }
