@@ -8,72 +8,108 @@
 
 import Foundation
 
+/// ConfigSerializable for `String`
 extension String: ConfigSerializable {
-    public static var _config: ConfigBridge<String> { return ConfigStringBridge() }
-    public static var _configArray: ConfigBridge<[String]> { return ConfigArrayBridge() }
+    /// Returns a instance of `ConfigBridge<String>`.
+    public static var _config: ConfigBridge<Self> { ConfigStringBridge() }
+    /// Returns a instance of `ConfigBridge<[String]>`.
+    public static var _configArray: ConfigBridge<[Self]> { ConfigArrayBridge() }
 }
 
+/// ConfigSerializable for `Int`
 extension Int: ConfigSerializable {
-    public static var _config: ConfigBridge<Int> { return ConfigIntBridge() }
-    public static var _configArray: ConfigBridge<[Int]> { return ConfigArrayBridge() }
+    /// Returns a instance of `ConfigBridge<Int>`.
+    public static var _config: ConfigBridge<Self> { ConfigIntBridge() }
+    /// Returns a instance of `ConfigBridge<[Int]>`.
+    public static var _configArray: ConfigBridge<[Self]> { ConfigArrayBridge() }
 }
 
+/// ConfigSerializable for `Double`
 extension Double: ConfigSerializable {
-    public static var _config: ConfigBridge<Double> { return ConfigDoubleBridge() }
-    public static var _configArray: ConfigBridge<[Double]> { return ConfigArrayBridge() }
+    /// Returns a instance of `ConfigBridge<Double>`.
+    public static var _config: ConfigBridge<Self> { ConfigDoubleBridge() }
+    /// Returns a instance of `ConfigBridge<[Double>`.
+    public static var _configArray: ConfigBridge<[Self]> { ConfigArrayBridge() }
 }
 
+/// ConfigSerializable for `Float`
 extension Float: ConfigSerializable {
-    public static var _config: ConfigBridge<Float> { return ConfigFloatBridge() }
-    public static var _configArray: ConfigBridge<[Float]> { return ConfigArrayBridge() }
+    /// Returns a instance of `ConfigBridge<Float>`.
+    public static var _config: ConfigBridge<Self> { ConfigFloatBridge() }
+    /// Returns a instance of `ConfigBridge<[Float]>`.
+    public static var _configArray: ConfigBridge<[Self]> { ConfigArrayBridge() }
 }
 
+/// ConfigSerializable for `Bool`
 extension Bool: ConfigSerializable {
-    public static var _config: ConfigBridge<Bool> { return ConfigBoolBridge() }
-    public static var _configArray: ConfigBridge<[Bool]> { return ConfigArrayBridge() }
+    /// Returns a instance of `ConfigBridge<Bool>`.
+    public static var _config: ConfigBridge<Self> { ConfigBoolBridge() }
+    /// Returns a instance of `ConfigBridge<[Bool]>`.
+    public static var _configArray: ConfigBridge<[Self]> { ConfigArrayBridge() }
 }
 
+/// ConfigSerializable for `Data`
 extension Data: ConfigSerializable {
-    public static var _config: ConfigBridge<Data> { return ConfigDataBridge() }
-    public static var _configArray: ConfigBridge<[Data]> { return ConfigArrayBridge() }
+    /// Returns a instance of `ConfigBridge<Data>`.
+    public static var _config: ConfigBridge<Self> { ConfigDataBridge() }
+    /// Returns a instance of `ConfigBridge<[Data]>`.
+    public static var _configArray: ConfigBridge<[Self]> { ConfigArrayBridge() }
 }
 
+/// ConfigSerializable for `URL`
 extension URL: ConfigSerializable {
-    public static var _config: ConfigBridge<URL> { return ConfigURLBridge() }
-    public static var _configArray: ConfigBridge<[URL]> { return ConfigArrayBridge() }
+    /// Returns a instance of `ConfigBridge<URL>`.
+    public static var _config: ConfigBridge<Self> { ConfigURLBridge() }
+    /// Returns a instance of `ConfigBridge<[URL]>`.
+    public static var _configArray: ConfigBridge<[Self]> { ConfigArrayBridge() }
 }
 
+/// ConfigSerializable for `UIColor`
 extension UIColor: ConfigSerializable {
-    public static var _config: ConfigBridge<UIColor> { return ConfigColorBridge() }
-    public static var _configArray: ConfigBridge<[UIColor]> { return ConfigArrayBridge() }
+    /// Returns a instance of `ConfigBridge<UIColor>`.
+    public static var _config: ConfigBridge<UIColor> { ConfigColorBridge() }
+    /// Returns a instance of `ConfigBridge<[UIColor]>`.
+    public static var _configArray: ConfigBridge<[UIColor]> { ConfigArrayBridge() }
 }
 
 
+/// ConfigSerializable for `RawRepresentable`
 extension ConfigSerializable where Self: RawRepresentable {
-    public static var _config: ConfigBridge<Self> { return ConfigRawRepresentableBridge() }
-    public static var _configArray: ConfigBridge<[Self]> { return ConfigRawRepresentableArrayBridge() }
+    /// Returns a instance of `ConfigBridge<RawRepresentable>`.
+    public static var _config: ConfigBridge<Self> { ConfigRawRepresentableBridge() }
+    /// Returns a instance of `ConfigBridge<[RawRepresentable]>`.
+    public static var _configArray: ConfigBridge<[Self]> { ConfigRawRepresentableArrayBridge() }
 }
 
+/// ConfigSerializable for `Decodable`
 extension ConfigSerializable where Self: Decodable {
-    public static var _config: ConfigBridge<Self> { return ConfigDecodableBridge() }
-    public static var _configArray: ConfigBridge<[Self]> { return ConfigDecodableBridge() }
+    /// Returns a instance of `ConfigBridge<Decodable>`.
+    public static var _config: ConfigBridge<Self> { ConfigDecodableBridge() }
+    /// Returns a instance of `ConfigBridge<[Decodable]>`.
+    public static var _configArray: ConfigBridge<[Self]> { ConfigDecodableBridge() }
 }
 
+/// ConfigSerializable for `Codable`
 extension ConfigSerializable where Self: Codable {
-    public static var _config: ConfigBridge<Self> { return ConfigCodableBridge() }
-    public static var _configArray: ConfigBridge<[Self]> { return ConfigCodableBridge() }
+    /// Returns a instance of `ConfigBridge<Codable>`.
+    public static var _config: ConfigBridge<Self> { ConfigCodableBridge() }
+    /// Returns a instance of `ConfigBridge<[Codable]>`.
+    public static var _configArray: ConfigBridge<[Self]> { ConfigCodableBridge() }
 }
 
+/// ConfigSerializable for `Array`
 extension Array: ConfigSerializable where Element: ConfigSerializable {
-    public typealias T = [Element]
+    /// Returns a instance of `ConfigBridge<[T]>`.
+    public static var _config: ConfigBridge<Self> { Element._configArray as! ConfigBridge<Self> }
 
-    public static var _config: ConfigBridge<[Element]> { return Element._configArray as! ConfigBridge<[Element]> }
-    public static var _configArray: ConfigBridge<[[Element]]> { fatalError() }
+    /// Throw a fatal error because a type of ` [[T]]` is not supported.
+    public static var _configArray: ConfigBridge<[Self]> { fatalError() }
 }
 
+/// ConfigSerializable for `Optional`
 extension Optional: ConfigSerializable where Wrapped: ConfigSerializable {
-    public typealias T = Wrapped
-
-    public static var _config: ConfigBridge<Wrapped> { return Wrapped._config as! ConfigBridge<Wrapped> }
-     public static var _configArray: ConfigBridge<[Wrapped]> { return Wrapped._configArray as! ConfigBridge<[Wrapped]> }
+    /// Returns a instance of `ConfigBridge<Optional<T>>`.
+    public static var _config: ConfigBridge<Wrapped> { Wrapped._config as! ConfigBridge<Wrapped> }
+    /// Returns a instance of `ConfigBridge<[Optional<T>]>`.
+    public static var _configArray: ConfigBridge<[Wrapped]> { Wrapped._configArray as! ConfigBridge<[Wrapped]> }
 }

@@ -10,53 +10,70 @@ import Foundation
 import FirebaseRemoteConfig
 import UIKit
 
+/// Lobster
+/// 
+/// Lobster wraps Remote Config's interface
 public class Lobster {
-    /// Returns shared instance.
+    
+    /// The instance of Lobster.
     public static let shared = Lobster()
 
-    /// Returns FIRRemoteConfig instance.
+    /// The `FIRRemoteConfig` instance.
+    ///
+    /// - Note: Basically, You don't  have to use this directly.
     public let remoteConfig = RemoteConfig.remoteConfig()
 
-    /// Default expiration duration. (12 hours)
+    /// The default expiration duration. `12 hours`
     public static let defaultExpirationDuration: TimeInterval = 43_200.0
 
-    /// Expiration duration for cache. Default duration is 12 hours
+    /// A fetch expiration duration. You can change it you want.
+    ///
+    /// Default is `defaultExpirationDuration`
     public var fetchExpirationDuration: TimeInterval = Lobster.defaultExpirationDuration
 
-    /// The flag whether to do stale check. Default is `true`.
+    /// A flag indicating whether to check for stale status or not.
+    ///
+    /// Default is `true`.
     public var useStaleChecker: Bool = true
 
-    /// `isStaled` flag's value store, Default is UserDefaults.
+    /// A value store to store `isStaled`, which is the flag to judge remote config stale or not.
+    ///
+    /// You can inject another value store conforming to `StaleValueStore` protocol.
+    /// Default is UserDefaults.
     public var staleValueStore: StaleValueStore = UserDefaults.standard
 
     /// set/get `isStaled` flag.
-    /// If `useStaleChecker` is true and `isStaled` is true, fetch remote config values immediately.
+    /// If `useStaleChecker` is true and `isStaled` is true, Lobster fetch remote config values from Firebase immediately ignoring cache expiration when you call `Lobster.shared.fetch(completion:)`
     public var isStaled: Bool {
-        get {
-            return staleValueStore.isStaled
-        }
-        set {
-            staleValueStore.isStaled = newValue
-        }
+        get { staleValueStore.isStaled }
+        set { staleValueStore.isStaled = newValue }
     }
 
     /// Debug mode
     /// NOTE: It must be false on production.
     public var debugMode: Bool = false {
         didSet {
-            remoteConfig.configSettings.minimumFetchInterval = debugMode ? 0 : Lobster.defaultExpirationDuration
+            remoteConfig.configSettings.minimumFetchInterval = debugMode ?
+                0 :
+                Lobster.defaultExpirationDuration
         }
     }
+
+    /// Returns `RemoteConfigFetchStatus`.
     public private(set) var fetchStatus: RemoteConfigFetchStatus = .noFetchYet
 
     /// Default value store.
     public let defaultsStore = DefaultsStore()
 
+    /// Initializer
+    ///
+    /// This method is private to prevent a developer create a new instance of `Lobster`
     private init() {}
 
-    /// Fetch config from remote.
+    /// Fetches config data from Firebase. If its cache hasn't expired, RemoteConfig won't fetch but will return cache data.
     ///
-    /// - Parameter completion: Fetch operation callback.
+    /// - Parameters:
+    ///   - completion: A closure that takes an error as its argument. If Lobster fetched config from Firebase successfully, the argument of error will be nil. Default is `an empty closure`.
     public func fetch(completion: @escaping (Error?) -> Void = { _ in }) {
         let duration = getExpirationDuration()
         remoteConfig.fetch(withExpirationDuration: duration) { [unowned self] (status, fetchError) in
@@ -70,9 +87,10 @@ public class Lobster {
         }
     }
 
-    /// Set default values using dictionary
+    /// Set default config values. By setting default config values, You can use these value safely before fetching config data from Firebase.
     ///
-    /// - Parameter defaults: default parametes.
+    /// - Parameters:
+    ///   - defaults: A dictionary that will set as default config values
     public func setDefaults(_ defaults: [String: AnyObject]) {
         defaultsStore.set(defaults: defaults)
         updateDefaults()
@@ -89,25 +107,31 @@ public class Lobster {
         setDefaults(defaults)
     }
 
-    /// Clear default values.
+    /// Clear default values and then RemoteConfig's default values will be updated to empty.
     public func clearDefaults() {
         defaultsStore.clear()
         updateDefaults()
     }
-
+    
+    /// Returns expiration duration for RemoteConfig.
+    /// - Returns: If you use `useStaleChecker` and `isStaled` is true, this function will return `0.0`. If not so, it will return `fetchExpirationDuration`.
     private func getExpirationDuration() -> TimeInterval {
         if useStaleChecker, isStaled {
             return 0.0
         }
         return fetchExpirationDuration
     }
-
+    
+    /// Updates default values of RemoteConfig by using values stored in `defaultsStore`
     func updateDefaults() {
-        RemoteConfig.remoteConfig().setDefaults(defaultsStore.asRemoteConfigDefaults())
+        RemoteConfig.remoteConfig().setDefaults(defaultsStore.defaults)
     }
 }
 
+/// Extensions of Lobster
 extension Lobster {
-    /// Notification's key of Lobster when config fetched.
+    /// The key of Notification. Lobster notifies you of finishing fetching config data from Firebase.
+    ///
+    /// - Note: If an error occurred while fetching data, it'll be included as the object of `Notification`.
     public static var didFetchConfig: Notification.Name { return Notification.Name("LobsterDidFetchConfig") }
 }

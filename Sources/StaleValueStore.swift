@@ -8,19 +8,14 @@
 
 import Foundation
 
+/// Represents a value store that can store `isStaled`.
 public protocol StaleValueStore {
+    /// Returns/Set  a bool value whether RemoteConfig's values are staled or not.
     var isStaled: Bool { get set }
 }
 
-extension StaleValueStore {
-    var key: String {
-        return "StaleValueStore.isStaled"
-    }
-}
-
-extension UserDefaults: StaleValueStore {
-    public var isStaled: Bool {
-        get { return bool(forKey: key) }
-        set { set(newValue, forKey: key) }
-    }
+/// Extension for `StaleValueStore`
+public extension StaleValueStore {
+    /// A key to store `isStaled` value.
+    static var key: String { "StaleValueStore.isStaled" }
 }

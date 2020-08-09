@@ -24,6 +24,7 @@
 		16FCE9A4223CE2F400F6D643 /* FirebaseSetupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE9A3223CE2F400F6D643 /* FirebaseSetupHandler.swift */; };
 		3531D90E61A46EE45DFAAFD6 /* Pods_LobsterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41C95928D6368D180C45B2E /* Pods_LobsterTests.framework */; };
 		C446D99F0AB2B1B651481608 /* Pods_Lobster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7094F96770D14C9622820F42 /* Pods_Lobster.framework */; };
+		C461801624DBCEFE0061A5E4 /* UserDefault+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461801524DBCEFE0061A5E4 /* UserDefault+Ex.swift */; };
 		C4A2602B24D81D54005A3FB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2602A24D81D54005A3FB7 /* AppDelegate.swift */; };
 		C4A2602D24D81D54005A3FB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2602C24D81D54005A3FB7 /* SceneDelegate.swift */; };
 		C4A2602F24D81D54005A3FB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2602E24D81D54005A3FB7 /* ViewController.swift */; };
@@ -75,6 +76,7 @@
 		7094F96770D14C9622820F42 /* Pods_Lobster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lobster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B16D1323062E1020502A3F /* Pods-Lobster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lobster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lobster/Pods-Lobster.release.xcconfig"; sourceTree = "<group>"; };
 		C41C95928D6368D180C45B2E /* Pods_LobsterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LobsterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C461801524DBCEFE0061A5E4 /* UserDefault+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Ex.swift"; sourceTree = "<group>"; };
 		C4A2602824D81D54005A3FB7 /* AppForTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppForTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A2602A24D81D54005A3FB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4A2602C24D81D54005A3FB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				16FCE981223CBC5200F6D643 /* ConfigSerializable.swift */,
 				16FCE983223CBC8A00F6D643 /* ConfigBridge.swift */,
 				16FCE97F223CB83500F6D643 /* StaleValueStore.swift */,
+				C461801524DBCEFE0061A5E4 /* UserDefault+Ex.swift */,
 				16FCE98E223CCBBE00F6D643 /* OptionalType.swift */,
 				162860C91FAA353A003D85A6 /* UIColor+Ex.swift */,
 			);
@@ -413,6 +416,7 @@
 				16FCE982223CBC5200F6D643 /* ConfigSerializable.swift in Sources */,
 				16FCE98F223CCBBE00F6D643 /* OptionalType.swift in Sources */,
 				1631440C1FA8C00900D25996 /* Lobster.swift in Sources */,
+				C461801624DBCEFE0061A5E4 /* UserDefault+Ex.swift in Sources */,
 				16FCE98D223CCA7C00F6D643 /* Lobster+Subscripts.swift in Sources */,
 				16FCE986223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift in Sources */,
 				16FCE980223CB83500F6D643 /* StaleValueStore.swift in Sources */,

@@ -46,7 +46,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig (~> 6.29)
 
 SPEC REPOS:
-  https://cdn.cocoapods.org/:
+  trunk:
     - Firebase
     - FirebaseABTesting
     - FirebaseCore
@@ -72,4 +72,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: bdb2553bbc6762e8f0aea9c376abb9a09e9804c7
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
