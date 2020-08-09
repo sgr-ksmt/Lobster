@@ -2,7 +2,7 @@
 //  ConfigKeyTests.swift
 //  LobsterTests
 //
-//  Created by sgr-ksmt on 2019/03/16.
+//  Created by suguru-kishimoto on 2019/03/16.
 //  Copyright © 2019 Suguru Kishimoto. All rights reserved.
 //
 
@@ -190,14 +190,13 @@ class LobsterTests: XCTestCase {
         XCTAssertEqual(Lobster.shared[safeConfig: .alpha], 1.5)
         XCTAssertEqual(Lobster.shared[safeDefault: .alpha], 1.5)
 
-        // FIXME: subscript is broken when we're about to use a config key of Float? type.
-//        XCTAssertEqual(Lobster.shared[.alphaOptional], 0.0)
-//        XCTAssertEqual(Lobster.shared[config: .alphaOptional], 0.0)
-//        XCTAssertEqual(Lobster.shared[default: .alphaOptional], nil)
-//        Lobster.shared[default: .alphaOptional] = 1.5
-//        XCTAssertEqual(Lobster.shared[.alphaOptional], 1.5)
-//        XCTAssertEqual(Lobster.shared[config: .alphaOptional], 1.5)
-//        XCTAssertEqual(Lobster.shared[default: .alphaOptional], 1.5)
+        XCTAssertEqual(Lobster.shared[.alphaOptional], 0.0)
+        XCTAssertEqual(Lobster.shared[config: .alphaOptional], 0.0)
+        XCTAssertEqual(Lobster.shared[default: .alphaOptional], nil)
+        Lobster.shared[default: .alphaOptional] = 1.5
+        XCTAssertEqual(Lobster.shared[.alphaOptional], 1.5)
+        XCTAssertEqual(Lobster.shared[config: .alphaOptional], 1.5)
+        XCTAssertEqual(Lobster.shared[default: .alphaOptional], 1.5)
     }
 
     func testBoolValueKey() {
@@ -451,6 +450,7 @@ class LobsterTests: XCTestCase {
         XCTAssertEqual(Lobster.shared[default: .personsOptional], [Person(name: "John", age: 10), Person(name: "Mike", age: 12)])
     }
 
+
     func testFetch() {
         let expect = expectation(description: "testFetch")
 
@@ -466,11 +466,11 @@ class LobsterTests: XCTestCase {
             XCTAssertEqual(Lobster.shared[default: .count], 1)
             XCTAssertEqual(Lobster.shared[safe: .friendNames], ["John"])
             XCTAssertEqual(Lobster.shared[safeDefault: .friendNames], [])
-            XCTAssertEqual(Lobster.shared[safe: .mike], Optional<Person>.init(.init(name: "Mike", age: 30)))
+            XCTAssertEqual(Lobster.shared[safe: .mike], Person(name: "Mike", age: 30))
             XCTAssertEqual(Lobster.shared[safeDefault: .mike], nil)
             expect.fulfill()
         }
-        wait(for: [expect], timeout: 5.0)
+        wait(for: [expect], timeout: 10.0)
     }
 
     func testIsStale() {
@@ -484,6 +484,6 @@ class LobsterTests: XCTestCase {
             expect.fulfill()
         }
 
-        wait(for: [expect], timeout: 5.0)
+        wait(for: [expect], timeout: 10.0)
     }
 }
