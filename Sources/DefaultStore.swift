@@ -1,5 +1,5 @@
 //
-//  DefaultStore.swift
+//  DefaultsStore.swift
 //  Lobster
 //
 //  Created by sgr-ksmt on 2019/03/16.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-/// DefaultStore
+/// DefaultsStore
 ///
-/// DefaultStore is a value store class to sync default values with RemoteConfig.
+/// DefaultsStore is a value store class to sync default values with RemoteConfig.
 ///
 /// You can set default value through Lobster's subscripting.
 ///
-/// Example for setting default value to DefaultStore and syncing withRemoteConfig.
+/// Example for setting default value to DefaultsStore and syncing withRemoteConfig.
 ///
 ///     extension ConfigKeys {
 ///         static let title = ConfigKey<String>("title")
@@ -31,10 +31,18 @@ public final class DefaultsStore {
     /// A typealias of default values.
     public typealias Defaults = [String: Any]
 
+    /// Initializer
     internal init() {}
+
     /// A dictionary to store default values.
     var _defaults: Defaults = [:]
 
+    /// A subscripting
+    ///
+    /// Get a value or set a value with a key.
+    ///
+    /// - parameters:
+    ///   - key: A key.
     public subscript (key: String) -> Any? {
         get {
             return _defaults[key]
@@ -53,7 +61,7 @@ public final class DefaultsStore {
 
     /// Set default values
     ///
-    /// Basically, DefaultStore try to merge new default values into existing default values.
+    /// Basically, DefaultsStore try to merge new default values into existing default values.
     ///
     /// But If you want to overwrite default values, please pass `merge: true` parameter.
     ///

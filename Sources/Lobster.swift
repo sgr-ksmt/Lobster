@@ -14,8 +14,8 @@ import UIKit
 /// 
 /// Lobster wraps Remote Config's interface
 public class Lobster {
+    
     /// The instance of Lobster.
-
     public static let shared = Lobster()
 
     /// The `FIRRemoteConfig` instance.
@@ -58,6 +58,8 @@ public class Lobster {
                 Lobster.defaultExpirationDuration
         }
     }
+
+    /// Returns `RemoteConfigFetchStatus`.
     public private(set) var fetchStatus: RemoteConfigFetchStatus = .noFetchYet
 
     /// Default value store.
@@ -120,7 +122,7 @@ public class Lobster {
         return fetchExpirationDuration
     }
     
-    /// Updates default values of RemoteConfig by using values stored in `defaultStore`
+    /// Updates default values of RemoteConfig by using values stored in `defaultsStore`
     func updateDefaults() {
         RemoteConfig.remoteConfig().setDefaults(defaultsStore.defaults)
     }

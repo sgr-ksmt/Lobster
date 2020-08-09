@@ -31,6 +31,7 @@ custom_categories:
   - name: Store
     children:
       - DefaultsStore
+      - StaleValueStore
 
   - name: ConfigSerializable
     children:
@@ -44,6 +45,10 @@ custom_categories:
       - Float
       - Data
       - URL
+      - Array
+      - Bool
+      - UIColor
+      - Optional
 
   - name: Config Bridges
     children:

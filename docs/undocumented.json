@@ -9,51 +9,9 @@
     },
     {
       "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 16,
-      "symbol": "ConfigStringBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 20,
-      "symbol": "ConfigStringBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 24,
-      "symbol": "ConfigStringBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
       "line": 31,
       "symbol": "ConfigIntBridge.T",
       "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 33,
-      "symbol": "ConfigIntBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 37,
-      "symbol": "ConfigIntBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 41,
-      "symbol": "ConfigIntBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -65,51 +23,9 @@
     },
     {
       "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 50,
-      "symbol": "ConfigDoubleBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 54,
-      "symbol": "ConfigDoubleBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 58,
-      "symbol": "ConfigDoubleBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
       "line": 65,
       "symbol": "ConfigFloatBridge.T",
       "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 67,
-      "symbol": "ConfigFloatBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 71,
-      "symbol": "ConfigFloatBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 75,
-      "symbol": "ConfigFloatBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -121,51 +37,9 @@
     },
     {
       "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 84,
-      "symbol": "ConfigBoolBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 88,
-      "symbol": "ConfigBoolBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 92,
-      "symbol": "ConfigBoolBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
       "line": 99,
       "symbol": "ConfigDataBridge.T",
       "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 101,
-      "symbol": "ConfigDataBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 105,
-      "symbol": "ConfigDataBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 109,
-      "symbol": "ConfigDataBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -177,27 +51,6 @@
     },
     {
       "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 118,
-      "symbol": "ConfigURLBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 122,
-      "symbol": "ConfigURLBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 126,
-      "symbol": "ConfigURLBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
       "line": 133,
       "symbol": "ConfigColorBridge.T",
       "symbol_kind": "source.lang.swift.decl.typealias",
@@ -205,72 +58,9 @@
     },
     {
       "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 135,
-      "symbol": "ConfigColorBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 139,
-      "symbol": "ConfigColorBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 143,
-      "symbol": "ConfigColorBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 150,
-      "symbol": "ConfigRawRepresentableBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 154,
-      "symbol": "ConfigRawRepresentableBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 159,
-      "symbol": "ConfigRawRepresentableBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
       "line": 174,
       "symbol": "ConfigDecodableBridge.decoder",
       "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 176,
-      "symbol": "ConfigDecodableBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 179,
-      "symbol": "ConfigDecodableBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 184,
-      "symbol": "ConfigDecodableBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -284,125 +74,6 @@
       "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
       "line": 196,
       "symbol": "ConfigCodableBridge.encoder",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 198,
-      "symbol": "ConfigCodableBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 202,
-      "symbol": "ConfigCodableBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 207,
-      "symbol": "ConfigCodableBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 218,
-      "symbol": "ConfigArrayBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 222,
-      "symbol": "ConfigArrayBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 227,
-      "symbol": "ConfigArrayBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 238,
-      "symbol": "ConfigRawRepresentableArrayBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 242,
-      "symbol": "ConfigRawRepresentableArrayBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/BuiltIns/ConfigBridge+BuiltIns.swift",
-      "line": 247,
-      "symbol": "ConfigRawRepresentableArrayBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigBridge.swift",
-      "line": 17,
-      "symbol": "ConfigBridge.init()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigBridge.swift",
-      "line": 19,
-      "symbol": "ConfigBridge.save(key:value:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigBridge.swift",
-      "line": 23,
-      "symbol": "ConfigBridge.get(key:remoteConfig:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigBridge.swift",
-      "line": 27,
-      "symbol": "ConfigBridge.get(key:defaultsStore:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigKeys.swift",
-      "line": 44,
-      "symbol": "ConfigKey._key",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/ConfigKeys.swift",
-      "line": 45,
-      "symbol": "ConfigKey.init(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/DefaultStore.swift",
-      "line": 38,
-      "symbol": "DefaultsStore.subscript(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.subscript",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/melodydance/src/github.com/sgr-ksmt/Lobster/Sources/Lobster.swift",
-      "line": 61,
-      "symbol": "Lobster.fetchStatus",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     }

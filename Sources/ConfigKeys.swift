@@ -21,7 +21,6 @@ import Foundation
 ///         static let experimentEnabled = ConfigKey<Bool>("experiment_enabled")
 ///     }
 open class ConfigKeys {
-    // TODO: change access level
     init() {}
 }
 
@@ -40,8 +39,13 @@ open class ConfigKeys {
 ///     let title = Lobster.shared[.title]
 ///     print(String(describing: type(of: title))) // String
 public class ConfigKey<ValueType: ConfigSerializable>: ConfigKeys {
-    // TODO: remove super class.
+
+    /// A key.
     public let _key: String
+
+    /// Initializer
+    /// - parameters:
+    ///   - key: A key
     public init(_ key: String) {
         self._key = key
     }

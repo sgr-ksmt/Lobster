@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// A protocol to handle a optional value.
 public protocol OptionalType {
     associatedtype Wrapped
     var wrapped: Wrapped? { get }

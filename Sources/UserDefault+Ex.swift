@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Extension for UserDefaults.
 extension UserDefaults: StaleValueStore {
     public var isStaled: Bool {
         get { bool(forKey: Self.key) }
