@@ -122,7 +122,7 @@ public class Lobster {
     
     /// Updates default values of RemoteConfig by using values stored in `defaultStore`
     func updateDefaults() {
-        RemoteConfig.remoteConfig().setDefaults(defaultsStore.asRemoteConfigDefaults())
+        RemoteConfig.remoteConfig().setDefaults(defaultsStore.defaults)
     }
 }
 

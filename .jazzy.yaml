@@ -7,7 +7,6 @@ exclude:
   - Sources/OptionalType.swift
   - Sources/UserDefault+Ex.swift
   - Sources/UIColor+Ex.swift
-  - Sources/BuiltIns/ConfigSerializable+BuiltIns.swift
 output: docs
 theme: fullwidth
 clean: true
@@ -20,7 +19,45 @@ xcodebuild_arguments:
   - Lobster
   - -workspace
   - Lobster.xcworkspace
-# custom_categories:
-#  - name: _
-#    children:
-#    - _
+custom_categories:
+  - name: Lobster
+    children:
+      - Lobster
+  - name: Config Key
+    children:
+      - ConfigKey
+      - ConfigKeys
+
+  - name: Store
+    children:
+      - DefaultsStore
+
+  - name: ConfigSerializable
+    children:
+      - ConfigSerializable
+
+  - name: ConfigSerializable Extensions
+    children:
+      - String
+      - Int
+      - Double
+      - Float
+      - Data
+      - URL
+
+  - name: Config Bridges
+    children:
+      - ConfigBridge
+      - ConfigStringBridge
+      - ConfigIntBridge
+      - ConfigDoubleBridge
+      - ConfigFloatBridge
+      - ConfigBoolBridge
+      - ConfigDataBridge
+      - ConfigURLBridge
+      - ConfigColorBridge
+      - ConfigRawRepresentableBridge
+      - ConfigDecodableBridge
+      - ConfigCodableBridge
+      - ConfigArrayBridge
+      - ConfigRawRepresentableArrayBridge

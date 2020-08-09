@@ -10,7 +10,7 @@ import Foundation
 
 extension UserDefaults: StaleValueStore {
     public var isStaled: Bool {
-        get { bool(forKey: key) }
-        set { set(newValue, forKey: key) }
+        get { bool(forKey: Self.key) }
+        set { set(newValue, forKey: Self.key) }
     }
 }

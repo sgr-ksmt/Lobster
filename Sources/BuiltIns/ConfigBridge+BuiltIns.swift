@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseRemoteConfig
 
+/// ConfigBridge for `String`
 public final class ConfigStringBridge: ConfigBridge<String> {
     public typealias T = String
 
@@ -25,6 +26,7 @@ public final class ConfigStringBridge: ConfigBridge<String> {
     }
 }
 
+/// ConfigBridge for `Int`
 public final class ConfigIntBridge: ConfigBridge<Int> {
     public typealias T = Int
 
@@ -41,6 +43,7 @@ public final class ConfigIntBridge: ConfigBridge<Int> {
     }
 }
 
+/// ConfigBridge for `Double`
 public final class ConfigDoubleBridge: ConfigBridge<Double> {
     public typealias T = Double
 
@@ -57,6 +60,7 @@ public final class ConfigDoubleBridge: ConfigBridge<Double> {
     }
 }
 
+/// ConfigBridge for `Float`
 public final class ConfigFloatBridge: ConfigBridge<Float> {
     public typealias T = Float
 
@@ -73,6 +77,7 @@ public final class ConfigFloatBridge: ConfigBridge<Float> {
     }
 }
 
+/// ConfigBridge for `Bool`
 public final class ConfigBoolBridge: ConfigBridge<Bool> {
     public typealias T = Bool
 
@@ -89,6 +94,7 @@ public final class ConfigBoolBridge: ConfigBridge<Bool> {
     }
 }
 
+/// ConfigBridge for `Data`
 public final class ConfigDataBridge: ConfigBridge<Data> {
     public typealias T = Data
 
@@ -105,6 +111,7 @@ public final class ConfigDataBridge: ConfigBridge<Data> {
     }
 }
 
+/// ConfigBridge for `URL`
 public final class ConfigURLBridge: ConfigBridge<URL> {
     public typealias T = URL
 
@@ -121,6 +128,7 @@ public final class ConfigURLBridge: ConfigBridge<URL> {
     }
 }
 
+/// ConfigBridge for `UIColor`
 public final class ConfigColorBridge: ConfigBridge<UIColor> {
     public typealias T = UIColor
 
@@ -137,6 +145,7 @@ public final class ConfigColorBridge: ConfigBridge<UIColor> {
     }
 }
 
+/// ConfigBridge for `RawRepresentable`(Enum)
 public final class ConfigRawRepresentableBridge<T: RawRepresentable>: ConfigBridge<T> {
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
         defaultsStore[key] = value?.rawValue
@@ -156,6 +165,11 @@ public final class ConfigRawRepresentableBridge<T: RawRepresentable>: ConfigBrid
     }
 }
 
+/// ConfigBridge for `Decodable`
+///
+/// - note: You can't set default value if a value is `Decodasble` object, not `Encodable` object.
+///  If you can set default value, Please make object conform to `Encodable` and use `ConfigCodableBridge`.
+///
 public final class ConfigDecodableBridge<T: Decodable>: ConfigBridge<T> {
     public var decoder = JSONDecoder()
 
@@ -176,7 +190,7 @@ public final class ConfigDecodableBridge<T: Decodable>: ConfigBridge<T> {
     }
 }
 
-
+/// ConfigBridge for `Codable`
 public final class ConfigCodableBridge<T: Codable>: ConfigBridge<T> {
     public var decoder = JSONDecoder()
     public var encoder = JSONEncoder()
@@ -199,6 +213,7 @@ public final class ConfigCodableBridge<T: Codable>: ConfigBridge<T> {
     }
 }
 
+/// ConfigBridge for `Array`
 public final class ConfigArrayBridge<T: Collection>: ConfigBridge<T> {
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
         defaultsStore[key] = value.flatMap { try? JSONSerialization.data(withJSONObject: $0, options: []) }
@@ -218,6 +233,7 @@ public final class ConfigArrayBridge<T: Collection>: ConfigBridge<T> {
     }
 }
 
+/// ConfigBridge for `Array` if `Collection.Element` is `RawRepresentable` (for Enum element).
 public final class ConfigRawRepresentableArrayBridge<T: Collection>: ConfigBridge<T> where T.Element: RawRepresentable {
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
         defaultsStore[key] = value.flatMap { try? JSONSerialization.data(withJSONObject: $0.compactMap { $0.rawValue }, options: []) }

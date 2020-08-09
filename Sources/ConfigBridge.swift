@@ -9,6 +9,9 @@
 import Foundation
 import FirebaseRemoteConfig
 
+/// 
+///
+/// - note: It's an abstract class. If you want to adapt it to some value type, please override it.
 open class ConfigBridge<T> {
 
     public init() {}
