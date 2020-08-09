@@ -149,27 +149,18 @@
 		1631440A1FA8BE9700D25996 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1631440B1FA8C00900D25996 /* Lobster.swift */,
-				16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */,
-				16FCE987223CBDC500F6D643 /* BuiltIns */,
-				16FCE988223CC42800F6D643 /* DefaultStore.swift */,
-				1631440D1FA8CBE400D25996 /* ConfigKeys.swift */,
-				16FCE981223CBC5200F6D643 /* ConfigSerializable.swift */,
-				16FCE983223CBC8A00F6D643 /* ConfigBridge.swift */,
-				16FCE97F223CB83500F6D643 /* StaleValueStore.swift */,
-				C461801524DBCEFE0061A5E4 /* UserDefault+Ex.swift */,
-				162860C91FAA353A003D85A6 /* UIColor+Ex.swift */,
+				3A75BD8324E0357A00ADBBAB /* Core */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		16FCE987223CBDC500F6D643 /* BuiltIns */ = {
+		16FCE987223CBDC500F6D643 /* ConfigSerializable */ = {
 			isa = PBXGroup;
 			children = (
-				16FCE985223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift */,
+				16FCE981223CBC5200F6D643 /* ConfigSerializable.swift */,
 				16FCE98A223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift */,
 			);
-			path = BuiltIns;
+			path = ConfigSerializable;
 			sourceTree = "<group>";
 		};
 		16FCE995223CE14A00F6D643 /* LobsterTests */ = {
@@ -181,6 +172,55 @@
 				16FCE9A3223CE2F400F6D643 /* FirebaseSetupHandler.swift */,
 			);
 			path = LobsterTests;
+			sourceTree = "<group>";
+		};
+		3A75BD8324E0357A00ADBBAB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1631440B1FA8C00900D25996 /* Lobster.swift */,
+				16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */,
+				3A75BD8624E035C900ADBBAB /* ConfigBridge */,
+				3A75BD8524E035B700ADBBAB /* ConfigKey */,
+				16FCE987223CBDC500F6D643 /* ConfigSerializable */,
+				3A75BD8424E0359700ADBBAB /* Extensions */,
+				3A75BD8724E035F100ADBBAB /* Store */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3A75BD8424E0359700ADBBAB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C461801524DBCEFE0061A5E4 /* UserDefault+Ex.swift */,
+				162860C91FAA353A003D85A6 /* UIColor+Ex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3A75BD8524E035B700ADBBAB /* ConfigKey */ = {
+			isa = PBXGroup;
+			children = (
+				1631440D1FA8CBE400D25996 /* ConfigKeys.swift */,
+			);
+			path = ConfigKey;
+			sourceTree = "<group>";
+		};
+		3A75BD8624E035C900ADBBAB /* ConfigBridge */ = {
+			isa = PBXGroup;
+			children = (
+				16FCE983223CBC8A00F6D643 /* ConfigBridge.swift */,
+				16FCE985223CBDBF00F6D643 /* ConfigBridge+BuiltIns.swift */,
+			);
+			path = ConfigBridge;
+			sourceTree = "<group>";
+		};
+		3A75BD8724E035F100ADBBAB /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				16FCE988223CC42800F6D643 /* DefaultStore.swift */,
+				16FCE97F223CB83500F6D643 /* StaleValueStore.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		C4A2602924D81D54005A3FB7 /* AppForTest */ = {

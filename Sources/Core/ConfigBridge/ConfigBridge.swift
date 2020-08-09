@@ -1,9 +1,4 @@
-//
-//  ConfigBridge.swift
-//  Lobster
-//
-//  Created by sgr-ksmt on 2019/03/16.
-//  Copyright © 2019 Suguru Kishimoto. All rights reserved.
+//  Copyright © 2020 Suguru Kishimoto. All rights reserved.
 //
 
 import Foundation

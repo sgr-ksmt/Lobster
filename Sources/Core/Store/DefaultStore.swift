@@ -1,9 +1,4 @@
-//
-//  DefaultsStore.swift
-//  Lobster
-//
-//  Created by sgr-ksmt on 2019/03/16.
-//  Copyright © 2019 Suguru Kishimoto. All rights reserved.
+//  Copyright © 2020 Suguru Kishimoto. All rights reserved.
 //
 
 import Foundation
@@ -44,12 +39,8 @@ public final class DefaultsStore {
     /// - parameters:
     ///   - key: A key.
     public subscript (key: String) -> Any? {
-        get {
-            return _defaults[key]
-        }
-        set {
-            _defaults[key] = newValue
-        }
+        get { _defaults[key] }
+        set { _defaults[key] = newValue }
     }
 
     /// Returns default values

@@ -1,9 +1,4 @@
-//
-//  Lobster.swift
-//  Lobster
-//
-//  Created by sgr-ksmt on 2017/10/31.
-//  Copyright © 2017 Suguru Kishimoto. All rights reserved.
+//  Copyright © 2020 Suguru Kishimoto. All rights reserved.
 //
 
 import Foundation
@@ -133,5 +128,5 @@ extension Lobster {
     /// The key of Notification. Lobster notifies you of finishing fetching config data from Firebase.
     ///
     /// - Note: If an error occurred while fetching data, it'll be included as the object of `Notification`.
-    public static var didFetchConfig: Notification.Name { return Notification.Name("LobsterDidFetchConfig") }
+    public static var didFetchConfig: Notification.Name { Notification.Name("LobsterDidFetchConfig") }
 }
