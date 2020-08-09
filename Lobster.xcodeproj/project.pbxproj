@@ -18,7 +18,6 @@
 		16FCE989223CC42800F6D643 /* DefaultStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE988223CC42800F6D643 /* DefaultStore.swift */; };
 		16FCE98B223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE98A223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift */; };
 		16FCE98D223CCA7C00F6D643 /* Lobster+Subscripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */; };
-		16FCE98F223CCBBE00F6D643 /* OptionalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE98E223CCBBE00F6D643 /* OptionalType.swift */; };
 		16FCE997223CE14A00F6D643 /* LobsterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE996223CE14A00F6D643 /* LobsterTests.swift */; };
 		16FCE999223CE14A00F6D643 /* Lobster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 163143FF1FA8BE8600D25996 /* Lobster.framework */; };
 		16FCE9A4223CE2F400F6D643 /* FirebaseSetupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCE9A3223CE2F400F6D643 /* FirebaseSetupHandler.swift */; };
@@ -66,7 +65,6 @@
 		16FCE988223CC42800F6D643 /* DefaultStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStore.swift; sourceTree = "<group>"; };
 		16FCE98A223CC7E000F6D643 /* ConfigSerializable+BuiltIns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfigSerializable+BuiltIns.swift"; sourceTree = "<group>"; };
 		16FCE98C223CCA7C00F6D643 /* Lobster+Subscripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lobster+Subscripts.swift"; sourceTree = "<group>"; };
-		16FCE98E223CCBBE00F6D643 /* OptionalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalType.swift; sourceTree = "<group>"; };
 		16FCE994223CE14A00F6D643 /* LobsterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LobsterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16FCE996223CE14A00F6D643 /* LobsterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobsterTests.swift; sourceTree = "<group>"; };
 		16FCE998223CE14A00F6D643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 				16FCE983223CBC8A00F6D643 /* ConfigBridge.swift */,
 				16FCE97F223CB83500F6D643 /* StaleValueStore.swift */,
 				C461801524DBCEFE0061A5E4 /* UserDefault+Ex.swift */,
-				16FCE98E223CCBBE00F6D643 /* OptionalType.swift */,
 				162860C91FAA353A003D85A6 /* UIColor+Ex.swift */,
 			);
 			path = Sources;
@@ -414,7 +411,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				16FCE982223CBC5200F6D643 /* ConfigSerializable.swift in Sources */,
-				16FCE98F223CCBBE00F6D643 /* OptionalType.swift in Sources */,
 				1631440C1FA8C00900D25996 /* Lobster.swift in Sources */,
 				C461801624DBCEFE0061A5E4 /* UserDefault+Ex.swift in Sources */,
 				16FCE98D223CCA7C00F6D643 /* Lobster+Subscripts.swift in Sources */,
