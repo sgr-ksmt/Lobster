@@ -1,9 +1,4 @@
-//
-//  UIColor+Ex.swift
-//  Lobster
-//
-//  Created by sgr-ksmt on 2017/11/02.
-//  Copyright © 2017 Suguru Kishimoto. All rights reserved.
+//  Copyright © 2020 Suguru Kishimoto. All rights reserved.
 //
 
 import UIKit

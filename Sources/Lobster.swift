@@ -1,9 +1,4 @@
-//
-//  Lobster.swift
-//  Lobster
-//
-//  Created by sgr-ksmt on 2017/10/31.
-//  Copyright © 2017 Suguru Kishimoto. All rights reserved.
+//  Copyright © 2020 Suguru Kishimoto. All rights reserved.
 //
 
 import Foundation

@@ -1,8 +1,3 @@
-//
-//  UserDefault+Ex.swift
-//  Lobster
-//
-//  Created by sgr-ksmt on 2020/08/06.
 //  Copyright © 2020 Suguru Kishimoto. All rights reserved.
 //
 
