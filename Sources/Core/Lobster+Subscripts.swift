@@ -16,7 +16,7 @@ public extension Lobster {
     /// Lobster will return the value for key if RemoteConfig has the value at first.
     /// If not so, Lobster will try to retrieve value from DefaultsStore automatically.
     /// If Neigher RemoteConfig nor DefaultsStore have the value, Lobster will return `nil`.
-    subscript<T: ConfigSerializable>(key: ConfigKey<T?>) -> T.T? {
+    subscript<T: ConfigSerializable>(key: ConfigKey<T?>) -> T.Value? {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig) {
                 return value
@@ -29,7 +29,7 @@ public extension Lobster {
     }
 
     /// Get value from remote-config -> default
-    subscript<T: ConfigSerializable>(key: ConfigKey<T>) -> T.T where T.T == T {
+    subscript<T: ConfigSerializable>(key: ConfigKey<T>) -> T.Value {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig) {
                 return value
@@ -42,7 +42,7 @@ public extension Lobster {
     }
 
     /// Get value safely from remote-config -> default
-    subscript<T: ConfigSerializable>(safe key: ConfigKey<T>) -> T.T? {
+    subscript<T: ConfigSerializable>(safe key: ConfigKey<T>) -> T.Value? {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig) {
                 return value
@@ -55,14 +55,14 @@ public extension Lobster {
     }
 
     /// Get value from config
-    subscript<T: ConfigSerializable>(config key: ConfigKey<T?>) -> T.T? {
+    subscript<T: ConfigSerializable>(config key: ConfigKey<T?>) -> T.Value? {
         get {
             return T._config.get(key: key._key, remoteConfig: remoteConfig)
         }
     }
 
     /// Get value from config
-    subscript<T: ConfigSerializable>(config key: ConfigKey<T>) -> T.T where T.T == T {
+    subscript<T: ConfigSerializable>(config key: ConfigKey<T>) -> T.Value {
         get {
             guard let value = T._config.get(key: key._key, remoteConfig: remoteConfig) else {
                 fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
@@ -72,14 +72,14 @@ public extension Lobster {
     }
 
     /// Get value safely from config
-    subscript<T: ConfigSerializable>(safeConfig key: ConfigKey<T>) -> T.T? {
+    subscript<T: ConfigSerializable>(safeConfig key: ConfigKey<T>) -> T.Value? {
         get {
             return T._config.get(key: key._key, remoteConfig: remoteConfig)
         }
     }
 
     /// Get value from default / Set value to default
-    subscript<T: ConfigSerializable>(default key: ConfigKey<T?>) -> T.T? {
+    subscript<T: ConfigSerializable>(default key: ConfigKey<T?>) -> T.Value? {
         get {
             if let defaultValue = T._config.get(key: key._key, defaultsStore: defaultsStore) {
                 return defaultValue
@@ -98,7 +98,7 @@ public extension Lobster {
     ///
     /// If DefaultsStore doesn't have a value matched a config key, Lobster will throw a fatal error.
     /// If you can get the value safely, please use `safeDefault:` subscripting instead.
-    subscript<T: ConfigSerializable>(default key: ConfigKey<T>) -> T.T where T.T == T {
+    subscript<T: ConfigSerializable>(default key: ConfigKey<T>) -> T.Value {
         get {
             guard let defaultValue = T._config.get(key: key._key, defaultsStore: defaultsStore) else {
                 fatalError("Failed to get value from default. Please set default value before or use `safeDefault` subscript.")
@@ -114,7 +114,7 @@ public extension Lobster {
     /// Get value safely from default
     ///
     /// If DefaultsStore doesn't have a value matched a config key, Lobster will return `nil`.
-    subscript<T: ConfigSerializable>(safeDefault key: ConfigKey<T>) -> T.T? {
+    subscript<T: ConfigSerializable>(safeDefault key: ConfigKey<T>) -> T.Value? {
         get {
             return T._config.get(key: key._key, defaultsStore: defaultsStore)
         }
