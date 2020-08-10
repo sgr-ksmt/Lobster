@@ -4,14 +4,16 @@
 import Foundation
 import Combine
 
+/// CombineLobster is a extension class with Combine.
+///
+/// It allows you handle Lobster with Combine
 @available(iOS 13.0, *)
 public struct CombineLobster {
     fileprivate let lobster: Lobster
 }
 
 @available(iOS 13.0, *)
-public extension CombineLobster {
-
+extension CombineLobster {
     class Subscription<S: Subscriber> {
         var subscriber: S?
         var cancellable: AnyCancellable?
@@ -38,7 +40,7 @@ public extension CombineLobster {
         }
     }
 
-    final class ConfigValueSubscription<S: Subscriber, T: ConfigSerializable>: Subscription<S>, Combine.Subscription where S.Input == T.Value, S.Failure == Error {
+    final class ConfigValueSubscription<S: Subscriber, T: ConfigSerializable>: Subscription<S>, Combine.Subscription where S.Input == T.Value, S.Failure == Never {
         private let key: ConfigKey<T>
         init(subscriber: S, lobster: Lobster, key: ConfigKey<T>) {
             self.key = key
@@ -58,7 +60,7 @@ public extension CombineLobster {
 
     struct ConfigValuePublisher<T: ConfigSerializable>: Combine.Publisher {
         public typealias Output = T.Value
-        public typealias Failure = Error
+        public typealias Failure = Never
 
         private let lobster: Lobster
         private let key: ConfigKey<T>
@@ -77,7 +79,7 @@ public extension CombineLobster {
         }
     }
 
-    final class ConfigValueOptionalSubscription<S: Subscriber, T: ConfigSerializable>: Subscription<S>, Combine.Subscription where S.Input == T.Value?, S.Failure == Error {
+    final class ConfigValueOptionalSubscription<S: Subscriber, T: ConfigSerializable>: Subscription<S>, Combine.Subscription where S.Input == T.Value?, S.Failure == Never {
         private let key: ConfigKey<T?>
         init(subscriber: S, lobster: Lobster, key: ConfigKey<T?>) {
             self.key = key
@@ -97,7 +99,7 @@ public extension CombineLobster {
 
     struct ConfigValueOptionalPublisher<T: ConfigSerializable>: Combine.Publisher {
         public typealias Output = T.Value?
-        public typealias Failure = Error
+        public typealias Failure = Never
 
         private let lobster: Lobster
         private let key: ConfigKey<T?>
@@ -118,15 +120,21 @@ public extension CombineLobster {
 
 }
 
+/// Extensions for Lobster
 @available(iOS 13.0, *)
 public extension Lobster {
+    /// Returns `CombineLobster`.
     var combine: CombineLobster {
         CombineLobster(lobster: self)
     }
 }
 
+/// Extensions for CombineLobster
 @available(iOS 13.0, *)
 public extension CombineLobster {
+    /// Returns Publisher that tells you that Lobster has fetched latest valeus from RemoteConfig.
+    ///
+    /// - Returns: A publisher `<Void, Error>`
     func fetched() -> AnyPublisher<Void, Error> {
         return NotificationCenter.default.publisher(for: Lobster.didFetchConfig)
             .tryMap { (notification) in
@@ -138,12 +146,18 @@ public extension CombineLobster {
             .eraseToAnyPublisher()
     }
 
-    func fetched<T: ConfigSerializable>(_ key: ConfigKey<T>) -> AnyPublisher<T.Value, Error> {
+    /// Returns Publisher that gives you a value matched a config key after fetching from RemoteConfig.
+    ///
+    /// - Returns: A publisher `<T.Value, Error>`
+    func fetched<T: ConfigSerializable>(_ key: ConfigKey<T>) -> AnyPublisher<T.Value, Never> {
         return ConfigValuePublisher(lobster: lobster, key: key)
             .eraseToAnyPublisher()
     }
 
-    func fetched<T: ConfigSerializable>(_ key: ConfigKey<T?>) -> AnyPublisher<T.Value?, Error> {
+    /// Returns Publisher that gives you an optional value matched a config key after fetching from RemoteConfig.
+    ///
+    /// - Returns: A publisher `<T.Value?, Error>`
+    func fetched<T: ConfigSerializable>(_ key: ConfigKey<T?>) -> AnyPublisher<T.Value?, Never> {
         return ConfigValueOptionalPublisher(lobster: lobster, key: key)
             .eraseToAnyPublisher()
     }

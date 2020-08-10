@@ -11,3 +11,6 @@ pod-install:
 
 gen-docs:
 	bundle exec jazzy --config .jazzy.yaml
+
+pod-lib-lint:
+	bundle exec pod lib lint --allow-warnings

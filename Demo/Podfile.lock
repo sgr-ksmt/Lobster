@@ -35,8 +35,11 @@ PODS:
   - "GoogleUtilities/NSData+zlib (6.7.1)"
   - GoogleUtilities/UserDefaults (6.7.1):
     - GoogleUtilities/Logger
-  - Lobster (2.2):
-    - Firebase/RemoteConfig (~> 6.0)
+  - Lobster (3.0.0):
+    - Firebase/RemoteConfig (~> 6.29)
+    - Lobster/Core (= 3.0.0)
+  - Lobster/Core (3.0.0):
+    - Firebase/RemoteConfig (~> 6.29)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -48,7 +51,7 @@ DEPENDENCIES:
   - Lobster (from `../`)
 
 SPEC REPOS:
-  https://cdn.cocoapods.org/:
+  trunk:
     - Firebase
     - FirebaseABTesting
     - FirebaseCore
@@ -73,10 +76,10 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfig: 521ff38593bed36fcb6f466fb6fffa99a753d783
   GoogleDataTransport: af0c79193dc59acd37630b4833d0dc6912ae6bd5
   GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
-  Lobster: b7c48cf6ff48e80f269715ce80cdc3e087c7b501
+  Lobster: 07e4f45919483efa3b5d68ba74f424dd462a5de7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
 
 PODFILE CHECKSUM: c6efd56fba58da5968399c93e6f38bb7f1692d81
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
