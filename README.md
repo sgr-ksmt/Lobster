@@ -1,4 +1,5 @@
 # Lobster
+
 Type-safe Firebase-RemoteConfig helper library.
 
 
@@ -9,19 +10,23 @@ Type-safe Firebase-RemoteConfig helper library.
 [![CocoaPods](https://img.shields.io/badge/Cocoa%20Pods-compatible-4BC51D.svg?style=for-the-badge)](https://cocoapods.org/pods/Lobster)
 
 ## Feature
+
 - Can get a value from RemoteConfig / set a value to RemoteConfig to type-safe.
 - Easy to set default value to RemoteConfig by using key-value subscripting.
 - Custom type available ✨
   - `String`/`Int` enum
   - `Decodable`(read-only) and `Codable`.
 - Can manage expiration duration of config values.
+- Combine framwork support.
 
 ---
 
 ## Getting Started
 
 - [API Documentation](https://sgr-ksmt.github.io/Lobster/index.html)
-- [Example Apps](https://github.com/sgr-ksmt/Lobster/tree/master/Demo)
+- Example Apps
+  - [Swift Demo](https://github.com/sgr-ksmt/Lobster/tree/master/Demo)
+  - [SwiftUI + Combine Demo](https://github.com/sgr-ksmt/Lobster/tree/master/SwiftUI-Demo)
 
 ## Basic Usage
 
@@ -63,19 +68,37 @@ Lobster.shared.fetch { _ in
 }
 ```
 
-
 ## Tips for you
 
-### Fetch latest value from remote.
+### Combine
+
+You can get values from Lobster with Combine's stream.  
+Here is a sampl viewmodel class.
 
 ```swift
-Lobster.shared.fetch { [weak self] error in
-    if let error = error {
-        print(error)
+import Lobster
+import Combine
+
+extension ConfigKeys {
+    static let title = ConfigKey<String>("title")
+}
+
+final class ViewModel: ObservableObject {
+    @Published var title: String
+    private var cancellables: Set<AnyCancellable> = []
+
+    init() {
+        title = Lobster.shared[.titleText]
+
+        Lobster.shared.combine.fetched(.title)
+            .receive(on: RunLoop.main)
+            .assign(to: \.title, on: self)
+            .store(in: &cancellables)
     }
-    self?.titleLabel.text = Lobster.shared[.titleText]
 }
 ```
+
+NOTE: You need to install `Lobster/Combine` before using it.
 
 ### Get value with subscripting syntax.
 
@@ -333,6 +356,9 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'Lobster', '~> 3.0.0'
+
+# If you want to use extensions of Combine, please install below:
+pod 'Lobster/Combine'
 ```
 
 and run `pod install`
