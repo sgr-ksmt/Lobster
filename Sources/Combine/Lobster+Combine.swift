@@ -12,7 +12,7 @@ public struct CombineLobster {
 @available(iOS 13.0, *)
 public extension CombineLobster {
 
-    class CS<S: Subscriber> {
+    class Subscription<S: Subscriber> {
         var subscriber: S?
         var cancellable: AnyCancellable?
         let lobster: Lobster
@@ -38,7 +38,7 @@ public extension CombineLobster {
         }
     }
 
-    final class ConfigValueSubscription<S: Subscriber, T: ConfigSerializable>: CS<S>, Combine.Subscription where S.Input == T.Value, S.Failure == Error {
+    final class ConfigValueSubscription<S: Subscriber, T: ConfigSerializable>: Subscription<S>, Combine.Subscription where S.Input == T.Value, S.Failure == Error {
         private let key: ConfigKey<T>
         init(subscriber: S, lobster: Lobster, key: ConfigKey<T>) {
             self.key = key
@@ -77,7 +77,7 @@ public extension CombineLobster {
         }
     }
 
-    final class ConfigValueOptionalSubscription<S: Subscriber, T: ConfigSerializable>: CS<S>, Combine.Subscription where S.Input == T.Value?, S.Failure == Error {
+    final class ConfigValueOptionalSubscription<S: Subscriber, T: ConfigSerializable>: Subscription<S>, Combine.Subscription where S.Input == T.Value?, S.Failure == Error {
         private let key: ConfigKey<T?>
         init(subscriber: S, lobster: Lobster, key: ConfigKey<T?>) {
             self.key = key
