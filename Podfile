@@ -1,10 +1,10 @@
-platform :ios, '9'
+platform :ios, '11'
 
 inhibit_all_warnings!
 use_frameworks!
 
 target 'Lobster' do
-  pod 'Firebase/RemoteConfig', '~> 6.0'
+  pod 'Firebase/RemoteConfig', '~> 6.29'
   target 'LobsterTests' do
     inherit! :search_paths
   end
