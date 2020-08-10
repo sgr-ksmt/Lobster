@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ConfigRawRepresentableBridge Class Reference</title>
+    <title>CombineLobster Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/ConfigRawRepresentableBridge" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/CombineLobster" class="dashAnchor"></a>
 
-    <a title="ConfigRawRepresentableBridge Class Reference"></a>
+    <a title="CombineLobster Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Lobster Reference</a>
       <img class="carat" src="../img/carat.png" />
-      ConfigRawRepresentableBridge Class Reference
+      CombineLobster Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -184,15 +184,18 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>ConfigRawRepresentableBridge</h1>
+            <h1>CombineLobster</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">ConfigRawRepresentableBridge</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Classes/ConfigBridge.html">ConfigBridge</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">RawRepresentable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="n">iOS</span> <span class="mf">13.0</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CombineLobster</span></code></pre>
 
                 </div>
               </div>
-            <p>ConfigBridge for <code>RawRepresentable</code>(Enum)</p>
+            <p>CombineLobster is a extension class with Combine.</p>
+
+<p>It allows you handle Lobster with Combine</p>
 
           </div>
         </section>
@@ -204,9 +207,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7Lobster28ConfigRawRepresentableBridgeC4save3key5value13defaultsStoreySS_xSgAA08DefaultsJ0CtF"></a>
-                    <a name="//apple_ref/swift/Method/save(key:value:defaultsStore:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7Lobster28ConfigRawRepresentableBridgeC4save3key5value13defaultsStoreySS_xSgAA08DefaultsJ0CtF">save(key:<wbr>value:<wbr>defaultsStore:<wbr>)</a>
+                    <a name="/s:7Lobster07CombineA0V7fetched0B012AnyPublisherVyyts5Error_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/fetched()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster07CombineA0V7fetched0B012AnyPublisherVyyts5Error_pGyF">fetched()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -214,15 +217,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Returns Publisher that tells you that Lobster has fetched latest valeus from RemoteConfig.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">?,</span> <span class="n">defaultsStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/DefaultsStore.html">DefaultsStore</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">fetched</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A publisher <code>&lt;Void, Error&gt;</code></p>
                       </div>
                     </section>
                   </div>
@@ -230,9 +238,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7Lobster28ConfigRawRepresentableBridgeC3get3key06remoteB0xSgSS_So09FIRRemoteB0CtF"></a>
-                    <a name="//apple_ref/swift/Method/get(key:remoteConfig:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7Lobster28ConfigRawRepresentableBridgeC3get3key06remoteB0xSgSS_So09FIRRemoteB0CtF">get(key:<wbr>remoteConfig:<wbr>)</a>
+                    <a name="/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueQzs5NeverOGAA9ConfigKeyCyxGAA0H12SerializableRzlF"></a>
+                    <a name="//apple_ref/swift/Method/fetched(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueQzs5NeverOGAA9ConfigKeyCyxGAA0H12SerializableRzlF">fetched(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -240,15 +248,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Returns Publisher that gives you a value matched a config key after fetching from RemoteConfig.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">remoteConfig</span><span class="p">:</span> <span class="kt">RemoteConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">fetched</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Classes/ConfigKey.html">ConfigKey</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Value</span><span class="p">,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigSerializable.html">ConfigSerializable</a></span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A publisher <code>&lt;T.Value, Error&gt;</code></p>
                       </div>
                     </section>
                   </div>
@@ -256,9 +269,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7Lobster28ConfigRawRepresentableBridgeC3get3key13defaultsStorexSgSS_AA08DefaultsI0CtF"></a>
-                    <a name="//apple_ref/swift/Method/get(key:defaultsStore:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7Lobster28ConfigRawRepresentableBridgeC3get3key13defaultsStorexSgSS_AA08DefaultsI0CtF">get(key:<wbr>defaultsStore:<wbr>)</a>
+                    <a name="/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueQzSgs5NeverOGAA9ConfigKeyCyxSgGAA0H12SerializableRzlF"></a>
+                    <a name="//apple_ref/swift/Method/fetched(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueQzSgs5NeverOGAA9ConfigKeyCyxSgGAA0H12SerializableRzlF">fetched(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -266,15 +279,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Returns Publisher that gives you an optional value matched a config key after fetching from RemoteConfig.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">defaultsStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/DefaultsStore.html">DefaultsStore</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">fetched</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Classes/ConfigKey.html">ConfigKey</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="p">?</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Value</span><span class="p">?,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigSerializable.html">ConfigSerializable</a></span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A publisher <code>&lt;T.Value?, Error&gt;</code></p>
                       </div>
                     </section>
                   </div>

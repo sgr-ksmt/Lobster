@@ -169,6 +169,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/CombineLobster.html">CombineLobster</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -178,69 +186,100 @@
             
             <h1 id='lobster' class='heading'>Lobster</h1>
 
-<p>Type-safe Firebase-RemoteConfig helper library</p>
+<p>Type-safe Firebase-RemoteConfig helper library.</p>
 
-<p><a href="https://github.com/sgr-ksmt/Lobster/releases"><img src="https://img.shields.io/github/release/sgr-ksmt/Lobster.svg" alt="GitHub release"></a>
-<img src="https://img.shields.io/badge/language-Swift%205.0-orange.svg" alt="Language">
-<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a>
-<a href="https://cocoapods.org/pods/Lobster"><img src="https://img.shields.io/badge/Cocoa%20Pods-%E2%9C%93-4BC51D.svg?style=flat" alt="CocoaPods"></a>
-<a href="https://cocoapods.org/pods/Lobster"><img src="https://img.shields.io/cocoapods/dt/Lobster.svg" alt="CocoaPodsDL"></a></p>
+<p><a href="https://github.com/sgr-ksmt/Lobster/releases"><img src="https://img.shields.io/github/release/sgr-ksmt/Lobster.svg?style=for-the-badge" alt="GitHub release"></a>
+<img src="https://img.shields.io/badge/language-Swift%205.0-orange.svg?style=for-the-badge" alt="Language">  </p>
+
+<p><a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=for-the-badge" alt="Carthage Compatible"></a>
+<a href="https://cocoapods.org/pods/Lobster"><img src="https://img.shields.io/badge/Cocoa%20Pods-compatible-4BC51D.svg?style=for-the-badge" alt="CocoaPods"></a></p>
 <h2 id='feature' class='heading'>Feature</h2>
 
 <ul>
-<li>Make config value <strong>type safe.</strong> ✨</li>
-<li>Easy to set default value by key-value subscripting.</li>
+<li>Can get a value from RemoteConfig / set a value to RemoteConfig to type-safe.</li>
+<li>Easy to set default value to RemoteConfig by using key-value subscripting.</li>
 <li>Custom type available ✨
 
 <ul>
 <li><code>String</code>/<code>Int</code> enum</li>
 <li><code>Decodable</code>(read-only) and <code>Codable</code>.</li>
 </ul></li>
+<li>Can manage expiration duration of config values.</li>
+<li>Combine framwork support.</li>
 </ul>
 
-<p><strong>There&rsquo;s only three steps to using Lobster:</strong></p>
+<hr>
+<h2 id='getting-started' class='heading'>Getting Started</h2>
 
 <ul>
-<li>Define <code><a href="Classes/ConfigKey.html">ConfigKey</a></code></li>
+<li><a href="https://sgr-ksmt.github.io/Lobster/index.html">API Documentation</a></li>
+<li>Example Apps
+
+<ul>
+<li><a href="https://github.com/sgr-ksmt/Lobster/tree/master/Demo">Swift Demo</a></li>
+<li><a href="https://github.com/sgr-ksmt/Lobster/tree/master/SwiftUI-Demo">SwiftUI + Combine Demo</a></li>
+</ul></li>
 </ul>
+<h2 id='basic-usage' class='heading'>Basic Usage</h2>
+
+<p><strong>You can integrate Lobster in a few steps implementation:</strong></p>
+<h3 id='1-define-code-configkey-code' class='heading'>1. Define <code><a href="Classes/ConfigKey.html">ConfigKey</a></code></h3>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ConfigKeys</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">welcomeTitle</span> <span class="o">=</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"welcome_title"</span><span class="p">)</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">welcomeTitleColor</span> <span class="o">=</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">UIColor</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"welcome_title_color"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
+<h3 id='2-register-value-to-firebase-project' class='heading'>2. Register value to Firebase Project</h3>
 
-<ul>
-<li>Define value in Firebase project</li>
-</ul>
+<p><a href="https://console.firebase.google.com/">Go to Firebase Project</a> and set values you want to get.</p>
 
-<p><img src="docs/img1.png" alt=""></p>
+<p><img src="readme-docs/img1.png" alt=""></p>
+<h3 id='3-let-39-s-use-lobster' class='heading'>3. Let&rsquo;s use Lobster</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Lobster</span>
 
-<ul>
-<li>Just use it!</li>
-</ul>
-<pre class="highlight swift"><code><span class="c1">// Set default value</span>
+<span class="c1">// Set default value</span>
 <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="k">default</span><span class="p">:</span> <span class="o">.</span><span class="n">welcomeTitle</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Welcome"</span>
 <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="k">default</span><span class="p">:</span> <span class="o">.</span><span class="n">welcomeTitleColor</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="n">black</span>
+
 <span class="k">self</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="o">.</span><span class="n">welcomeTitle</span><span class="p">]</span>
 
 <span class="c1">// Fetch remote-config</span>
-<span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="n">_</span> <span class="k">in</span>
-    <span class="k">self</span><span class="p">?</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="o">.</span><span class="n">welcomeTitle</span><span class="p">]</span>
-    <span class="k">self</span><span class="p">?</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="o">.</span><span class="n">welcomeTitleColor</span><span class="p">]</span>
+<span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span>
+    <span class="n">dispatchQueue</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">async</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
+        <span class="k">self</span><span class="p">?</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="o">.</span><span class="n">welcomeTitle</span><span class="p">]</span>
+        <span class="k">self</span><span class="p">?</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="o">.</span><span class="n">welcomeTitleColor</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='tips-for-you' class='heading'>Tips for you</h2>
+<h3 id='combine' class='heading'>Combine</h3>
+
+<p>You can get values from Lobster with Combine&rsquo;s stream.<br>
+Here is a sampl viewmodel class.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Lobster</span>
+<span class="kd">import</span> <span class="kt">Combine</span>
+
+<span class="kd">extension</span> <span class="kt">ConfigKeys</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">title</span> <span class="o">=</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"title"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">final</span> <span class="kd">class</span> <span class="kt">ViewModel</span><span class="p">:</span> <span class="kt">ObservableObject</span> <span class="p">{</span>
+    <span class="kd">@Published</span> <span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">cancellables</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">AnyCancellable</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="o">.</span><span class="n">titleText</span><span class="p">]</span>
+
+        <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">combine</span><span class="o">.</span><span class="nf">fetched</span><span class="p">(</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">receive</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="kt">RunLoop</span><span class="o">.</span><span class="n">main</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">assign</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="p">\</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="nv">on</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">store</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">cancellables</span><span class="p">)</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 
-<p>You can get Type-Safed value through subscripting syntax<code>([])</code> by defining <code><a href="Classes/ConfigKey.html">ConfigKey</a></code>.</p>
-<h2 id='how-to-use' class='heading'>How to use</h2>
-<h3 id='fetch-latest-value-from-remote' class='heading'>Fetch latest value from remote.</h3>
-<pre class="highlight swift"><code><span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="n">error</span> <span class="k">in</span>
-    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
-        <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">self</span><span class="p">?</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="o">.</span><span class="n">titleText</span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre>
-<h3 id='get-value' class='heading'>Get value</h3>
+<p>NOTE: You need to install <code>Lobster/Combine</code> before using it.</p>
+<h3 id='get-value-with-subscripting-syntax' class='heading'>Get value with subscripting syntax.</h3>
 
 <p>Use subscripting syntax.</p>
 
@@ -298,8 +337,9 @@
 </code></pre>
 <h3 id='isstaled' class='heading'>isStaled</h3>
 
-<p>If you set <code>isStaled</code> to true, Lobster will fetch remote value ignoring <code>fetchExpirationDuration</code>.
-<code>isStaled</code> will be set to <code>false</code> after fetched remote value.</p>
+<p>If you set <code>isStaled</code> to true, Lobster will fetch remote value ignoring <code>fetchExpirationDuration</code>.<br>
+That is, You can retrieve config values immediately when you call <code>fetch</code> after You set <code>isStales</code> to true.<br>
+And <code>isStaled</code> will be set to <code>false</code> after fetched remote value.</p>
 <pre class="highlight swift"><code><span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">fetchExpirationDuration</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">12</span>
 
 <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">isStaled</span> <span class="o">=</span> <span class="kc">true</span>
@@ -321,6 +361,7 @@
 <li>Bool</li>
 <li>Data</li>
 <li>URL</li>
+<li>UIColor</li>
 <li>enum(String/Int)</li>
 <li>Decodable Object</li>
 <li>Codable Object</li>
@@ -349,14 +390,14 @@
 </ul>
 <h4 id='url' class='heading'>URL</h4>
 
-<p>Supports text: e.g. <code>&quot;https://example.com&quot;</code>.</p>
+<p>Supports text: </p>
 
-<p><img src="docs/img2.png" alt=""></p>
+<p><img src="readme-docs/img2.png" alt=""></p>
 <h4 id='uicolor' class='heading'>UIColor</h4>
 
 <p>Supports only HEX string like <code>&quot;#FF00FF&quot;</code>.</p>
 
-<p><img src="docs/img3.png" alt=""></p>
+<p><img src="readme-docs/img3.png" alt=""></p>
 <h4 id='enum' class='heading'>Enum</h4>
 
 <p>supports <code>Int</code> or <code>String</code> rawValue.
@@ -368,10 +409,17 @@ If you want to use other enum, see <strong><em>Use custom value</em></strong>.</
 <h4 id='codable-compliant-type' class='heading'>Codable compliant type</h4>
 
 <p>can set default value / read config value</p>
-<h2 id='use-custom-value' class='heading'>Use custom value</h2>
+<h2 id='advanced-usage' class='heading'>Advanced Usage</h2>
 
-<p>You can easily define custom key in order to get remote value.</p>
-<h3 id='ex-1-enum' class='heading'>Ex 1: enum</h3>
+<p>You can easily get/set a value of custom type.<br>
+If you want to get/set <code>ValueType</code> (It&rsquo;s a custom type that Lobster doesn&rsquo;t support), you need to implement these steps:</p>
+
+<ul>
+<li>Conform <code><a href="Protocols/ConfigSerializable.html">ConfigSerializable</a></code> to the <code>ValueType</code></li>
+<li>Create `ConfigBridge<ValueType></li>
+<li>Define <code><a href="Classes/ConfigKey.html">ConfigKey&lt;ValueType&gt;</a></code></li>
+</ul>
+<h3 id='example-case-1-enum' class='heading'>Example case 1: Enum</h3>
 <pre class="highlight swift"><code><span class="c1">// Adapt protocol `ConfigSerializable`</span>
 <span class="kd">enum</span> <span class="kt">Status</span><span class="p">:</span> <span class="kt">ConfigSerializable</span> <span class="p">{</span>
     <span class="c1">// Define `_config`, `_configArray`(If needed).</span>
@@ -439,7 +487,7 @@ If you want to use other enum, see <strong><em>Use custom value</em></strong>.</
 </code></pre>
 
 <p>To define subscript makes it possible to access custom enum.</p>
-<h3 id='ex-2-decodable-compliant-type' class='heading'>Ex 2: Decodable compliant type</h3>
+<h3 id='example-case-2-decodable-compliant-type' class='heading'>Example Case 2: Decodable compliant type</h3>
 
 <p>Just adapt <code>Decodable</code> or <code>Codable</code> to class or struct and adapt <code><a href="Protocols/ConfigSerializable.html">ConfigSerializable</a></code></p>
 <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Person</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">ConfigSerializable</span> <span class="p">{</span>
@@ -455,16 +503,7 @@ If you want to use other enum, see <strong><em>Use custom value</em></strong>.</
 
 <p>Define config value like below in console:</p>
 
-<p><img src="docs/img5.png" alt=""></p>
-<h2 id='demo' class='heading'>Demo</h2>
-
-<p>Required: CocoaPods 1.5 or higher.</p>
-<pre class="highlight shell"><code><span class="nv">$ </span><span class="nb">cd </span>path/to/Lobster
-<span class="nv">$ </span>bundle <span class="nb">install</span>
-<span class="nv">$ </span><span class="nb">cd</span> ./Demo
-<span class="nv">$ </span>bundle <span class="nb">exec </span>pod <span class="nb">install</span>
-<span class="nv">$ </span>open Demo.xcworkspace
-</code></pre>
+<p><img src="readme-docs/img5.png" alt=""></p>
 <h2 id='requirements' class='heading'>Requirements</h2>
 
 <ul>
@@ -473,23 +512,36 @@ If you want to use other enum, see <strong><em>Use custom value</em></strong>.</
 <li>Swift 5.0</li>
 </ul>
 <h2 id='installation' class='heading'>Installation</h2>
-<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+<h3 id='a-href-https-cocoapods-org-cocoapods-a' class='heading'><a href="https://cocoapods.org/">CocoaPods</a></h3>
 
 <p><strong>Lobster</strong> is available through <a href="http://cocoapods.org">CocoaPods</a>. To install
 it, simply add the following line to your Podfile:</p>
-<pre class="highlight ruby"><code><span class="c1"># Firebase iOS SDK v6.3.0 or higher</span>
-<span class="n">pod</span> <span class="s1">'Lobster'</span><span class="p">,</span> <span class="s1">'~&gt; 2.2'</span>
-<span class="c1"># Firebase iOS SDK v5.x ~ v6.2.0</span>
-<span class="n">pod</span> <span class="s1">'Lobster'</span><span class="p">,</span> <span class="s1">'~&gt; 2.1'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Lobster'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0.0'</span>
+
+<span class="c1"># If you want to use extensions of Combine, please install below:</span>
+<span class="n">pod</span> <span class="s1">'Lobster/Combine'</span>
 </code></pre>
 
 <p>and run <code>pod install</code></p>
-<h3 id='manually-install' class='heading'>Manually Install</h3>
+<h2 id='development' class='heading'>Development</h2>
 
-<p>Download all <code>*.swift</code> files and put your project.</p>
-<h2 id='special-thanks' class='heading'>Special Thanks</h2>
+<ul>
+<li>1: setup project</li>
+</ul>
+<pre class="highlight shell"><code><span class="nv">$ </span><span class="nb">cd </span>path/to/Lobster
+<span class="nv">$ </span>make
+</code></pre>
 
-<p>Lobster is inspired by <a href="https://github.com/radex/SwiftyUserDefaults">SwiftyUserDefaults</a></p>
+<ul>
+<li>2: prepare <code>GoogleService-Info.plist</code></li>
+</ul>
+
+<p>Due to security issues, I&rsquo;m not providing <code>GoogleService-Info.plist</code> file.
+So please prepare it yourself in your Firebase Project.<br>
+And Please make Firebase App&rsquo;s bundle identifier <code>-.test.LobsterTests</code>.<br>
+After that, put it into <code>LobsterTests/</code>.</p>
+
+<p><img src="readme-docs/img6.png" width="500" /></p>
 <h2 id='communication' class='heading'>Communication</h2>
 
 <ul>
@@ -508,7 +560,7 @@ it, simply add the following line to your Podfile:</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/sgr-ksmt" target="_blank" rel="external">Suguru Kishimoto</a>. All rights reserved. (Last updated: 2020-08-09)</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/sgr-ksmt" target="_blank" rel="external">Suguru Kishimoto</a>. All rights reserved. (Last updated: 2020-08-10)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
