@@ -12,29 +12,47 @@ public struct CombineLobster {
 @available(iOS 13.0, *)
 public extension CombineLobster {
 
-    final class ConfigValueSubscription<S: Subscriber, T: ConfigSerializable>: Combine.Subscription where S.Input == T.Value, S.Failure == Error {
-        
-        private var subscriber: S?
-        private var cancellable: AnyCancellable?
-        private let lobster: Lobster
+    class CS<S: Subscriber> {
+        var subscriber: S?
+        var cancellable: AnyCancellable?
+        let lobster: Lobster
 
-        fileprivate init(subscriber: S, lobster: Lobster, key: ConfigKey<T>) {
+        fileprivate init(subscriber: S, lobster: Lobster) {
             self.subscriber = subscriber
             self.lobster = lobster
 
-            cancellable = lobster.combine.fetched()
+            cancellable = lobster.combine
+                .fetched()
                 .sink(
                     receiveCompletion: { _ in },
-                    receiveValue: {
-                        _ = subscriber.receive(lobster[key])
-                })
+                    receiveValue: { [weak self] in self?.recerived() }
+                )
+        }
+
+        func cancelSubscription() {
+            cancellable?.cancel()
+            subscriber = nil
+        }
+
+        func recerived() {
+        }
+    }
+
+    final class ConfigValueSubscription<S: Subscriber, T: ConfigSerializable>: CS<S>, Combine.Subscription where S.Input == T.Value, S.Failure == Error {
+        private let key: ConfigKey<T>
+        init(subscriber: S, lobster: Lobster, key: ConfigKey<T>) {
+            self.key = key
+            super.init(subscriber: subscriber, lobster: lobster)
         }
 
         public func request(_ demand: Subscribers.Demand) {}
 
         public func cancel() {
-            cancellable?.cancel()
-            subscriber = nil
+            super.cancelSubscription()
+        }
+
+        override func recerived() {
+            _ = subscriber?.receive(lobster[key])
         }
     }
 
@@ -59,29 +77,21 @@ public extension CombineLobster {
         }
     }
 
-    final class ConfigValueOptionalSubscription<S: Subscriber, T: ConfigSerializable>: Combine.Subscription where S.Input == T.Value?, S.Failure == Error {
-
-        private var subscriber: S?
-        private var cancellable: AnyCancellable?
-        private let lobster: Lobster
-
-        fileprivate init(subscriber: S, lobster: Lobster, key: ConfigKey<T?>) {
-            self.subscriber = subscriber
-            self.lobster = lobster
-
-            cancellable = lobster.combine.fetched()
-                .sink(
-                    receiveCompletion: { _ in },
-                    receiveValue: {
-                        _ = subscriber.receive(lobster[key])
-                })
+    final class ConfigValueOptionalSubscription<S: Subscriber, T: ConfigSerializable>: CS<S>, Combine.Subscription where S.Input == T.Value?, S.Failure == Error {
+        private let key: ConfigKey<T?>
+        init(subscriber: S, lobster: Lobster, key: ConfigKey<T?>) {
+            self.key = key
+            super.init(subscriber: subscriber, lobster: lobster)
         }
 
         public func request(_ demand: Subscribers.Demand) {}
 
         public func cancel() {
-            cancellable?.cancel()
-            subscriber = nil
+            super.cancelSubscription()
+        }
+
+        override func recerived() {
+            _ = subscriber?.receive(lobster[key])
         }
     }
 
@@ -138,22 +148,3 @@ public extension CombineLobster {
             .eraseToAnyPublisher()
     }
 }
-
-
-//extension ConfigKeys {
-//    static let a = ConfigKey<String>("a")
-//    static let b = ConfigKey<String?>("b")
-//}
-//
-//@available(iOS 13.0, *)
-//class hoge {
-//    func hoge() {
-//        Lobster.shared.combine.fetched(key: .a).sink(receiveCompletion: { _ in }, receiveValue: { a in
-//
-//        })
-//        Lobster.shared.combine.fetched(key: .b).sink(receiveCompletion: { _ in }, receiveValue: { a in
-//
-//        })
-//
-//    }
-//}
