@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3ABDB2D624E13D1800BF12E1 /* SwiftUI-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABDB2D624E13D1800BF12E1 /* Lobster Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lobster Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABDB2D924E13D1800BF12E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3ABDB2DB24E13D1800BF12E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3ABDB2DD24E13D1800BF12E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		3ABDB2D724E13D1800BF12E1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3ABDB2D624E13D1800BF12E1 /* SwiftUI-Demo.app */,
+				3ABDB2D624E13D1800BF12E1 /* Lobster Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,7 +127,7 @@
 			);
 			name = "SwiftUI-Demo";
 			productName = "SwiftUI-Demo";
-			productReference = 3ABDB2D624E13D1800BF12E1 /* SwiftUI-Demo.app */;
+			productReference = 3ABDB2D624E13D1800BF12E1 /* Lobster Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -374,8 +374,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.su-tech.SwiftUI-Demo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = demo.lobster;
+				PRODUCT_NAME = "Lobster Demo";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -395,8 +395,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.su-tech.SwiftUI-Demo";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = demo.lobster;
+				PRODUCT_NAME = "Lobster Demo";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
