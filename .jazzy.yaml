@@ -1,0 +1,66 @@
+author: Suguru Kishimoto
+author_url: https://github.com/sgr-ksmt
+github_url: https://github.com/sgr-ksmt/Lobster
+module: Lobster
+readme: README.md
+exclude:
+  - Sources/Core/Extensions/*.swift
+output: docs
+theme: fullwidth
+clean: true
+skip_undocumented: true
+min_acl: public
+xcodebuild_arguments:
+  - -sdk
+  - iphonesimulator
+  - -scheme
+  - Lobster
+  - -workspace
+  - Lobster.xcworkspace
+custom_categories:
+  - name: Lobster
+    children:
+      - Lobster
+  - name: Config Key
+    children:
+      - ConfigKey
+      - ConfigKeys
+
+  - name: Store
+    children:
+      - DefaultsStore
+      - StaleValueStore
+
+  - name: ConfigSerializable
+    children:
+      - ConfigSerializable
+
+  - name: ConfigSerializable Extensions
+    children:
+      - String
+      - Int
+      - Double
+      - Float
+      - Data
+      - URL
+      - Array
+      - Bool
+      - UIColor
+      - Optional
+
+  - name: Config Bridges
+    children:
+      - ConfigBridge
+      - ConfigStringBridge
+      - ConfigIntBridge
+      - ConfigDoubleBridge
+      - ConfigFloatBridge
+      - ConfigBoolBridge
+      - ConfigDataBridge
+      - ConfigURLBridge
+      - ConfigColorBridge
+      - ConfigRawRepresentableBridge
+      - ConfigDecodableBridge
+      - ConfigCodableBridge
+      - ConfigArrayBridge
+      - ConfigRawRepresentableArrayBridge
