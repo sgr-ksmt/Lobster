@@ -66,4 +66,4 @@ custom_categories:
       - ConfigRawRepresentableArrayBridge
   - name: Combine Extension
     children:
-      - ConbineLobster
+      - CombineLobster
