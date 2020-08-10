@@ -38,6 +38,9 @@ PODS:
   - Lobster (3.0.0):
     - Firebase/RemoteConfig (~> 6.29)
     - Lobster/Core (= 3.0.0)
+  - Lobster/Combine (3.0.0):
+    - Firebase/RemoteConfig (~> 6.29)
+    - Lobster/Core
   - Lobster/Core (3.0.0):
     - Firebase/RemoteConfig (~> 6.29)
   - nanopb (1.30905.0):
@@ -49,6 +52,7 @@ PODS:
 
 DEPENDENCIES:
   - Lobster (from `../`)
+  - Lobster/Combine (from `../`)
 
 SPEC REPOS:
   trunk:
@@ -80,6 +84,6 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
 
-PODFILE CHECKSUM: c6efd56fba58da5968399c93e6f38bb7f1692d81
+PODFILE CHECKSUM: f2cd74a38c6d8582e7f53b2fc354cd6a8523dd30
 
 COCOAPODS: 1.9.3

@@ -38,7 +38,7 @@ public extension CombineLobster {
         }
     }
 
-    final class ConfigValueSubscription<S: Subscriber, T: ConfigSerializable>: Subscription<S>, Combine.Subscription where S.Input == T.Value, S.Failure == Error {
+    final class ConfigValueSubscription<S: Subscriber, T: ConfigSerializable>: Subscription<S>, Combine.Subscription where S.Input == T.Value, S.Failure == Never {
         private let key: ConfigKey<T>
         init(subscriber: S, lobster: Lobster, key: ConfigKey<T>) {
             self.key = key
@@ -58,7 +58,7 @@ public extension CombineLobster {
 
     struct ConfigValuePublisher<T: ConfigSerializable>: Combine.Publisher {
         public typealias Output = T.Value
-        public typealias Failure = Error
+        public typealias Failure = Never
 
         private let lobster: Lobster
         private let key: ConfigKey<T>
@@ -77,7 +77,7 @@ public extension CombineLobster {
         }
     }
 
-    final class ConfigValueOptionalSubscription<S: Subscriber, T: ConfigSerializable>: Subscription<S>, Combine.Subscription where S.Input == T.Value?, S.Failure == Error {
+    final class ConfigValueOptionalSubscription<S: Subscriber, T: ConfigSerializable>: Subscription<S>, Combine.Subscription where S.Input == T.Value?, S.Failure == Never {
         private let key: ConfigKey<T?>
         init(subscriber: S, lobster: Lobster, key: ConfigKey<T?>) {
             self.key = key
@@ -97,7 +97,7 @@ public extension CombineLobster {
 
     struct ConfigValueOptionalPublisher<T: ConfigSerializable>: Combine.Publisher {
         public typealias Output = T.Value?
-        public typealias Failure = Error
+        public typealias Failure = Never
 
         private let lobster: Lobster
         private let key: ConfigKey<T?>
@@ -138,12 +138,12 @@ public extension CombineLobster {
             .eraseToAnyPublisher()
     }
 
-    func fetched<T: ConfigSerializable>(_ key: ConfigKey<T>) -> AnyPublisher<T.Value, Error> {
+    func fetched<T: ConfigSerializable>(_ key: ConfigKey<T>) -> AnyPublisher<T.Value, Never> {
         return ConfigValuePublisher(lobster: lobster, key: key)
             .eraseToAnyPublisher()
     }
 
-    func fetched<T: ConfigSerializable>(_ key: ConfigKey<T?>) -> AnyPublisher<T.Value?, Error> {
+    func fetched<T: ConfigSerializable>(_ key: ConfigKey<T?>) -> AnyPublisher<T.Value?, Never> {
         return ConfigValueOptionalPublisher(lobster: lobster, key: key)
             .eraseToAnyPublisher()
     }
