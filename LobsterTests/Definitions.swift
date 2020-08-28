@@ -69,11 +69,11 @@ extension ConfigKeys {
     static let network = ConfigKey<NetWork>("network")
     static let networkOptional = ConfigKey<NetWork?>("network_optional")
 
-    static let settings = ConfigKey<Settings>("settings")
-    static let settingsOptional = ConfigKey<Settings?>("settings_optional")
+    static let settings = DecodableConfigKey<Settings>("settings")
+    static let settingsOptional = DecodableConfigKey<Settings?>("settings_optional")
 
-    static let person = ConfigKey<Person>("person")
-    static let personOptional = ConfigKey<Person?>("person_optional")
+    static let person = CodableConfigKey<Person>("person")
+    static let personOptional = CodableConfigKey<Person?>("person_optional")
 
     static let names = ConfigKey<[String]>("names")
     static let namesOptional = ConfigKey<[String]?>("names_optional")
@@ -84,8 +84,8 @@ extension ConfigKeys {
     static let directions = ConfigKey<[Direction]>("directions")
     static let directionsOptional = ConfigKey<[Direction]?>("directions_optional")
 
-    static let persons = ConfigKey<[Person]>("persons")
-    static let personsOptional = ConfigKey<[Person]?>("persons_optional")
+    static let persons = CodableConfigKey<[Person]>("persons")
+    static let personsOptional = CodableConfigKey<[Person]?>("persons_optional")
 }
 
 extension ConfigKeys {
@@ -93,5 +93,5 @@ extension ConfigKeys {
     static let titleOptional = ConfigKey<String?>("title_optional")
     static let count = ConfigKey<Int>("count")
     static let friendNames = ConfigKey<[String]>("friend_names")
-    static let mike = ConfigKey<Person>("mike")
+    static let mike = CodableConfigKey<Person>("mike")
 }

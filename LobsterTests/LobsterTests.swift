@@ -233,20 +233,16 @@ class LobsterTests: XCTestCase {
 """
         XCTAssertEqual(Lobster.shared[safe: .settings], nil)
         XCTAssertEqual(Lobster.shared[safeConfig: .settings], nil)
-        XCTAssertEqual(Lobster.shared[safeDefault: .settings], nil)
         Lobster.shared.remoteConfig.setDefaults([ConfigKeys.settings._key: NSString(string: settingsJson)])
         XCTAssertEqual(Lobster.shared[safe: .settings]?.flag, true)
         XCTAssertEqual(Lobster.shared[safe: .settings]?.minimumVersion, "1.0.1")
         XCTAssertEqual(Lobster.shared[safeConfig: .settings]?.flag, true)
         XCTAssertEqual(Lobster.shared[safeConfig: .settings]?.minimumVersion, "1.0.1")
-        XCTAssertEqual(Lobster.shared[safeDefault: .settings], nil)
 
         XCTAssertEqual(Lobster.shared[.settingsOptional], nil)
         XCTAssertEqual(Lobster.shared[safe: .settingsOptional], nil)
         XCTAssertEqual(Lobster.shared[config: .settingsOptional], nil)
-        XCTAssertEqual(Lobster.shared[default: .settingsOptional], nil)
         XCTAssertEqual(Lobster.shared[safeConfig: .settingsOptional], nil)
-        XCTAssertEqual(Lobster.shared[safeDefault: .settingsOptional], nil)
         Lobster.shared.remoteConfig.setDefaults([ConfigKeys.settingsOptional._key: NSString(string: settingsJson)])
         XCTAssertEqual(Lobster.shared[.settingsOptional]?.flag, true)
         XCTAssertEqual(Lobster.shared[.settingsOptional]?.minimumVersion, "1.0.1")
@@ -254,10 +250,8 @@ class LobsterTests: XCTestCase {
         XCTAssertEqual(Lobster.shared[safe: .settingsOptional]?.minimumVersion, "1.0.1")
         XCTAssertEqual(Lobster.shared[config: .settingsOptional]?.flag, true)
         XCTAssertEqual(Lobster.shared[config: .settingsOptional]?.minimumVersion, "1.0.1")
-        XCTAssertEqual(Lobster.shared[default: .settingsOptional], nil)
         XCTAssertEqual(Lobster.shared[safeConfig: .settingsOptional]?.flag, true)
         XCTAssertEqual(Lobster.shared[safeConfig: .settingsOptional]?.minimumVersion, "1.0.1")
-        XCTAssertEqual(Lobster.shared[safeDefault: .settingsOptional], nil)
     }
 
     func testCodableValueKey() {
