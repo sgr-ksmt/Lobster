@@ -15,9 +15,23 @@ import Foundation
 ///         static let buttonColor = ConfigKey<UIColor>("button_color")
 ///         static let experimentEnabled = ConfigKey<Bool>("experiment_enabled")
 ///     }
-open class ConfigKeys {
+public class ConfigKeys {
     init() {}
 }
+
+public class ConfigKeyBase<ValueType: ConfigSerializable>: ConfigKeys {
+
+    /// A key.
+    public let _key: String
+
+    /// Initializer
+    /// - parameters:
+    ///   - key: A key
+    public init(_ key: String) {
+        self._key = key
+    }
+}
+
 
 /// ConfigKey
 ///
@@ -33,15 +47,27 @@ open class ConfigKeys {
 ///
 ///     let title = Lobster.shared[.title]
 ///     print(String(describing: type(of: title))) // String
-public class ConfigKey<ValueType: ConfigSerializable>: ConfigKeys {
+public class ConfigKey<ValueType: ConfigSerializable>: ConfigKeyBase<ValueType> {
+}
 
-    /// A key.
-    public let _key: String
+public class DecodableConfigKey<ValueType: ConfigSerializable & Decodable>: ConfigKeyBase<ValueType> {
 
-    /// Initializer
-    /// - parameters:
-    ///   - key: A key
-    public init(_ key: String) {
-        self._key = key
+    public let decoder: JSONDecoder
+
+    public init(_ key: String, decoder: JSONDecoder = .init()) {
+        self.decoder = decoder
+        super.init(key)
+    }
+}
+
+public class CodableConfigKey<ValueType: ConfigSerializable & Codable>: ConfigKeyBase<ValueType> {
+
+    public let decoder: JSONDecoder
+    public let encoder: JSONEncoder
+
+    public init(_ key: String, decoder: JSONDecoder = .init(), encoder: JSONEncoder = .init()) {
+        self.decoder = decoder
+        self.encoder = encoder
+        super.init(key)
     }
 }
