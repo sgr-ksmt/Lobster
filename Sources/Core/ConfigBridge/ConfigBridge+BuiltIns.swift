@@ -8,7 +8,7 @@ import FirebaseRemoteConfig
 public final class ConfigStringBridge: ConfigBridge<String> {
     public typealias T = String
 
-    public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
+    public override func save(key: String, value: String?, defaultsStore: DefaultsStore) {
         defaultsStore[key] = value
     }
 
@@ -25,7 +25,7 @@ public final class ConfigStringBridge: ConfigBridge<String> {
 public final class ConfigIntBridge: ConfigBridge<Int> {
     public typealias T = Int
 
-    public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
+    public override func save(key: String, value: Int?, defaultsStore: DefaultsStore) {
         defaultsStore[key] = value
     }
 
@@ -42,7 +42,7 @@ public final class ConfigIntBridge: ConfigBridge<Int> {
 public final class ConfigDoubleBridge: ConfigBridge<Double> {
     public typealias T = Double
 
-    public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
+    public override func save(key: String, value: Double?, defaultsStore: DefaultsStore) {
         defaultsStore[key] = value
     }
 
@@ -171,12 +171,12 @@ public final class ConfigDecodableBridge<T: Decodable>: ConfigBridge<T> {
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
     }
 
-    public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
+    public override func get(key: String, remoteConfig: RemoteConfig, decoder: JSONDecoder) -> T? {
         return deserialize(remoteConfig[key].dataValue) ??
             remoteConfig[key].stringValue?.data(using: .utf8).flatMap(deserialize)
     }
 
-    public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
+    public override func get(key: String, defaultsStore: DefaultsStore, decoder: JSONDecoder) -> T? {
         return nil
     }
 
@@ -188,18 +188,17 @@ public final class ConfigDecodableBridge<T: Decodable>: ConfigBridge<T> {
 /// ConfigBridge for `Codable`
 public final class ConfigCodableBridge<T: Codable>: ConfigBridge<T> {
     public var decoder = JSONDecoder()
-    public var encoder = JSONEncoder()
 
-    public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
+    public override func save(key: String, value: T?, defaultsStore: DefaultsStore, encoder: JSONEncoder) {
         defaultsStore[key] = try? encoder.encode(value)
     }
 
-    public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
+    public override func get(key: String, remoteConfig: RemoteConfig, decoder: JSONDecoder) -> T? {
         return deserialize(remoteConfig[key].dataValue) ??
             remoteConfig[key].stringValue?.data(using: .utf8).flatMap(deserialize)
     }
 
-    public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
+    public override func get(key: String, defaultsStore: DefaultsStore, decoder: JSONDecoder) -> T? {
         return defaultsStore[key].flatMap(deserialize)
     }
 
