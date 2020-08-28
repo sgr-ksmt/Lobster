@@ -11,7 +11,7 @@ import XCTest
 
 class LobsterAnyConfigKeyTests: XCTestCase {
 
-    func testConvert() {
+    func test() {
         XCTContext.runActivity(named: "config key") { _ in
             let key = AnyConfigKey(ConfigKeys.text)
             XCTAssertEqual(key.type, .normal)
@@ -20,6 +20,8 @@ class LobsterAnyConfigKeyTests: XCTestCase {
                 String(describing: type(of: ConfigKeys.text)),
                 String(describing: type(of: key.asConfigKey()!))
             )
+            XCTAssertNil(key.decoder())
+            XCTAssertNil(key.encoder())
         }
 
         XCTContext.runActivity(named: "decodable cofig key") { _ in
@@ -30,6 +32,8 @@ class LobsterAnyConfigKeyTests: XCTestCase {
                 String(describing: type(of: ConfigKeys.settings)),
                 String(describing: type(of: key.asDecodableConfigKey()!))
             )
+            XCTAssertNotNil(key.decoder())
+            XCTAssertNil(key.encoder())
         }
 
         XCTContext.runActivity(named: "codable cofig key") { _ in
@@ -40,6 +44,8 @@ class LobsterAnyConfigKeyTests: XCTestCase {
                 String(describing: type(of: ConfigKeys.person)),
                 String(describing: type(of: key.asCodableConfigKey()!))
             )
+            XCTAssertNotNil(key.decoder())
+            XCTAssertNotNil(key.encoder())
         }
     }
 }

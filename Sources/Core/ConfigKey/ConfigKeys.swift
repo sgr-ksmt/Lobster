@@ -96,11 +96,23 @@ public final class AnyConfigKey<V: ConfigSerializable>: ConfigKeyBase<V> {
     }
 
     func asConfigKey() -> ConfigKey<ValueType>? {
-        guard type == .normal else {
-            assertionFailure()
-            return nil
-        }
         return configKey as? ConfigKey<ValueType>
+    }
+
+//    func asDecodableConfigKey<T: ConfigSerializable & Decodable>() -> DecodableConfigKey<T>? {
+//        return configKey as? DecodableConfigKey<T>
+//    }
+//
+//    func asCodableConfigKey<T: ConfigSerializable & Codable>() -> CodableConfigKey<T>? {
+//        return configKey as? CodableConfigKey<T>
+//    }
+
+    func decoder() -> JSONDecoder? {
+        return nil
+    }
+
+    func encoder() -> JSONEncoder? {
+        return nil
     }
 }
 
@@ -109,14 +121,18 @@ extension AnyConfigKey where ValueType: Decodable {
         self.init(configKey, type: .decodable)
     }
 
-    func asDecodableConfigKey() -> DecodableConfigKey<ValueType>?{
-        guard type == .decodable else {
-            assertionFailure()
-            return nil
-        }
+    func asDecodableConfigKey() -> DecodableConfigKey<ValueType>? {
         return configKey as? DecodableConfigKey<ValueType>
     }
 
+    func decoder() -> JSONDecoder? {
+        let key: DecodableConfigKey<ValueType>? = asDecodableConfigKey()
+        return key?.decoder
+    }
+
+    func encoder() -> JSONEncoder? {
+        return nil
+    }
 }
 
 extension AnyConfigKey where ValueType: Codable {
@@ -125,10 +141,16 @@ extension AnyConfigKey where ValueType: Codable {
     }
 
     func asCodableConfigKey() -> CodableConfigKey<ValueType>? {
-        guard type == .codable else {
-            assertionFailure()
-            return nil
-        }
         return configKey as? CodableConfigKey<ValueType>
+    }
+
+    func decoder() -> JSONDecoder? {
+        let key: CodableConfigKey<ValueType>? = asCodableConfigKey()
+        return key?.decoder
+    }
+
+    func encoder() -> JSONEncoder? {
+        let key: CodableConfigKey<ValueType>? = asCodableConfigKey()
+        return key?.encoder
     }
 }

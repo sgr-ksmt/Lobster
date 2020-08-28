@@ -56,9 +56,7 @@ public extension Lobster {
 
     /// Get value from config
     subscript<T: ConfigSerializable>(config key: ConfigKey<T?>) -> T.Value? {
-        get {
-            return T._config.get(key: key._key, remoteConfig: remoteConfig)
-        }
+        get { T._config.get(key: key._key, remoteConfig: remoteConfig) }
     }
 
     /// Get value from config
@@ -73,9 +71,7 @@ public extension Lobster {
 
     /// Get value safely from config
     subscript<T: ConfigSerializable>(safeConfig key: ConfigKey<T>) -> T.Value? {
-        get {
-            return T._config.get(key: key._key, remoteConfig: remoteConfig)
-        }
+        get { T._config.get(key: key._key, remoteConfig: remoteConfig) }
     }
 
     /// Get value from default / Set value to default
@@ -115,9 +111,7 @@ public extension Lobster {
     ///
     /// If DefaultsStore doesn't have a value matched a config key, Lobster will return `nil`.
     subscript<T: ConfigSerializable>(safeDefault key: ConfigKey<T>) -> T.Value? {
-        get {
-            return T._config.get(key: key._key, defaultsStore: defaultsStore)
-        }
+        get { T._config.get(key: key._key, defaultsStore: defaultsStore) }
     }
 }
 
@@ -126,8 +120,6 @@ public extension Lobster {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder) {
                 return value
-            } else if let defaultValue = T._config.get(key: key._key, defaultsStore: defaultsStore, decoder: key.decoder) {
-                return defaultValue
             } else {
                 return nil
             }
@@ -139,8 +131,6 @@ public extension Lobster {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder) {
                 return value
-            } else if let defaultValue = T._config.get(key: key._key, defaultsStore: defaultsStore, decoder: key.decoder) {
-                return defaultValue
             } else {
                 fatalError("Failed to get value. Please set default value or remote config value before.")
             }
@@ -152,8 +142,6 @@ public extension Lobster {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder) {
                 return value
-            } else if let defaultValue = T._config.get(key: key._key, defaultsStore: defaultsStore, decoder: key.decoder) {
-                return defaultValue
             } else {
                 return nil
             }
@@ -162,9 +150,7 @@ public extension Lobster {
 
     /// Get value from config
     subscript<T: ConfigSerializable>(config key: DecodableConfigKey<T?>) -> T.Value? {
-        get {
-            return T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder)
-        }
+        get { T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder) }
     }
 
     /// Get value from config
@@ -179,9 +165,7 @@ public extension Lobster {
 
     /// Get value safely from config
     subscript<T: ConfigSerializable>(safeConfig key: DecodableConfigKey<T>) -> T.Value? {
-        get {
-            return T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder)
-        }
+        get { T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder) }
     }
 }
 
@@ -226,9 +210,7 @@ public extension Lobster {
 
     /// Get value from config
     subscript<T: ConfigSerializable>(config key: CodableConfigKey<T?>) -> T.Value? {
-        get {
-            return T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder)
-        }
+        get { T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder) }
     }
 
     /// Get value from config
@@ -243,9 +225,7 @@ public extension Lobster {
 
     /// Get value safely from config
     subscript<T: ConfigSerializable>(safeConfig key: CodableConfigKey<T>) -> T.Value? {
-        get {
-            return T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder)
-        }
+        get { T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder) }
     }
 
     /// Get value from default / Set value to default
@@ -285,12 +265,168 @@ public extension Lobster {
     ///
     /// If DefaultsStore doesn't have a value matched a config key, Lobster will return `nil`.
     subscript<T: ConfigSerializable>(safeDefault key: CodableConfigKey<T>) -> T.Value? {
-        get {
-            return T._config.get(key: key._key, defaultsStore: defaultsStore, decoder: key.decoder)
-        }
+        get { T._config.get(key: key._key, defaultsStore: defaultsStore, decoder: key.decoder) }
     }
 
 }
 
 public extension Lobster {
+    subscript<T: ConfigSerializable>(key: AnyConfigKey<T?>) -> T.Value? {
+        get { key.asConfigKey().flatMap { self[$0] } }
+    }
+
+    subscript<T: ConfigSerializable & Decodable>(key: AnyConfigKey<T?>) -> T.Value? {
+        get { key.asDecodableConfigKey().flatMap { self[$0] } }
+    }
+
+    subscript<T: ConfigSerializable & Codable>(key: AnyConfigKey<T?>) -> T.Value? {
+        get { key.asCodableConfigKey().flatMap { self[$0] } }
+    }
+
+    subscript<T: ConfigSerializable>(key: AnyConfigKey<T>) -> T.Value {
+        get {
+            guard let value = key.asConfigKey().flatMap({ self[$0] }) else {
+                fatalError("Failed to get value. Please set default value or remote config value before.")
+            }
+            return value
+        }
+    }
+
+    subscript<T: ConfigSerializable & Decodable>(key: AnyConfigKey<T>) -> T.Value {
+        get {
+            guard let value = key.asDecodableConfigKey().flatMap({ self[$0] }) else {
+                fatalError("Failed to get value. Please set default value or remote config value before.")
+            }
+            return value
+        }
+    }
+
+    subscript<T: ConfigSerializable & Codable>(key: AnyConfigKey<T>) -> T.Value {
+        get {
+            guard let value = key.asCodableConfigKey().flatMap({ self[$0] }) else {
+                fatalError("Failed to get value. Please set default value or remote config value before.")
+            }
+            return value
+        }
+    }
+
+    subscript<T: ConfigSerializable>(safe key: AnyConfigKey<T>) -> T.Value? {
+        get { key.asConfigKey().flatMap { self[safe: $0] } }
+    }
+
+    subscript<T: ConfigSerializable & Decodable>(safe key: AnyConfigKey<T>) -> T.Value? {
+        get { key.asDecodableConfigKey().flatMap { self[safe: $0] } }
+    }
+
+    subscript<T: ConfigSerializable & Codable>(safe key: AnyConfigKey<T>) -> T.Value? {
+        get { key.asCodableConfigKey().flatMap { self[safe: $0] } }
+    }
+
+    subscript<T: ConfigSerializable>(config key: AnyConfigKey<T?>) -> T.Value? {
+        get { key.asConfigKey().flatMap { self[config: $0] } }
+    }
+
+    subscript<T: ConfigSerializable & Decodable>(config key: AnyConfigKey<T?>) -> T.Value? {
+        get { key.asDecodableConfigKey().flatMap { self[config: $0] } }
+    }
+
+    subscript<T: ConfigSerializable & Codable>(config key: AnyConfigKey<T?>) -> T.Value? {
+        get { key.asCodableConfigKey().flatMap { self[config: $0] } }
+    }
+
+    subscript<T: ConfigSerializable>(config key: AnyConfigKey<T>) -> T.Value {
+        get {
+            guard let value = key.asConfigKey().flatMap({ self[config: $0]}) else {
+                fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
+            }
+            return value
+        }
+    }
+
+    subscript<T: ConfigSerializable & Decodable>(config key: AnyConfigKey<T>) -> T.Value {
+        get {
+            guard let value = key.asDecodableConfigKey().flatMap({ self[config: $0]}) else {
+                fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
+            }
+            return value
+        }
+    }
+
+    subscript<T: ConfigSerializable & Codable>(config key: AnyConfigKey<T>) -> T.Value {
+        get {
+            guard let value = key.asCodableConfigKey().flatMap({ self[config: $0]}) else {
+                fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
+            }
+            return value
+        }
+    }
+
+    subscript<T: ConfigSerializable>(safeConfig key: AnyConfigKey<T>) -> T.Value? {
+        get { key.asConfigKey().flatMap { self[safeConfig: $0] } }
+    }
+
+    subscript<T: ConfigSerializable & Decodable>(safeConfig key: AnyConfigKey<T>) -> T.Value? {
+        get { key.asDecodableConfigKey().flatMap { self[safeConfig: $0] } }
+    }
+
+    subscript<T: ConfigSerializable & Codable>(safeConfig key: AnyConfigKey<T>) -> T.Value? {
+        get { key.asCodableConfigKey().flatMap { self[safeConfig: $0] } }
+    }
+
+
+    subscript<T: ConfigSerializable>(default key: AnyConfigKey<T?>) -> T.Value? {
+        get { key.asConfigKey().flatMap { self[default: $0] } }
+        set {
+            if let configKey: ConfigKey<T?> = key.asConfigKey()  {
+                self[default: configKey] = newValue
+            }
+        }
+    }
+
+    subscript<T: ConfigSerializable & Codable>(default key: AnyConfigKey<T?>) -> T.Value? {
+        get { key.asCodableConfigKey().flatMap { self[default: $0] } }
+        set {
+            if let configKey: CodableConfigKey<T?> = key.asCodableConfigKey() {
+                self[default: configKey] = newValue
+            }
+        }
+    }
+
+
+    subscript<T: ConfigSerializable>(default key: AnyConfigKey<T>) -> T.Value {
+        get {
+            guard let value = key.asConfigKey().flatMap({ self[default: $0] }) else {
+                fatalError("Failed to get value from default. Please set default value before or use `safeDefault` subscript.")
+            }
+            return value
+        }
+        set {
+            if let configKey: ConfigKey<T> = key.asConfigKey()  {
+                self[default: configKey] = newValue
+            }
+        }
+    }
+
+    subscript<T: ConfigSerializable & Codable>(default key: AnyConfigKey<T>) -> T.Value {
+        get {
+            guard let value = key.asCodableConfigKey().flatMap({ self[default: $0] }) else {
+                fatalError("Failed to get value from default. Please set default value before or use `safeDefault` subscript.")
+            }
+            return value
+        }
+        set {
+            if let configKey: CodableConfigKey<T> = key.asCodableConfigKey()  {
+                self[default: configKey] = newValue
+            }
+        }
+    }
+
+    subscript<T: ConfigSerializable>(safeDefault key: AnyConfigKey<T>) -> T.Value? {
+        get { key.asConfigKey().flatMap { self[safeDefault: $0] } }
+    }
+
+    subscript<T: ConfigSerializable & Codable>(safeDefault key: AnyConfigKey<T>) -> T.Value? {
+        get { key.asCodableConfigKey().flatMap { self[safeDefault: $0] } }
+    }
+
 }
