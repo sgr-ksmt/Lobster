@@ -25,6 +25,7 @@
 		3A75BD8A24E045FA00ADBBAB /* Lobster+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75BD8924E045FA00ADBBAB /* Lobster+Combine.swift */; };
 		3A75BD8C24E0514500ADBBAB /* LobsterTests+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75BD8B24E0514500ADBBAB /* LobsterTests+Combine.swift */; };
 		3A75BD8E24E0529800ADBBAB /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75BD8D24E0529800ADBBAB /* Definitions.swift */; };
+		3A7DA31E24F91D0A00AE5535 /* LobsterTests+AnyConfigKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DA31D24F91D0A00AE5535 /* LobsterTests+AnyConfigKey.swift */; };
 		C446D99F0AB2B1B651481608 /* Pods_Lobster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7094F96770D14C9622820F42 /* Pods_Lobster.framework */; };
 		C461801624DBCEFE0061A5E4 /* UserDefault+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C461801524DBCEFE0061A5E4 /* UserDefault+Ex.swift */; };
 		C4A2602B24D81D54005A3FB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A2602A24D81D54005A3FB7 /* AppDelegate.swift */; };
@@ -76,6 +77,7 @@
 		3A75BD8924E045FA00ADBBAB /* Lobster+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lobster+Combine.swift"; sourceTree = "<group>"; };
 		3A75BD8B24E0514500ADBBAB /* LobsterTests+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LobsterTests+Combine.swift"; sourceTree = "<group>"; };
 		3A75BD8D24E0529800ADBBAB /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
+		3A7DA31D24F91D0A00AE5535 /* LobsterTests+AnyConfigKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LobsterTests+AnyConfigKey.swift"; sourceTree = "<group>"; };
 		6F586FBD5180A54BFE0C53FA /* Pods-LobsterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LobsterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LobsterTests/Pods-LobsterTests.release.xcconfig"; sourceTree = "<group>"; };
 		7094F96770D14C9622820F42 /* Pods_Lobster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lobster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B16D1323062E1020502A3F /* Pods-Lobster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lobster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lobster/Pods-Lobster.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				16FCE996223CE14A00F6D643 /* LobsterTests.swift */,
+				3A7DA31D24F91D0A00AE5535 /* LobsterTests+AnyConfigKey.swift */,
 				3A75BD8B24E0514500ADBBAB /* LobsterTests+Combine.swift */,
 				C4A2604024D81EC5005A3FB7 /* GoogleService-Info.plist */,
 				16FCE998223CE14A00F6D643 /* Info.plist */,
@@ -486,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7DA31E24F91D0A00AE5535 /* LobsterTests+AnyConfigKey.swift in Sources */,
 				3A75BD8E24E0529800ADBBAB /* Definitions.swift in Sources */,
 				3A75BD8C24E0514500ADBBAB /* LobsterTests+Combine.swift in Sources */,
 				16FCE997223CE14A00F6D643 /* LobsterTests.swift in Sources */,

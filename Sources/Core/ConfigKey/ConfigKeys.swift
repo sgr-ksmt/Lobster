@@ -47,10 +47,10 @@ public class ConfigKeyBase<ValueType: ConfigSerializable>: ConfigKeys {
 ///
 ///     let title = Lobster.shared[.title]
 ///     print(String(describing: type(of: title))) // String
-public class ConfigKey<ValueType: ConfigSerializable>: ConfigKeyBase<ValueType> {
+public final class ConfigKey<ValueType: ConfigSerializable>: ConfigKeyBase<ValueType> {
 }
 
-public class DecodableConfigKey<ValueType: ConfigSerializable & Decodable>: ConfigKeyBase<ValueType> {
+public final class DecodableConfigKey<ValueType: ConfigSerializable & Decodable>: ConfigKeyBase<ValueType> {
 
     public let decoder: JSONDecoder
 
@@ -60,7 +60,7 @@ public class DecodableConfigKey<ValueType: ConfigSerializable & Decodable>: Conf
     }
 }
 
-public class CodableConfigKey<ValueType: ConfigSerializable & Codable>: ConfigKeyBase<ValueType> {
+public final class CodableConfigKey<ValueType: ConfigSerializable & Codable>: ConfigKeyBase<ValueType> {
 
     public let decoder: JSONDecoder
     public let encoder: JSONEncoder
@@ -72,57 +72,63 @@ public class CodableConfigKey<ValueType: ConfigSerializable & Codable>: ConfigKe
     }
 }
 
-public class AnyConfigKey {
+public final class AnyConfigKey<V: ConfigSerializable>: ConfigKeyBase<V> {
+    public typealias ValueType = V
+
     public enum KeyType {
         case normal
         case decodable
         case codable
     }
 
-    public let _key: String
 
     public let type: KeyType
     let configKey: Any
 
-    public init<V: ConfigSerializable> (_ configKey: ConfigKey<V>) {
+    public init(_ configKey: ConfigKeyBase<ValueType>, type: KeyType) {
         self.configKey = configKey
-        _key = configKey._key
-        type = .normal
+        self.type = type
+        super.init(configKey._key)
     }
 
-    public init<V: ConfigSerializable> (_ configKey: DecodableConfigKey<V>) {
-        self.configKey = configKey
-        _key = configKey._key
-        type = .decodable
+    public convenience init(_ configKey: ConfigKey<ValueType>) {
+        self.init(configKey, type: .normal)
     }
 
-    public init<V: ConfigSerializable> (_ configKey: CodableConfigKey<V>) {
-        self.configKey = configKey
-        _key = configKey._key
-        type = .codable
-    }
-
-    func asConfigKey<V>() -> ConfigKey<V>? {
-        guard type == .codable else {
+    func asConfigKey() -> ConfigKey<ValueType>? {
+        guard type == .normal else {
             assertionFailure()
             return nil
         }
-        return configKey as? ConfigKey<V>
+        return configKey as? ConfigKey<ValueType>
+    }
+}
+
+extension AnyConfigKey where ValueType: Decodable {
+    public convenience init(_ configKey: DecodableConfigKey<ValueType>) {
+        self.init(configKey, type: .decodable)
     }
 
-    func asDecodableConfigKey<V>() -> DecodableConfigKey<V>?{
+    func asDecodableConfigKey() -> DecodableConfigKey<ValueType>?{
         guard type == .decodable else {
             assertionFailure()
             return nil
         }
-        return configKey as? DecodableConfigKey<V>
+        return configKey as? DecodableConfigKey<ValueType>
     }
 
-    func asCodableConfigKey<V>() -> CodableConfigKey<V>? {
+}
+
+extension AnyConfigKey where ValueType: Codable {
+    public convenience init(_ configKey: CodableConfigKey<ValueType>) {
+        self.init(configKey, type: .codable)
+    }
+
+    func asCodableConfigKey() -> CodableConfigKey<ValueType>? {
         guard type == .codable else {
             assertionFailure()
             return nil
         }
-        return configKey as? CodableConfigKey<V>
+        return configKey as? CodableConfigKey<ValueType>
     }
 }

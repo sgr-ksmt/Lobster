@@ -119,9 +119,9 @@ public extension Lobster {
             return T._config.get(key: key._key, defaultsStore: defaultsStore)
         }
     }
+}
 
-    // DecodableConfigKey ===============================
-
+public extension Lobster {
     subscript<T: ConfigSerializable>(key: DecodableConfigKey<T?>) -> T.Value? {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder) {
@@ -183,9 +183,9 @@ public extension Lobster {
             return T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder)
         }
     }
+}
 
-    // Codable ==================
-
+public extension Lobster {
     subscript<T: ConfigSerializable>(key: CodableConfigKey<T?>) -> T.Value? {
         get {
             if let value = T._config.get(key: key._key, remoteConfig: remoteConfig, decoder: key.decoder) {
@@ -290,4 +290,7 @@ public extension Lobster {
         }
     }
 
+}
+
+public extension Lobster {
 }
