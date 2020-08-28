@@ -71,3 +71,58 @@ public class CodableConfigKey<ValueType: ConfigSerializable & Codable>: ConfigKe
         super.init(key)
     }
 }
+
+public class AnyConfigKey {
+    public enum KeyType {
+        case normal
+        case decodable
+        case codable
+    }
+
+    public let _key: String
+
+    public let type: KeyType
+    let configKey: Any
+
+    public init<V: ConfigSerializable> (_ configKey: ConfigKey<V>) {
+        self.configKey = configKey
+        _key = configKey._key
+        type = .normal
+    }
+
+    public init<V: ConfigSerializable> (_ configKey: DecodableConfigKey<V>) {
+        self.configKey = configKey
+        _key = configKey._key
+        type = .decodable
+    }
+
+    public init<V: ConfigSerializable> (_ configKey: CodableConfigKey<V>) {
+        self.configKey = configKey
+        _key = configKey._key
+        type = .codable
+    }
+
+    func asConfigKey<V>() -> ConfigKey<V>? {
+        guard type == .codable else {
+            assertionFailure()
+            return nil
+        }
+        return configKey as? ConfigKey<V>
+    }
+
+    func asDecodableConfigKey<V>() -> DecodableConfigKey<V>?{
+        guard type == .decodable else {
+            assertionFailure()
+            return nil
+        }
+        return configKey as? DecodableConfigKey<V>
+    }
+
+    func asCodableConfigKey<V>() -> CodableConfigKey<V>? {
+        guard type == .codable else {
+            assertionFailure()
+            return nil
+        }
+        return configKey as? CodableConfigKey<V>
+    }
+}
