@@ -503,9 +503,9 @@ public extension Lobster {
         get {
             switch key.type {
             case .normal:
-                return key.asCodableConfigKey().flatMap { self[default: $0] }
-            case .codable:
                 return key.asConfigKey().flatMap { self[default: $0] }
+            case .codable:
+                return key.asCodableConfigKey().flatMap { self[default: $0] }
             default:
                 fatalError("invalid key type")
             }

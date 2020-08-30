@@ -65,10 +65,11 @@ public final class CodableConfigKey<ValueType: ConfigSerializable & Codable>: Co
     public let decoder: JSONDecoder
     public let encoder: JSONEncoder
 
-    public init(_ key: String, decoder: JSONDecoder = .init(), encoder: JSONEncoder = .init()) {
-        self.decoder = decoder
-        self.encoder = encoder
+    public init(_ key: String, modifier: (JSONDecoder, JSONEncoder) -> Void = { _, _ in}) {
+        self.decoder = JSONDecoder()
+        self.encoder = JSONEncoder()
         super.init(key)
+        modifier(decoder, encoder)
     }
 }
 

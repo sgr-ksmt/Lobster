@@ -41,6 +41,10 @@ class MockStaleValueStore: StaleValueStore {
     var isStaled: Bool = false
 }
 
+struct TimeStamp: Codable, ConfigSerializable, Equatable {
+    let date: Date
+}
+
 extension ConfigKeys {
     static let text = ConfigKey<String>("text")
     static let textOptional = ConfigKey<String?>("text_optional")
@@ -86,6 +90,21 @@ extension ConfigKeys {
 
     static let persons = CodableConfigKey<[Person]>("persons")
     static let personsOptional = CodableConfigKey<[Person]?>("persons_optional")
+
+    static let timestamp = CodableConfigKey<TimeStamp>(
+        "timestamp",
+        modifier: { decoder, encoder in
+            decoder.dateDecodingStrategy = .iso8601
+            encoder.dateEncodingStrategy = .iso8601
+    })
+
+    static let timestampOptional = CodableConfigKey<TimeStamp?>(
+        "timestamp_optional",
+        modifier: { decoder, encoder in
+            decoder.dateDecodingStrategy = .iso8601
+            encoder.dateEncodingStrategy = .iso8601
+    })
+
 }
 
 extension ConfigKeys {
