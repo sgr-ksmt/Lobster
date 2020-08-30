@@ -166,43 +166,41 @@ public final class ConfigRawRepresentableBridge<T: RawRepresentable>: ConfigBrid
 ///  If you can set default value, Please make object conform to `Encodable` and use `ConfigCodableBridge`.
 ///
 public final class ConfigDecodableBridge<T: Decodable>: ConfigBridge<T> {
-    public var decoder = JSONDecoder()
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore) {
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig, decoder: JSONDecoder) -> T? {
-        return deserialize(remoteConfig[key].dataValue) ??
-            remoteConfig[key].stringValue?.data(using: .utf8).flatMap(deserialize)
+        return deserialize(remoteConfig[key].dataValue, decoder) ??
+            remoteConfig[key].stringValue?.data(using: .utf8).flatMap { deserialize($0, decoder) }
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore, decoder: JSONDecoder) -> T? {
         return nil
     }
 
-    func deserialize(_ object: Any) -> T? {
+    func deserialize(_ object: Any, _ decoder: JSONDecoder) -> T? {
         return (object as? Data).flatMap { try? decoder.decode(T.self, from: $0) }
     }
 }
 
 /// ConfigBridge for `Codable`
 public final class ConfigCodableBridge<T: Codable>: ConfigBridge<T> {
-    public var decoder = JSONDecoder()
 
     public override func save(key: String, value: T?, defaultsStore: DefaultsStore, encoder: JSONEncoder) {
         defaultsStore[key] = try? encoder.encode(value)
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig, decoder: JSONDecoder) -> T? {
-        return deserialize(remoteConfig[key].dataValue) ??
-            remoteConfig[key].stringValue?.data(using: .utf8).flatMap(deserialize)
+        return deserialize(remoteConfig[key].dataValue, decoder) ??
+            remoteConfig[key].stringValue?.data(using: .utf8).flatMap{ deserialize($0, decoder) }
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore, decoder: JSONDecoder) -> T? {
-        return defaultsStore[key].flatMap(deserialize)
+        return defaultsStore[key].flatMap { deserialize($0, decoder)}
     }
 
-    func deserialize(_ object: Any) -> T? {
+    func deserialize(_ object: Any, _ decoder: JSONDecoder) -> T? {
         return (object as? Data).flatMap { try? decoder.decode(T.self, from: $0) }
     }
 }

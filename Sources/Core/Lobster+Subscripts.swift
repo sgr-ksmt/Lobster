@@ -276,11 +276,29 @@ public extension Lobster {
     }
 
     subscript<T: ConfigSerializable & Decodable>(key: AnyConfigKey<T?>) -> T.Value? {
-        get { key.asDecodableConfigKey().flatMap { self[$0] } }
+        get {
+            switch key.type {
+            case .normal:
+                return key.asConfigKey().flatMap { self[$0] }
+            case .decodable:
+                return key.asDecodableConfigKey().flatMap { self[$0] }
+            default:
+                fatalError("invalid key type")
+            }
+        }
     }
 
     subscript<T: ConfigSerializable & Codable>(key: AnyConfigKey<T?>) -> T.Value? {
-        get { key.asCodableConfigKey().flatMap { self[$0] } }
+        get {
+            switch key.type {
+            case .normal:
+                return key.asConfigKey().flatMap { self[$0] }
+            case .codable:
+                return key.asCodableConfigKey().flatMap { self[$0] }
+            default:
+                fatalError("invalid key type")
+            }
+        }
     }
 
     subscript<T: ConfigSerializable>(key: AnyConfigKey<T>) -> T.Value {
@@ -294,19 +312,43 @@ public extension Lobster {
 
     subscript<T: ConfigSerializable & Decodable>(key: AnyConfigKey<T>) -> T.Value {
         get {
-            guard let value = key.asDecodableConfigKey().flatMap({ self[$0] }) else {
-                fatalError("Failed to get value. Please set default value or remote config value before.")
+            switch key.type {
+            case .normal:
+                guard let value = key.asConfigKey().flatMap({ self[$0] }) else {
+                    fatalError("Failed to get value. Please set default value or remote config value before.")
+                }
+                return value
+
+            case .decodable:
+                guard let value = key.asDecodableConfigKey().flatMap({ self[$0] }) else {
+                    fatalError("Failed to get value. Please set default value or remote config value before.")
+                }
+                return value
+
+            default:
+                fatalError("invalid key type")
             }
-            return value
         }
     }
 
     subscript<T: ConfigSerializable & Codable>(key: AnyConfigKey<T>) -> T.Value {
         get {
-            guard let value = key.asCodableConfigKey().flatMap({ self[$0] }) else {
-                fatalError("Failed to get value. Please set default value or remote config value before.")
+            switch key.type {
+            case .normal:
+                guard let value = key.asConfigKey().flatMap({ self[$0] }) else {
+                    fatalError("Failed to get value. Please set default value or remote config value before.")
+                }
+                return value
+
+            case .codable:
+                guard let value = key.asCodableConfigKey().flatMap({ self[$0] }) else {
+                    fatalError("Failed to get value. Please set default value or remote config value before.")
+                }
+                return value
+
+            default:
+                fatalError("invalid key type")
             }
-            return value
         }
     }
 
@@ -315,11 +357,29 @@ public extension Lobster {
     }
 
     subscript<T: ConfigSerializable & Decodable>(safe key: AnyConfigKey<T>) -> T.Value? {
-        get { key.asDecodableConfigKey().flatMap { self[safe: $0] } }
+        get {
+            switch key.type {
+            case .normal:
+                return key.asConfigKey().flatMap { self[safe: $0] }
+            case .decodable:
+                return key.asDecodableConfigKey().flatMap { self[safe: $0] }
+            default:
+                fatalError("invalid key type")
+            }
+        }
     }
 
     subscript<T: ConfigSerializable & Codable>(safe key: AnyConfigKey<T>) -> T.Value? {
-        get { key.asCodableConfigKey().flatMap { self[safe: $0] } }
+        get {
+            switch key.type {
+            case .normal:
+                return key.asConfigKey().flatMap { self[safe: $0] }
+            case .codable:
+                return key.asCodableConfigKey().flatMap { self[safe: $0] }
+            default:
+                fatalError("invalid key type")
+            }
+        }
     }
 
     subscript<T: ConfigSerializable>(config key: AnyConfigKey<T?>) -> T.Value? {
@@ -327,11 +387,29 @@ public extension Lobster {
     }
 
     subscript<T: ConfigSerializable & Decodable>(config key: AnyConfigKey<T?>) -> T.Value? {
-        get { key.asDecodableConfigKey().flatMap { self[config: $0] } }
+        get {
+            switch key.type {
+            case .normal:
+                return key.asConfigKey().flatMap { self[config: $0] }
+            case .decodable:
+                return key.asDecodableConfigKey().flatMap { self[config: $0] }
+            default:
+                fatalError("invalid key type")
+            }
+        }
     }
 
     subscript<T: ConfigSerializable & Codable>(config key: AnyConfigKey<T?>) -> T.Value? {
-        get { key.asCodableConfigKey().flatMap { self[config: $0] } }
+        get {
+            switch key.type {
+            case .normal:
+                return key.asConfigKey().flatMap { self[config: $0] }
+            case .codable:
+                return key.asCodableConfigKey().flatMap { self[config: $0] }
+            default:
+                fatalError("invalid key type")
+            }
+        }
     }
 
     subscript<T: ConfigSerializable>(config key: AnyConfigKey<T>) -> T.Value {
@@ -345,19 +423,39 @@ public extension Lobster {
 
     subscript<T: ConfigSerializable & Decodable>(config key: AnyConfigKey<T>) -> T.Value {
         get {
-            guard let value = key.asDecodableConfigKey().flatMap({ self[config: $0]}) else {
-                fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
+            switch key.type {
+            case .normal:
+                guard let value = key.asConfigKey().flatMap({ self[config: $0]}) else {
+                    fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
+                }
+                return value
+            case .decodable:
+                guard let value = key.asDecodableConfigKey().flatMap({ self[config: $0]}) else {
+                    fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
+                }
+                return value
+            default:
+                fatalError("invalid key type")
             }
-            return value
         }
     }
 
     subscript<T: ConfigSerializable & Codable>(config key: AnyConfigKey<T>) -> T.Value {
         get {
-            guard let value = key.asCodableConfigKey().flatMap({ self[config: $0]}) else {
-                fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
+            switch key.type {
+            case .normal:
+                guard let value = key.asConfigKey().flatMap({ self[config: $0]}) else {
+                    fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
+                }
+                return value
+            case .codable:
+                guard let value = key.asCodableConfigKey().flatMap({ self[config: $0]}) else {
+                    fatalError("Failed to get value from default. Please set default value before or use `safeConfig` subscript.")
+                }
+                return value
+            default:
+                fatalError("invalid key type")
             }
-            return value
         }
     }
 
@@ -366,11 +464,29 @@ public extension Lobster {
     }
 
     subscript<T: ConfigSerializable & Decodable>(safeConfig key: AnyConfigKey<T>) -> T.Value? {
-        get { key.asDecodableConfigKey().flatMap { self[safeConfig: $0] } }
+        get {
+            switch key.type {
+            case .normal:
+                 return key.asConfigKey().flatMap { self[safeConfig: $0] }
+            case .decodable:
+                return key.asDecodableConfigKey().flatMap { self[safeConfig: $0] }
+            default:
+                fatalError("invalid key type")
+            }
+        }
     }
 
     subscript<T: ConfigSerializable & Codable>(safeConfig key: AnyConfigKey<T>) -> T.Value? {
-        get { key.asCodableConfigKey().flatMap { self[safeConfig: $0] } }
+        get {
+            switch key.type {
+            case .normal:
+                return key.asConfigKey().flatMap { self[safeConfig: $0] }
+            case .codable:
+                return key.asCodableConfigKey().flatMap { self[safeConfig: $0] }
+            default:
+                fatalError("invalid key type")
+            }
+        }
     }
 
 
@@ -384,10 +500,28 @@ public extension Lobster {
     }
 
     subscript<T: ConfigSerializable & Codable>(default key: AnyConfigKey<T?>) -> T.Value? {
-        get { key.asCodableConfigKey().flatMap { self[default: $0] } }
+        get {
+            switch key.type {
+            case .normal:
+                return key.asCodableConfigKey().flatMap { self[default: $0] }
+            case .codable:
+                return key.asConfigKey().flatMap { self[default: $0] }
+            default:
+                fatalError("invalid key type")
+            }
+        }
         set {
-            if let configKey: CodableConfigKey<T?> = key.asCodableConfigKey() {
-                self[default: configKey] = newValue
+            switch key.type {
+            case .normal:
+                if let configKey: ConfigKey<T?> = key.asConfigKey()  {
+                    self[default: configKey] = newValue
+                }
+            case .codable:
+                if let configKey: CodableConfigKey<T?> = key.asCodableConfigKey() {
+                    self[default: configKey] = newValue
+                }
+            default:
+                fatalError("invalid key type")
             }
         }
     }
@@ -409,14 +543,33 @@ public extension Lobster {
 
     subscript<T: ConfigSerializable & Codable>(default key: AnyConfigKey<T>) -> T.Value {
         get {
-            guard let value = key.asCodableConfigKey().flatMap({ self[default: $0] }) else {
-                fatalError("Failed to get value from default. Please set default value before or use `safeDefault` subscript.")
+            switch key.type {
+            case .normal:
+                guard let value = key.asConfigKey().flatMap({ self[default: $0] }) else {
+                    fatalError("Failed to get value from default. Please set default value before or use `safeDefault` subscript.")
+                }
+                return value
+            case .codable:
+                guard let value = key.asCodableConfigKey().flatMap({ self[default: $0] }) else {
+                    fatalError("Failed to get value from default. Please set default value before or use `safeDefault` subscript.")
+                }
+                return value
+            default:
+                fatalError("invalid key type")
             }
-            return value
         }
         set {
-            if let configKey: CodableConfigKey<T> = key.asCodableConfigKey()  {
-                self[default: configKey] = newValue
+            switch key.type {
+            case .normal:
+                if let configKey: ConfigKey<T> = key.asConfigKey()  {
+                    self[default: configKey] = newValue
+                }
+            case .codable:
+                if let configKey: CodableConfigKey<T> = key.asCodableConfigKey()  {
+                    self[default: configKey] = newValue
+                }
+            default:
+                fatalError("invalid key type")
             }
         }
     }
@@ -426,7 +579,15 @@ public extension Lobster {
     }
 
     subscript<T: ConfigSerializable & Codable>(safeDefault key: AnyConfigKey<T>) -> T.Value? {
-        get { key.asCodableConfigKey().flatMap { self[safeDefault: $0] } }
+        get {
+            switch key.type {
+            case .normal:
+                return key.asConfigKey().flatMap { self[safeDefault: $0] }
+            case .codable:
+                return  key.asCodableConfigKey().flatMap { self[safeDefault: $0] }
+            default:
+                fatalError("invalid key type")
+            }
+        }
     }
-
 }
