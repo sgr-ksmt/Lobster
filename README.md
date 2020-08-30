@@ -355,7 +355,7 @@ Define config value like below in console:
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Lobster', '~> 3.0.0'
+pod 'Lobster', '~> 3.1.0'
 
 # If you want to use extensions of Combine, please install below:
 pod 'Lobster/Combine'
