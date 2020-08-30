@@ -98,4 +98,33 @@ class Lobster_Combine_Tests: XCTestCase {
         wait(for: [exp], timeout: 5.0)
         cancellable.cancel()
     }
+
+    func testFetchedCodable() {
+        let exp = expectation(description: "test fetched string")
+
+        let cancellable = Lobster.shared.combine.fetched(.mike).sink(receiveCompletion: { _ in }) { mike in
+            XCTAssertEqual(mike.name, "Mike")
+            exp.fulfill()
+        }
+
+        Lobster.shared.fetch()
+
+        wait(for: [exp], timeout: 5.0)
+        cancellable.cancel()
+    }
+
+    func testFetchedOptionalCodable() {
+        let exp = expectation(description: "test fetched optional string")
+
+        let cancellable = Lobster.shared.combine.fetched(.mikeOptional).sink(receiveCompletion: { _ in }) { mike in
+            XCTAssertEqual(mike?.name, "Mike")
+            exp.fulfill()
+        }
+
+        Lobster.shared.fetch()
+
+        wait(for: [exp], timeout: 5.0)
+        cancellable.cancel()
+    }
+
 }

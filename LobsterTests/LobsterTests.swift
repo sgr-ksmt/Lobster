@@ -233,20 +233,16 @@ class LobsterTests: XCTestCase {
 """
         XCTAssertEqual(Lobster.shared[safe: .settings], nil)
         XCTAssertEqual(Lobster.shared[safeConfig: .settings], nil)
-        XCTAssertEqual(Lobster.shared[safeDefault: .settings], nil)
         Lobster.shared.remoteConfig.setDefaults([ConfigKeys.settings._key: NSString(string: settingsJson)])
         XCTAssertEqual(Lobster.shared[safe: .settings]?.flag, true)
         XCTAssertEqual(Lobster.shared[safe: .settings]?.minimumVersion, "1.0.1")
         XCTAssertEqual(Lobster.shared[safeConfig: .settings]?.flag, true)
         XCTAssertEqual(Lobster.shared[safeConfig: .settings]?.minimumVersion, "1.0.1")
-        XCTAssertEqual(Lobster.shared[safeDefault: .settings], nil)
 
         XCTAssertEqual(Lobster.shared[.settingsOptional], nil)
         XCTAssertEqual(Lobster.shared[safe: .settingsOptional], nil)
         XCTAssertEqual(Lobster.shared[config: .settingsOptional], nil)
-        XCTAssertEqual(Lobster.shared[default: .settingsOptional], nil)
         XCTAssertEqual(Lobster.shared[safeConfig: .settingsOptional], nil)
-        XCTAssertEqual(Lobster.shared[safeDefault: .settingsOptional], nil)
         Lobster.shared.remoteConfig.setDefaults([ConfigKeys.settingsOptional._key: NSString(string: settingsJson)])
         XCTAssertEqual(Lobster.shared[.settingsOptional]?.flag, true)
         XCTAssertEqual(Lobster.shared[.settingsOptional]?.minimumVersion, "1.0.1")
@@ -254,10 +250,8 @@ class LobsterTests: XCTestCase {
         XCTAssertEqual(Lobster.shared[safe: .settingsOptional]?.minimumVersion, "1.0.1")
         XCTAssertEqual(Lobster.shared[config: .settingsOptional]?.flag, true)
         XCTAssertEqual(Lobster.shared[config: .settingsOptional]?.minimumVersion, "1.0.1")
-        XCTAssertEqual(Lobster.shared[default: .settingsOptional], nil)
         XCTAssertEqual(Lobster.shared[safeConfig: .settingsOptional]?.flag, true)
         XCTAssertEqual(Lobster.shared[safeConfig: .settingsOptional]?.minimumVersion, "1.0.1")
-        XCTAssertEqual(Lobster.shared[safeDefault: .settingsOptional], nil)
     }
 
     func testCodableValueKey() {
@@ -280,11 +274,51 @@ class LobsterTests: XCTestCase {
         XCTAssertEqual(Lobster.shared[safeDefault: .person]?.name, "John")
         XCTAssertEqual(Lobster.shared[safeDefault: .person]?.age, 10)
 
-        XCTAssertEqual(Lobster.shared[.networkOptional], .unknown)
-        XCTAssertEqual(Lobster.shared[default: .networkOptional], nil)
-        Lobster.shared[default: .networkOptional] = .LTE
-        XCTAssertEqual(Lobster.shared[.networkOptional], .LTE)
-        XCTAssertEqual(Lobster.shared[default: .networkOptional], .LTE)
+        XCTAssertEqual(Lobster.shared[.personOptional], nil)
+        XCTAssertEqual(Lobster.shared[safe: .personOptional], nil)
+        XCTAssertEqual(Lobster.shared[safeConfig: .personOptional], nil)
+        XCTAssertEqual(Lobster.shared[safeDefault: .personOptional], nil)
+        Lobster.shared[default: .personOptional] = Person(name: "John", age: 10)
+        XCTAssertEqual(Lobster.shared[.personOptional].name, "John")
+        XCTAssertEqual(Lobster.shared[.personOptional].age, 10)
+        XCTAssertEqual(Lobster.shared[safe: .personOptional]?.name, "John")
+        XCTAssertEqual(Lobster.shared[safe: .personOptional]?.age, 10)
+        XCTAssertEqual(Lobster.shared[config: .personOptional].name, "John")
+        XCTAssertEqual(Lobster.shared[config: .personOptional].age, 10)
+        XCTAssertEqual(Lobster.shared[default: .personOptional].name, "John")
+        XCTAssertEqual(Lobster.shared[default: .personOptional].age, 10)
+        XCTAssertEqual(Lobster.shared[safe: .personOptional]?.name, "John")
+        XCTAssertEqual(Lobster.shared[safe: .personOptional]?.age, 10)
+        XCTAssertEqual(Lobster.shared[safeConfig: .personOptional]?.name, "John")
+        XCTAssertEqual(Lobster.shared[safeConfig: .personOptional]?.age, 10)
+        XCTAssertEqual(Lobster.shared[safeDefault: .personOptional]?.name, "John")
+        XCTAssertEqual(Lobster.shared[safeDefault: .personOptional]?.age, 10)
+
+    }
+
+    func testCodableWithCodingModifier() {
+        let timestampJson = """
+{"date": "2014-10-10T13:50:40+09:00"}
+"""
+        let expectedDate = { () -> Date in
+            let f = ISO8601DateFormatter()
+            return f.date(from: "2014-10-10T13:50:40+09:00")!
+        }()
+        XCTAssertEqual(Lobster.shared[safe: .timestamp], nil)
+        XCTAssertEqual(Lobster.shared[safeConfig: .timestamp], nil)
+        Lobster.shared.remoteConfig.setDefaults([ConfigKeys.timestamp._key: NSString(string: timestampJson)])
+        XCTAssertEqual(Lobster.shared[safe: .timestamp]?.date, expectedDate)
+        XCTAssertEqual(Lobster.shared[safeConfig: .timestamp]?.date, expectedDate)
+
+        XCTAssertEqual(Lobster.shared[.timestampOptional], nil)
+        XCTAssertEqual(Lobster.shared[safe: .timestampOptional], nil)
+        XCTAssertEqual(Lobster.shared[config: .timestampOptional], nil)
+        XCTAssertEqual(Lobster.shared[safeConfig: .timestampOptional], nil)
+        Lobster.shared.remoteConfig.setDefaults([ConfigKeys.timestampOptional._key: NSString(string: timestampJson)])
+        XCTAssertEqual(Lobster.shared[.timestampOptional]?.date, expectedDate)
+        XCTAssertEqual(Lobster.shared[safe: .timestampOptional]?.date, expectedDate)
+        XCTAssertEqual(Lobster.shared[config: .timestampOptional]?.date, expectedDate)
+        XCTAssertEqual(Lobster.shared[safeConfig: .timestampOptional]?.date, expectedDate)
     }
 
     func testCodableArrayValueKey() {

@@ -15,9 +15,23 @@ import Foundation
 ///         static let buttonColor = ConfigKey<UIColor>("button_color")
 ///         static let experimentEnabled = ConfigKey<Bool>("experiment_enabled")
 ///     }
-open class ConfigKeys {
+public class ConfigKeys {
     init() {}
 }
+
+public class ConfigKeyBase<ValueType: ConfigSerializable>: ConfigKeys {
+
+    /// A key.
+    public let _key: String
+
+    /// Initializer
+    /// - parameters:
+    ///   - key: A key
+    public init(_ key: String) {
+        self._key = key
+    }
+}
+
 
 /// ConfigKey
 ///
@@ -33,15 +47,41 @@ open class ConfigKeys {
 ///
 ///     let title = Lobster.shared[.title]
 ///     print(String(describing: type(of: title))) // String
-public class ConfigKey<ValueType: ConfigSerializable>: ConfigKeys {
+/// - note: If you want to define a `ConfigKey` of `Decodable` or `Codable`, Please use `DecodableConfigKey` or `CodableConfigKey` instead.
+public final class ConfigKey<ValueType: ConfigSerializable>: ConfigKeyBase<ValueType> {
+}
 
-    /// A key.
-    public let _key: String
+/// DecodableConfigKey
+///
+/// DecodableConfigKey is a key class specialized with `ValueType` for Remote Config.
+/// It allows you to get value as a type of `ValueType` from Remote Config with subscription.
+/// That is, you don't need to manually convert value to another type you want. You can handle the value  to type safe.
+/// `DecodableConfigKey` is able to handle `Decodable` value type.
+public final class DecodableConfigKey<ValueType: ConfigSerializable & Decodable>: ConfigKeyBase<ValueType> {
 
-    /// Initializer
-    /// - parameters:
-    ///   - key: A key
-    public init(_ key: String) {
-        self._key = key
+    public let decoder: JSONDecoder
+
+    public init(_ key: String, decoder: JSONDecoder = .init()) {
+        self.decoder = decoder
+        super.init(key)
+    }
+}
+
+/// CodableConfigKey
+///
+/// DecodableConfigKey is a key class specialized with `ValueType` for Remote Config.
+/// It allows you to get value as a type of `ValueType` from Remote Config with subscription.
+/// That is, you don't need to manually convert value to another type you want. You can handle the value  to type safe.
+/// `CodableConfigKey` is able to handle `Codable` value type.
+public final class CodableConfigKey<ValueType: ConfigSerializable & Codable>: ConfigKeyBase<ValueType> {
+
+    public let decoder: JSONDecoder
+    public let encoder: JSONEncoder
+
+    public init(_ key: String, modifier: (JSONDecoder, JSONEncoder) -> Void = { _, _ in}) {
+        self.decoder = JSONDecoder()
+        self.encoder = JSONEncoder()
+        super.init(key)
+        modifier(decoder, encoder)
     }
 }

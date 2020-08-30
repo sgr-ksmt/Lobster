@@ -56,4 +56,32 @@ open class ConfigBridge<T> {
     open func get(key: String, defaultsStore: DefaultsStore) -> T? {
         fatalError("This function must be implemented onto subclass.")
     }
+
+
+    /// Saves a value to DefaultsStore.
+    ///
+    /// - note: If you create a bridge class by inheriting `ConfigBridge<T>`, You need to override this function absolutely.
+    open func save(key: String, value: T?, defaultsStore: DefaultsStore, encoder: JSONEncoder) {
+        fatalError("This function must be implemented onto subclass.")
+    }
+
+    /// Get a value from RemoteConfig
+    ///
+    /// If a value matched a key doesn't exist in RemoteConfig , this function will return `nil`
+    /// - returns: A value of type of T?
+    ///
+    /// - note: If you create a bridge class by inheriting `ConfigBridge<T>`, You need to override this function absolutely.
+    open func get(key: String, remoteConfig: RemoteConfig, decoder: JSONDecoder) -> T? {
+        fatalError("This function must be implemented onto subclass.")
+    }
+
+    /// Get a value from DefaultsStore
+    ///
+    /// If a value matched a key doesn't exist in DefaultsStore, this function will return `nil`
+    /// - returns: A value of type of T?
+    ///
+    /// - note: If you create a bridge class by inheriting `ConfigBridge<T>`, You need to override this function absolutely.
+    open func get(key: String, defaultsStore: DefaultsStore, decoder: JSONDecoder) -> T? {
+        fatalError("This function must be implemented onto subclass.")
+    }
 }
