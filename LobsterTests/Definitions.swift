@@ -113,4 +113,5 @@ extension ConfigKeys {
     static let count = ConfigKey<Int>("count")
     static let friendNames = ConfigKey<[String]>("friend_names")
     static let mike = CodableConfigKey<Person>("mike")
+    static let mikeOptional = CodableConfigKey<Person?>("mike")
 }

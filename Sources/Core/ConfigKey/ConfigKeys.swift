@@ -100,13 +100,13 @@ public final class AnyConfigKey<V: ConfigSerializable>: ConfigKeyBase<V> {
         return configKey as? ConfigKey<ValueType>
     }
 
-//    func asDecodableConfigKey<T: ConfigSerializable & Decodable>() -> DecodableConfigKey<T>? {
-//        return configKey as? DecodableConfigKey<T>
-//    }
-//
-//    func asCodableConfigKey<T: ConfigSerializable & Codable>() -> CodableConfigKey<T>? {
-//        return configKey as? CodableConfigKey<T>
-//    }
+    func convertDecodableConfigKey<T: ConfigSerializable & Decodable>() -> DecodableConfigKey<T>? {
+        return configKey as? DecodableConfigKey<T>
+    }
+
+    func convertCodableConfigKey<T: ConfigSerializable & Codable>() -> CodableConfigKey<T>? {
+        return configKey as? CodableConfigKey<T>
+    }
 
     func decoder() -> JSONDecoder? {
         return nil
