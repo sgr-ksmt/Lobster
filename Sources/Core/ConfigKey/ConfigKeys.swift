@@ -47,9 +47,16 @@ public class ConfigKeyBase<ValueType: ConfigSerializable>: ConfigKeys {
 ///
 ///     let title = Lobster.shared[.title]
 ///     print(String(describing: type(of: title))) // String
+/// - note: If you want to define a `ConfigKey` of `Decodable` or `Codable`, Please use `DecodableConfigKey` or `CodableConfigKey` instead.
 public final class ConfigKey<ValueType: ConfigSerializable>: ConfigKeyBase<ValueType> {
 }
 
+/// DecodableConfigKey
+///
+/// DecodableConfigKey is a key class specialized with `ValueType` for Remote Config.
+/// It allows you to get value as a type of `ValueType` from Remote Config with subscription.
+/// That is, you don't need to manually convert value to another type you want. You can handle the value  to type safe.
+/// `DecodableConfigKey` is able to handle `Decodable` value type.
 public final class DecodableConfigKey<ValueType: ConfigSerializable & Decodable>: ConfigKeyBase<ValueType> {
 
     public let decoder: JSONDecoder
@@ -60,6 +67,12 @@ public final class DecodableConfigKey<ValueType: ConfigSerializable & Decodable>
     }
 }
 
+/// CodableConfigKey
+///
+/// DecodableConfigKey is a key class specialized with `ValueType` for Remote Config.
+/// It allows you to get value as a type of `ValueType` from Remote Config with subscription.
+/// That is, you don't need to manually convert value to another type you want. You can handle the value  to type safe.
+/// `CodableConfigKey` is able to handle `Codable` value type.
 public final class CodableConfigKey<ValueType: ConfigSerializable & Codable>: ConfigKeyBase<ValueType> {
 
     public let decoder: JSONDecoder
