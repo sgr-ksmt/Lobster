@@ -21,9 +21,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          Lobster 3.0.0 Docs
+          Lobster 3.1.0 Docs
         </a>
-         (92% documented)
+         (91% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -62,7 +62,7 @@
             <a class="nav-group-name-link" href="Config%20Key.html">Config Key</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/ConfigKey.html">ConfigKey</a>
+                <a class="nav-group-task-link" href="Config%20Key.html#/s:7Lobster9ConfigKeyC">ConfigKey</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Config%20Key.html#/s:7Lobster10ConfigKeysC">ConfigKeys</a>
@@ -178,6 +178,17 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/s:7Lobster16CodableConfigKeyC">CodableConfigKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/s:7Lobster18DecodableConfigKeyC">DecodableConfigKey</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -220,14 +231,18 @@ That is, you don&rsquo;t need to manually convert value to another type you want
 <span class="k">let</span> <span class="nv">title</span> <span class="o">=</span> <span class="kt">Lobster</span><span class="o">.</span><span class="n">shared</span><span class="p">[</span><span class="o">.</span><span class="n">title</span><span class="p">]</span>
 <span class="nf">print</span><span class="p">(</span><span class="kt">String</span><span class="p">(</span><span class="nv">describing</span><span class="p">:</span> <span class="nf">type</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">title</span><span class="p">)))</span> <span class="c1">// String</span>
 </code></pre>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    If you want to define a <code>ConfigKey</code> of <code>Decodable</code> or <code>Codable</code>, Please use <code><a href="Other%20Classes.html#/s:7Lobster18DecodableConfigKeyC">DecodableConfigKey</a></code> or <code><a href="Other%20Classes.html#/s:7Lobster16CodableConfigKeyC">CodableConfigKey</a></code> instead.
 
-                        <a href="Classes/ConfigKey.html" class="slightly-smaller">See more</a>
+</div>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">ValueType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Config%20Key.html#/s:7Lobster10ConfigKeysC">ConfigKeys</a></span> <span class="k">where</span> <span class="kt">ValueType</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ConfigSerializable.html">ConfigSerializable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">ValueType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">ConfigKeyBase</span><span class="o">&lt;</span><span class="kt">ValueType</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">ValueType</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ConfigSerializable.html">ConfigSerializable</a></span></code></pre>
 
                         </div>
                       </div>
@@ -249,8 +264,8 @@ That is, you don&rsquo;t need to manually convert value to another type you want
                       <div class="abstract">
                         <p>ConfigKeys</p>
 
-<p>ConfigKeys is just a class that gathers <code><a href="Classes/ConfigKey.html">ConfigKey</a></code> instances you define.
-You can define <code><a href="Classes/ConfigKey.html">ConfigKey</a></code> inside this class&rsquo;s extension.</p>
+<p>ConfigKeys is just a class that gathers <code><a href="Config%20Key.html#/s:7Lobster9ConfigKeyC">ConfigKey</a></code> instances you define.
+You can define <code><a href="Config%20Key.html#/s:7Lobster9ConfigKeyC">ConfigKey</a></code> inside this class&rsquo;s extension.</p>
 
 <p>Example for definition of ConfigKey:</p>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ConfigKeys</span> <span class="p">{</span>
@@ -265,7 +280,7 @@ You can define <code><a href="Classes/ConfigKey.html">ConfigKey</a></code> insid
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">ConfigKeys</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ConfigKeys</span></code></pre>
 
                         </div>
                       </div>

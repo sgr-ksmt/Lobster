@@ -20,9 +20,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          Lobster 3.0.0 Docs
+          Lobster 3.1.0 Docs
         </a>
-         (92% documented)
+         (91% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -61,7 +61,7 @@
             <a class="nav-group-name-link" href="Config%20Key.html">Config Key</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/ConfigKey.html">ConfigKey</a>
+                <a class="nav-group-task-link" href="Config%20Key.html#/s:7Lobster9ConfigKeyC">ConfigKey</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Config%20Key.html#/s:7Lobster10ConfigKeysC">ConfigKeys</a>
@@ -177,6 +177,17 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/s:7Lobster16CodableConfigKeyC">CodableConfigKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Classes.html#/s:7Lobster18DecodableConfigKeyC">DecodableConfigKey</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -223,7 +234,7 @@
 <h2 id='basic-usage' class='heading'>Basic Usage</h2>
 
 <p><strong>You can integrate Lobster in a few steps implementation:</strong></p>
-<h3 id='1-define-code-configkey-code' class='heading'>1. Define <code><a href="Classes/ConfigKey.html">ConfigKey</a></code></h3>
+<h3 id='1-define-code-configkey-code' class='heading'>1. Define <code><a href="Config%20Key.html#/s:7Lobster9ConfigKeyC">ConfigKey</a></code></h3>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ConfigKeys</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">welcomeTitle</span> <span class="o">=</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"welcome_title"</span><span class="p">)</span>
     <span class="kd">static</span> <span class="k">let</span> <span class="nv">welcomeTitleColor</span> <span class="o">=</span> <span class="kt">ConfigKey</span><span class="o">&lt;</span><span class="kt">UIColor</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"welcome_title_color"</span><span class="p">)</span>
@@ -417,7 +428,7 @@ If you want to get/set <code>ValueType</code> (It&rsquo;s a custom type that Lob
 <ul>
 <li>Conform <code><a href="Protocols/ConfigSerializable.html">ConfigSerializable</a></code> to the <code>ValueType</code></li>
 <li>Create `ConfigBridge<ValueType></li>
-<li>Define <code><a href="Classes/ConfigKey.html">ConfigKey&lt;ValueType&gt;</a></code></li>
+<li>Define <code><a href="Config%20Key.html#/s:7Lobster9ConfigKeyC">ConfigKey&lt;ValueType&gt;</a></code></li>
 </ul>
 <h3 id='example-case-1-enum' class='heading'>Example case 1: Enum</h3>
 <pre class="highlight swift"><code><span class="c1">// Adapt protocol `ConfigSerializable`</span>
@@ -516,7 +527,7 @@ If you want to get/set <code>ValueType</code> (It&rsquo;s a custom type that Lob
 
 <p><strong>Lobster</strong> is available through <a href="http://cocoapods.org">CocoaPods</a>. To install
 it, simply add the following line to your Podfile:</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Lobster'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0.0'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Lobster'</span><span class="p">,</span> <span class="s1">'~&gt; 3.1.0'</span>
 
 <span class="c1"># If you want to use extensions of Combine, please install below:</span>
 <span class="n">pod</span> <span class="s1">'Lobster/Combine'</span>

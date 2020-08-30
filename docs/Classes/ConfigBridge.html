@@ -21,9 +21,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          Lobster 3.0.0 Docs
+          Lobster 3.1.0 Docs
         </a>
-         (92% documented)
+         (91% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -62,7 +62,7 @@
             <a class="nav-group-name-link" href="../Config%20Key.html">Config Key</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ConfigKey.html">ConfigKey</a>
+                <a class="nav-group-task-link" href="../Config%20Key.html#/s:7Lobster9ConfigKeyC">ConfigKey</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Config%20Key.html#/s:7Lobster10ConfigKeysC">ConfigKeys</a>
@@ -175,6 +175,17 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/CombineLobster.html">CombineLobster</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/s:7Lobster16CodableConfigKeyC">CodableConfigKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/s:7Lobster18DecodableConfigKeyC">DecodableConfigKey</a>
               </li>
             </ul>
           </li>
@@ -351,6 +362,114 @@ Lobster provides these bridge classes:</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">defaultsStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/DefaultsStore.html">DefaultsStore</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A value of type of T?</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Lobster12ConfigBridgeC4save3key5value13defaultsStore7encoderySS_xSgAA08DefaultsH0C10Foundation11JSONEncoderCtF"></a>
+                    <a name="//apple_ref/swift/Method/save(key:value:defaultsStore:encoder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster12ConfigBridgeC4save3key5value13defaultsStore7encoderySS_xSgAA08DefaultsH0C10Foundation11JSONEncoderCtF">save(key:<wbr>value:<wbr>defaultsStore:<wbr>encoder:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Saves a value to DefaultsStore.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    If you create a bridge class by inheriting <code>ConfigBridge&lt;T&gt;</code>, You need to override this function absolutely.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">?,</span> <span class="n">defaultsStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/DefaultsStore.html">DefaultsStore</a></span><span class="p">,</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt">JSONEncoder</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Lobster12ConfigBridgeC3get3key06remoteB07decoderxSgSS_So09FIRRemoteB0C10Foundation11JSONDecoderCtF"></a>
+                    <a name="//apple_ref/swift/Method/get(key:remoteConfig:decoder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster12ConfigBridgeC3get3key06remoteB07decoderxSgSS_So09FIRRemoteB0C10Foundation11JSONDecoderCtF">get(key:<wbr>remoteConfig:<wbr>decoder:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get a value from RemoteConfig</p>
+
+<p>If a value matched a key doesn&rsquo;t exist in RemoteConfig , this function will return <code>nil</code></p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>If you create a bridge class by inheriting <code>ConfigBridge&lt;T&gt;</code>, You need to override this function absolutely.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">remoteConfig</span><span class="p">:</span> <span class="kt">RemoteConfig</span><span class="p">,</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">JSONDecoder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A value of type of T?</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Lobster12ConfigBridgeC3get3key13defaultsStore7decoderxSgSS_AA08DefaultsG0C10Foundation11JSONDecoderCtF"></a>
+                    <a name="//apple_ref/swift/Method/get(key:defaultsStore:decoder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster12ConfigBridgeC3get3key13defaultsStore7decoderxSgSS_AA08DefaultsG0C10Foundation11JSONDecoderCtF">get(key:<wbr>defaultsStore:<wbr>decoder:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get a value from DefaultsStore</p>
+
+<p>If a value matched a key doesn&rsquo;t exist in DefaultsStore, this function will return <code>nil</code></p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>If you create a bridge class by inheriting <code>ConfigBridge&lt;T&gt;</code>, You need to override this function absolutely.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">defaultsStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/DefaultsStore.html">DefaultsStore</a></span><span class="p">,</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">JSONDecoder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>

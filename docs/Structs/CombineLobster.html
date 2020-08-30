@@ -21,9 +21,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          Lobster 3.0.0 Docs
+          Lobster 3.1.0 Docs
         </a>
-         (92% documented)
+         (91% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -62,7 +62,7 @@
             <a class="nav-group-name-link" href="../Config%20Key.html">Config Key</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ConfigKey.html">ConfigKey</a>
+                <a class="nav-group-task-link" href="../Config%20Key.html#/s:7Lobster9ConfigKeyC">ConfigKey</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Config%20Key.html#/s:7Lobster10ConfigKeysC">ConfigKeys</a>
@@ -178,6 +178,17 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/s:7Lobster16CodableConfigKeyC">CodableConfigKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Classes.html#/s:7Lobster18DecodableConfigKeyC">DecodableConfigKey</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -255,13 +266,13 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">fetched</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Classes/ConfigKey.html">ConfigKey</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Value</span><span class="p">,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigSerializable.html">ConfigSerializable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">fetched</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Config%20Key.html#/s:7Lobster9ConfigKeyC">ConfigKey</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Value</span><span class="p">,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigSerializable.html">ConfigSerializable</a></span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A publisher <code>&lt;T.Value, Error&gt;</code></p>
+                        <p>A publisher <code>&lt;T.Value, Never&gt;</code></p>
                       </div>
                     </section>
                   </div>
@@ -286,13 +297,137 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">fetched</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Classes/ConfigKey.html">ConfigKey</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="p">?</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Value</span><span class="p">?,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigSerializable.html">ConfigSerializable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">fetched</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Config%20Key.html#/s:7Lobster9ConfigKeyC">ConfigKey</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="p">?</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Value</span><span class="p">?,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigSerializable.html">ConfigSerializable</a></span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A publisher <code>&lt;T.Value?, Error&gt;</code></p>
+                        <p>A publisher <code>&lt;T.Value?, Never&gt;</code></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueAA18ConfigSerializablePQzs5NeverOGAA09DecodableG3KeyCyxGAaIRzSeRzlF"></a>
+                    <a name="//apple_ref/swift/Method/fetched(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueAA18ConfigSerializablePQzs5NeverOGAA09DecodableG3KeyCyxGAaIRzSeRzlF">fetched(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns Publisher that gives you a value matched a config key after fetching from RemoteConfig.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">fetched</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Other%20Classes.html#/s:7Lobster18DecodableConfigKeyC">DecodableConfigKey</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Value</span><span class="p">,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigSerializable.html">ConfigSerializable</a></span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A publisher <code>&lt;T.Value, Never&gt;</code></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueAA18ConfigSerializablePQzSgs5NeverOGAA09DecodableG3KeyCyxSgGAaIRzSeRzlF"></a>
+                    <a name="//apple_ref/swift/Method/fetched(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueAA18ConfigSerializablePQzSgs5NeverOGAA09DecodableG3KeyCyxSgGAaIRzSeRzlF">fetched(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns Publisher that gives you an optional value matched a config key after fetching from RemoteConfig.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">fetched</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Other%20Classes.html#/s:7Lobster18DecodableConfigKeyC">DecodableConfigKey</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="p">?</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Value</span><span class="p">?,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigSerializable.html">ConfigSerializable</a></span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A publisher <code>&lt;T.Value?, Never&gt;</code></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueAA18ConfigSerializablePQzs5NeverOGAA07CodableG3KeyCyxGAaIRzSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/fetched(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueAA18ConfigSerializablePQzs5NeverOGAA07CodableG3KeyCyxGAaIRzSeRzSERzlF">fetched(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns Publisher that gives you a value matched a config key after fetching from RemoteConfig.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">fetched</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Other%20Classes.html#/s:7Lobster16CodableConfigKeyC">CodableConfigKey</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Value</span><span class="p">,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigSerializable.html">ConfigSerializable</a></span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A publisher <code>&lt;T.Value, Never&gt;</code></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueAA18ConfigSerializablePQzSgs5NeverOGAA07CodableG3KeyCyxSgGAaIRzSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/fetched(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Lobster07CombineA0V7fetchedy0B012AnyPublisherVy5ValueAA18ConfigSerializablePQzSgs5NeverOGAA07CodableG3KeyCyxSgGAaIRzSeRzSERzlF">fetched(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns Publisher that gives you an optional value matched a config key after fetching from RemoteConfig.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">fetched</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Other%20Classes.html#/s:7Lobster16CodableConfigKeyC">CodableConfigKey</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="p">?</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Value</span><span class="p">?,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ConfigSerializable.html">ConfigSerializable</a></span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A publisher <code>&lt;T.Value?, Never&gt;</code></p>
                       </div>
                     </section>
                   </div>
