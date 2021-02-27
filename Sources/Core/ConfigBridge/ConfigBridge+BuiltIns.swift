@@ -30,7 +30,7 @@ public final class ConfigIntBridge: ConfigBridge<Int> {
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
-        return remoteConfig[key].numberValue?.intValue
+        return remoteConfig[key].numberValue.intValue
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
@@ -47,7 +47,7 @@ public final class ConfigDoubleBridge: ConfigBridge<Double> {
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
-        return remoteConfig[key].numberValue?.doubleValue
+        return remoteConfig[key].numberValue.doubleValue
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
@@ -64,7 +64,7 @@ public final class ConfigFloatBridge: ConfigBridge<Float> {
     }
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
-        return remoteConfig[key].numberValue?.floatValue
+        return remoteConfig[key].numberValue.floatValue
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
@@ -148,7 +148,7 @@ public final class ConfigRawRepresentableBridge<T: RawRepresentable>: ConfigBrid
 
     public override func get(key: String, remoteConfig: RemoteConfig) -> T? {
         return remoteConfig[key].stringValue.flatMap(deserialize) ??
-            remoteConfig[key].numberValue.flatMap(deserialize)
+            deserialize(remoteConfig[key].numberValue)
     }
 
     public override func get(key: String, defaultsStore: DefaultsStore) -> T? {
