@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name             = 'Lobster'
-  spec.version          = '3.1.0'
+  spec.version          = '3.1.1'
   spec.author           = { 'Suguru Kishimoto' => 'melodydance.k.s@gmail.com' }
   spec.summary          = 'The Type-safe Firebase-RemoteConfig helper library'
   spec.homepage         = 'https://github.com/sgr-ksmt/Lobster'
