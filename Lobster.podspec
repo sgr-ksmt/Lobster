@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
   spec.requires_arc     = true
   spec.static_framework = true
 
-  spec.dependency 'Firebase/RemoteConfig', '~> 6.29'
+  spec.dependency 'Firebase/RemoteConfig'
 
   spec.default_subspecs = 'Core'
 
