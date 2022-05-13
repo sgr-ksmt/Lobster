@@ -43,7 +43,7 @@ open class ConfigBridge<T> {
     /// - returns: A value of type of T?
     ///
     /// - note: If you create a bridge class by inheriting `ConfigBridge<T>`, You need to override this function absolutely.
-    open func get(key: String, remoteConfig: RemoteConfig) -> T? {
+    open func get(key: String, remoteConfig: RemoteConfig, experimentVariants: [String: Any]) -> T? {
         fatalError("This function must be implemented onto subclass.")
     }
 
@@ -71,7 +71,7 @@ open class ConfigBridge<T> {
     /// - returns: A value of type of T?
     ///
     /// - note: If you create a bridge class by inheriting `ConfigBridge<T>`, You need to override this function absolutely.
-    open func get(key: String, remoteConfig: RemoteConfig, decoder: JSONDecoder) -> T? {
+    open func get(key: String, remoteConfig: RemoteConfig, experimentVariants: [String: Any], decoder: JSONDecoder) -> T? {
         fatalError("This function must be implemented onto subclass.")
     }
 
